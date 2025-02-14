@@ -1,0 +1,39 @@
+.container {
+    display: grid;
+    grid-template-columns : 20rem .5fr .5fr;
+    grid-template-rows : 20vh 10rem .5fr .5fr;
+    grid-template-areas: 
+        "header  header header"
+        "sidebar card  card"
+        "sidebar chart1 chart1"
+        "nothing chart2 chart2";
+    gap: 1rem;
+    padding: 1rem;
+}
+.header {
+    grid-area : header;
+}
+.sidebar {
+    grid-area : sidebar;
+}
+.card {
+    grid-area : card;
+    background-color : purple;
+}
+.chart1 {
+    grid-area : chart1;
+    background-color : blueviolet;
+}
+.chart2 {
+    grid-area : chart2;
+    background-color : orange;
+}
+
+
+.chart1,.chart2{
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    width : 100%;
+    height : 100%;
+}

@@ -1,0 +1,13 @@
+.cardcontainer {
+    display : grid;
+    grid-template-columns : repeat(auto-fit,minmax(0,1fr));
+    padding :.5rem;
+    gap : 2rem;
+    
+
+}
+.carditem {
+    border : .2rem solid #000;
+    border-radius :.4rem;
+    font-size :1.4rem;
+}

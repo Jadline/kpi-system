@@ -1,0 +1,11 @@
+.sidebarcontainer {
+    display : flex;
+    flex-direction : column;
+    background-color : red;
+    flex-grow : 1;
+    font-size : 1.4rem;
+    gap : 3rem;
+}
+.sidebarcontainer a{
+    color :#fff;
+}
