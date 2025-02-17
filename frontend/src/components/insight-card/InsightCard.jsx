@@ -7,31 +7,25 @@ import { useLocation } from "react-router-dom";
 function InsightCard({ className }) {
   const location = useLocation();
   const pageTitle = mainPages[location.pathname] || "";
-  const cardspages = Object.keys(cardsData);
-  let cardinfo = [];
-  //   console.log(cardspages);
+  const cardsPages = Object.keys(cardsData);
+  let cardsInfo = [];
+  console.log(cardsPages);
 
-  cardspages.forEach((cardpage) => {
-    if (mainPages[cardpage] === pageTitle) {
-      cardinfo = [...cardsData[cardpage]];
+  cardsPages.forEach((cardPage) => {
+    if (mainPages[cardPage] === pageTitle) {
+      cardsInfo = [...cardsData[cardPage]];
     }
   });
-  console.log(cardinfo);
+  // console.log(cardsInfo);
   return (
     <div className={`${styles.cardcontainer} ${className}`}>
-      {cardinfo.map((card, i) => (
+      {cardsInfo.map((card, i) => (
         <div key={i} className={styles.carditem}>
-          {/* {console.log({ ...card })} */}
           <p>{card.icon}</p>
           <p>{card.title}</p>
           <p>{card.value}</p>
         </div>
       ))}
-
-      {/* <div className={styles.carditem}>Total damages</div>
-            <div className={styles.carditem}>Complete Orders</div>
-            <div className={styles.carditem}>Incomplete Orders</div>
-            <div className={styles.carditem}>untimely deliveries</div> */}
     </div>
   );
 }
