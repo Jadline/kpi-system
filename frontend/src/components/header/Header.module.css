@@ -2,6 +2,22 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: blue;
   padding-inline: 1rem;
+}
+header p {
+  font-size : 3rem;
+  font-weight : var(--font-bold);
+  color : var(--header-pry-clr1);
+  margin-right : 3rem;
+}
+header img {
+  cursor : pointer;
+}
+
+.notification,.darkmode,.avatar{
+  display : block;
+  max-width : 5rem;
+  border-radius : 50%;
+  padding: 1rem;
+  background-color : var(--icons-color-bg);
 }

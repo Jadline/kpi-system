@@ -1,0 +1,16 @@
+.logoContainer {
+    display : flex;
+    align-items : center;
+    justify-content : flex-start;
+    gap : 1rem;
+   
+}
+.logoContainer h2 {
+    max-width : 50%;
+    color : var(--header-pry-clr1);
+}
+.logoContainer img {
+    display : block;
+    max-width : 6.2rem;
+    border-radius : 50%;
+}
