@@ -8,10 +8,7 @@
   border: 0.2rem solid #000;
   border-radius: 0.4rem;
   font-size: 1.4rem;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: "text icon";
+  display: flex;
   padding: 1rem;
 }
 .iconImage {
@@ -19,10 +16,8 @@
 }
 
 .cardText {
-  grid-area: text;
   width: 100%;
 }
 
 .cardIcon {
-  grid-area: icon;
 }

@@ -10,14 +10,12 @@ function InsightCard({ className }) {
   const pageTitle = mainPages[location.pathname] || "";
   const cardsPages = Object.keys(cardsData);
   let cardsInfo = [];
-  // console.log(cardsPages);
 
   cardsPages.forEach((cardPage) => {
     if (mainPages[cardPage] === pageTitle) {
       cardsInfo = [...cardsData[cardPage]];
     }
   });
-  // console.log(cardsInfo);
   return (
     <div className={`${styles.cardcontainer} ${className}`}>
       {cardsInfo.map((card, i) => (

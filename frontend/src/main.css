@@ -9,6 +9,12 @@
     --primary-clr6 : #00B4D8;
     --primary-clr7 : #0077B6;
 
+    --primary-clr8 : hsl(0, 0%, 42%);
+    
+    /* --search-bar-bg : #f5f7fa; */
+    --search-bar-bg : hsl(216, 33%, 87%);
+    --search-bar-clr : #8ba3cb;
+
     --font-family : "Nunito Sans", serif;
     --font-thin: 200;
     --font-light: 300;
@@ -28,6 +34,7 @@
 
     /* *Header* */
     --header-pry-clr1 : #343c6a;
+    --icons-color-bg : hsl(216, 33%, 92%);
 
     /* *Perfect Order Rate* */
 

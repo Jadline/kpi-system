@@ -48,7 +48,7 @@ export const cardsData = {
     {
       title: "On-Time Shipment %",
       value: "87%",
-      icon: "frontend/public/icons/shipping-time.png",
+      icon: "/icons/shipping-time.png",
     },
   ],
   "/transportation-cost": [
