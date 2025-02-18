@@ -21,7 +21,7 @@ function InsightCard({ className }) {
   return (
     <div className={`${styles.cardcontainer} ${className}`}>
       {cardsInfo.map((card, i) => (
-        <div key={i} className={styles.carditem}>
+        <div key={i} className={styles.cardItem}>
           <div className={styles.cardText}>
             <p>{card.title}</p>
             <p>{card.value}</p>

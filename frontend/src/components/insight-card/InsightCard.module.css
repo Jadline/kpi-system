@@ -4,14 +4,15 @@
   padding: 0.5rem;
   gap: 2rem;
 }
-.carditem {
+.cardItem {
   border: 0.2rem solid #000;
   border-radius: 0.4rem;
   font-size: 1.4rem;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: "text icon";
+  padding: 1rem;
 }
 .iconImage {
   height: 4rem;
@@ -19,11 +20,9 @@
 
 .cardText {
   grid-area: text;
-  background-color: aqua;
   width: 100%;
 }
 
 .cardIcon {
   grid-area: icon;
-  background-color: aliceblue;
 }
