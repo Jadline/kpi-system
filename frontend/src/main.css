@@ -1,3 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+:root {
+
+    --primary-clr1 : #0096c7;
+    --primary-clr2 : #E7EDFF;
+    --primary-clr3 : #8280ff;
+    --primary-clr4 : #FEC53D;
+    --primary-clr5 : #FF9066;
+    --primary-clr6 : #00B4D8;
+    --primary-clr7 : #0077B6;
+
+    --font-family : "Nunito Sans", serif;
+    --font-thin: 200;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-black: 900;
+    --font-ultra: 1000; 
+    /* *Card * */
+    --card-font-clr1 : #202224;
+    
+    /* *Sidebar* */
+    --sidebar-clr1 :#B1B1B1;
+    --sidebar-active-clr :#3532F4;
+
+    /* *Header* */
+    --header-pry-clr1 : #343c6a;
+
+    /* *Perfect Order Rate* */
+
+    --chart-primary-bg3 : #03045E;
+
+
+    --POR-graph-line-clr : #FCAA0B;
+    --POR-graph-bar-bg1 : #8AEBFF;
+    --POR-graph-bar-bg2 : #48CAE4;
+    --POR-graph-bar-bg4 : #023E8A;
+
+    --icon-totalOrder-bg : #FFF5D9;
+    --icon-completeOrders-bg : #FFE0EB;
+    --icon-untimelyDeliveries-bg : #DCFAF8;
+
+    --activeOrders-clr : #718EBF;
+    
+
+    /* *Shipping Time * */
+
+    --ST-graph-line-clr1 : #0096c7;
+    --ST-graph-line-clr2 : #FB896B;
+    
+    --map-bg1 : #3BC9DB;
+    --map-bg2 : #32D583;
+    --map-bg3 : #DA77F2;
+    --map-bg4 : #FCE643;
+
+    --progressbar-bg1 : #F9AB19;
+    
+
+    --ST-bar-bg1 : #E9ECF1;
+    --ST-bar-bg2 : #D5E5FF;
+
+    /* *Transportation Cost* */
+    --TC-graph-pie-bg1 : #FF9000;
+
+    --TC-graph-line-clr :#615E83;
+
+    /* * Number Of Shipments * */
+    --NOS-graph-pie-bg1 :#5388d8;
+    --NOS-graph-pie-bg2 : #F4BE37;
+
+    /* *Average Delivery Time* */
+    --ADT-graph-area-bg1 : #3960D1;
+    --ADT-graph-area-bg2 :#00A651;
+
+
+
+
+   
+}
+
 *,*::before,*::after{
     box-sizing : border-box;
     padding : 0;
@@ -5,4 +88,7 @@
 }
 html {
     font-size : 62.5%;
+}
+body {
+    font-family : var(--font-family);
 }
