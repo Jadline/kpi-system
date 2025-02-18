@@ -8,4 +8,22 @@
   border: 0.2rem solid #000;
   border-radius: 0.4rem;
   font-size: 1.4rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "text icon";
+}
+.iconImage {
+  height: 4rem;
+}
+
+.cardText {
+  grid-area: text;
+  background-color: aqua;
+  width: 100%;
+}
+
+.cardIcon {
+  grid-area: icon;
+  background-color: aliceblue;
 }
