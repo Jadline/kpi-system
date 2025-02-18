@@ -22,7 +22,7 @@ function InsightCard({ className }) {
         <div key={i} className={styles.cardItem}>
           <div className={styles.cardText}>
             <p>{card.title}</p>
-            <p>{card.value}</p>
+            <p className={styles.cardValue}>{card.value}</p>
           </div>
           <div className={styles.cardIcon}>
             <img
