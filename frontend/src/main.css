@@ -1,101 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 :root {
+  --primary-clr1: #0096c7;
+  --primary-clr2: #e7edff;
+  --primary-clr3: #8280ff;
+  --primary-clr4: #fec53d;
+  --primary-clr5: #ff9066;
+  --primary-clr6: #00b4d8;
+  --primary-clr7: #0077b6;
 
-    --primary-clr1 : #0096c7;
-    --primary-clr2 : #E7EDFF;
-    --primary-clr3 : #8280ff;
-    --primary-clr4 : #FEC53D;
-    --primary-clr5 : #FF9066;
-    --primary-clr6 : #00B4D8;
-    --primary-clr7 : #0077B6;
+  --primary-clr8: hsl(0, 0%, 42%);
 
-    --primary-clr8 : hsl(0, 0%, 42%);
-    
-    /* --search-bar-bg : #f5f7fa; */
-    --search-bar-bg : hsl(216, 33%, 87%);
-    --search-bar-clr : #8ba3cb;
+  /* --search-bar-bg : #f5f7fa; */
+  --search-bar-bg: hsl(216, 33%, 87%);
+  --search-bar-clr: #8ba3cb;
 
-    --font-family : "Nunito Sans", serif;
-    --font-thin: 200;
-    --font-light: 300;
-    --font-regular: 400;
-    --font-medium: 500;
-    --font-semibold: 600;
-    --font-bold: 700;
-    --font-extrabold: 800;
-    --font-black: 900;
-    --font-ultra: 1000; 
-    /* *Card * */
-    --card-font-clr1 : #202224;
-    
-    /* *Sidebar* */
-    --sidebar-clr1 :#B1B1B1;
-    --sidebar-active-clr :#3532F4;
+  --font-family: "Nunito Sans", serif;
+  --font-thin: 200;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+  --font-ultra: 1000;
+  /* *Card * */
+  --card-font-clr1: #202224;
 
-    /* *Header* */
-    --header-pry-clr1 : #343c6a;
-    --icons-color-bg : hsl(216, 33%, 92%);
+  /* *Sidebar* */
+  --sidebar-clr1: #b1b1b1;
+  --sidebar-active-clr: #3532f4;
 
-    /* *Perfect Order Rate* */
+  /* *Header* */
+  --header-pry-clr1: #343c6a;
+  --icons-color-bg: hsl(216, 33%, 92%);
 
-    --chart-primary-bg3 : #03045E;
+  /* *Perfect Order Rate* */
 
+  --chart-primary-bg3: #03045e;
 
-    --POR-graph-line-clr : #FCAA0B;
-    --POR-graph-bar-bg1 : #8AEBFF;
-    --POR-graph-bar-bg2 : #48CAE4;
-    --POR-graph-bar-bg4 : #023E8A;
+  --POR-graph-line-clr: #fcaa0b;
+  --POR-graph-bar-bg1: #8aebff;
+  --POR-graph-bar-bg2: #48cae4;
+  --POR-graph-bar-bg4: #023e8a;
 
-    --icon-totalOrder-bg : #FFF5D9;
-    --icon-completeOrders-bg : #FFE0EB;
-    --icon-untimelyDeliveries-bg : #DCFAF8;
+  --icon-totalOrder-bg: #fff5d9;
+  --icon-completeOrders-bg: #ffe0eb;
+  --icon-untimelyDeliveries-bg: #dcfaf8;
 
-    --activeOrders-clr : #718EBF;
-    
+  --activeOrders-clr: #718ebf;
 
-    /* *Shipping Time * */
+  /* *Shipping Time * */
 
-    --ST-graph-line-clr1 : #0096c7;
-    --ST-graph-line-clr2 : #FB896B;
-    
-    --map-bg1 : #3BC9DB;
-    --map-bg2 : #32D583;
-    --map-bg3 : #DA77F2;
-    --map-bg4 : #FCE643;
+  --ST-graph-line-clr1: #0096c7;
+  --ST-graph-line-clr2: #fb896b;
 
-    --progressbar-bg1 : #F9AB19;
-    
+  --map-bg1: #3bc9db;
+  --map-bg2: #32d583;
+  --map-bg3: #da77f2;
+  --map-bg4: #fce643;
 
-    --ST-bar-bg1 : #E9ECF1;
-    --ST-bar-bg2 : #D5E5FF;
+  --progressbar-bg1: #f9ab19;
 
-    /* *Transportation Cost* */
-    --TC-graph-pie-bg1 : #FF9000;
+  --ST-bar-bg1: #e9ecf1;
+  --ST-bar-bg2: #d5e5ff;
 
-    --TC-graph-line-clr :#615E83;
+  /* *Transportation Cost* */
+  --TC-graph-pie-bg1: #ff9000;
 
-    /* * Number Of Shipments * */
-    --NOS-graph-pie-bg1 :#5388d8;
-    --NOS-graph-pie-bg2 : #F4BE37;
+  --TC-graph-line-clr: #615e83;
 
-    /* *Average Delivery Time* */
-    --ADT-graph-area-bg1 : #3960D1;
-    --ADT-graph-area-bg2 :#00A651;
+  /* * Number Of Shipments * */
+  --NOS-graph-pie-bg1: #5388d8;
+  --NOS-graph-pie-bg2: #f4be37;
 
-
-
-
-   
+  /* *Average Delivery Time* */
+  --ADT-graph-area-bg1: #3960d1;
+  --ADT-graph-area-bg2: #00a651;
 }
 
-*,*::before,*::after{
-    box-sizing : border-box;
-    padding : 0;
-    margin : 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 html {
-    font-size : 62.5%;
+  font-size: 62.5%;
 }
 body {
-    font-family : var(--font-family);
+  font-family: var(--font-family);
+  background-color: var(--primary-clr2);
 }
