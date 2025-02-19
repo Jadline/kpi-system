@@ -23,13 +23,13 @@ export const cardsData = {
     {
       title: "Complete Orders",
       value: "11,800",
-      icon: "/icons/timely-deliveries-icon.png",
+      icon: "/icons/complete-orders-icon.png",
       backgroundColor: "#FFE0EB",
     },
     {
       title: "Untimely Deliveries",
       value: "1,845",
-      icon: "/icons/shipping-time.png",
+      icon: "/icons/untimely-deliveries-icon.png",
       backgroundColor: "#DCFAF8",
     },
   ],
@@ -47,12 +47,12 @@ export const cardsData = {
     {
       title: "Worst Shipping Route",
       value: "Beijing → Sydney",
-      icon: "/icons/shipping-time.png",
+      icon: "/icons/worst-shipping-route-icon.png",
     },
     {
       title: "On-Time Shipment %",
       value: "87%",
-      icon: "/icons/shipping-time.png",
+      icon: "/icons/on-time-shipment-icon.png",
     },
   ],
   "/transportation-cost": [
@@ -64,41 +64,41 @@ export const cardsData = {
     {
       title: "Avg Cost per Shipment",
       value: "$250",
-      icon: "icons/number-of-shipments.png",
+      icon: "/icons/average-cost-per-shipment.png",
     },
     {
       title: "Cost per Shipment (Air)",
       value: "$400",
-      icon: "/icons/active order.png",
+      icon: "/icons/cost-per-shipment.png",
     },
     {
       title: "Cost per Shipment (Sea)",
       value: "$150",
-      icon: "/icons/number-of-shipments.png",
+      icon: "/icons/cost-per-shipment-by-sea.png",
     },
   ],
   "/number-of-shipments": [
     {
       title: "Total Shipments",
       value: "9,876",
-      icon: "/icons/number-of-shipments.png",
+      icon: "/icons/total-number-of-shipments.png",
     },
     {
       title: "Shipments by Air",
       value: "3,456",
-      icon: "/icons/total-number-of-shipments.png",
+      icon: "icons/cost-per-shipment.png",
     },
     {
       title: "Shipments by Sea",
       value: "6,420",
-      icon: "/icons/total-order-icon.png",
+      icon: "icons/cost-per-shipment-by-sea.png",
     },
   ],
   "/average-delivery-time": [
     {
       title: "Average Delivery Time",
       value: "4.2 Days",
-      icon: "/icons/total-transportation-cost-icon.png",
+      icon: "/icons/average-delivery-time.png",
     },
     {
       title: "Fastest Delivery Route",
@@ -108,12 +108,12 @@ export const cardsData = {
     {
       title: "Slowest Shipping Route",
       value: "LA → Cape Town",
-      icon: "/icons/active order.png",
+      icon: "/icons/worst-shipping-route-icon.png",
     },
     {
       title: "On-Time Delivery %",
       value: "92%",
-      icon: "/icons/total-order-icon.png",
+      icon: "/icons/on-time.png",
     },
   ],
 };
