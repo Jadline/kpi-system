@@ -2,6 +2,7 @@
 :root {
   --primary-clr1: #0096c7;
   --primary-clr2: #e7edff;
+  --primary-clr21: hsl(225, 100%, 97%);
   --primary-clr3: #8280ff;
   --primary-clr4: #fec53d;
   --primary-clr5: #ff9066;
@@ -91,5 +92,5 @@ html {
 }
 body {
   font-family: var(--font-family);
-  background-color: var(--primary-clr2);
+  /* background-color: var(--primary-clr21); */
 }
