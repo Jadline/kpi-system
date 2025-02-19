@@ -12,21 +12,25 @@ export const cardsData = {
       title: "Total Orders",
       value: "12,345",
       icon: "/icons/total-order-icon.png",
+      backgroundColor: "#FFF5D9",
     },
     {
       title: "Timely Deliveries",
       value: "10,500",
       icon: " /icons/timely-deliveries-icon.png",
+      backgroundColor: "#E7EDFF ;",
     },
     {
       title: "Complete Orders",
       value: "11,800",
       icon: "/icons/timely-deliveries-icon.png",
+      backgroundColor: "#FFE0EB",
     },
     {
       title: "Untimely Deliveries",
       value: "1,845",
       icon: "/icons/shipping-time.png",
+      backgroundColor: "#DCFAF8",
     },
   ],
   "/shipping-time": [

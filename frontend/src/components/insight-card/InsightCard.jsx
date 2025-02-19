@@ -24,7 +24,10 @@ function InsightCard({ className }) {
             <p>{card.title}</p>
             <p className={styles.cardValue}>{card.value}</p>
           </div>
-          <div className={styles.cardIcon}>
+          <div
+            className={styles.cardIcon}
+            style={{ backgroundColor: card.backgroundColor }}
+          >
             <img
               className={styles.iconImage}
               src={card.icon}
