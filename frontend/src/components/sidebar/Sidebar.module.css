@@ -11,42 +11,39 @@
     background-color :var(--icons-color-bg);
     margin-bottom : 2rem;
 }
-.sectionTitle p{
-    font-size : 1.8rem;
-    font-weight :var(--font-bold);
+.sectionTitle p {
+  font-size: 1.8rem;
+  font-weight: var(--font-bold);
 }
 .sidebarIcon {
-    display : block;
-    width : 2.8rem;
+  display: block;
+  width: 2.8rem;
 }
 ul {
-    margin-inline : auto;
-    margin-block : auto;
+  margin-inline: auto;
+  margin-block: auto;
 }
 ul li {
-    display : flex;
-    align-items : center;
-    margin-bottom : 3rem;
-    gap : 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  gap: 1rem;
 }
 ul li a {
-    white-space: nowrap;
-    text-decoration : none;
-    font-size : 1.6rem;
-    color :var(--sidebar-clr1);
-    transition : color 0.5s;
-    font-weight : var(--font-bold);
-    
-
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: var(--sidebar-clr1);
+  transition: color 0.5s;
+  font-weight: var(--font-bold);
 }
 ul li a:hover {
-    color :var(--card-font-clr1);
+  color: var(--card-font-clr1);
 }
-.sidebarContent a:global(.active){
-    color : var(--sidebar-active-clr);
+.sidebarContent a:global(.active) {
+  color: var(--sidebar-active-clr);
 }
 .sidebarContent {
-   
-    padding-inline : 2rem;
-    padding-block : 1rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
 }
