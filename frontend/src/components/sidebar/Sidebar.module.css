@@ -1,7 +1,4 @@
-/* .sidebarcontainer {
-    display : flex;
-    flex-direction : column;
-} */
+
 
 .sectionTitle{
     color :var(--card-font-clr1);
@@ -12,7 +9,7 @@
     margin-inline:auto;
     border-radius : .4rem;
     background-color :var(--icons-color-bg);
-    margin-bottom : 8rem;
+    margin-bottom : 2rem;
 }
 .sectionTitle p{
     font-size : 1.8rem;

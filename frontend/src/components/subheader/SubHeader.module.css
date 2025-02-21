@@ -1,0 +1,35 @@
+.subheader {
+    display : flex;
+    justify-content : space-between;
+    padding-inline : 1rem;
+    align-items : center;
+    
+}
+.modes {
+    display : flex;
+    gap : 3rem;
+    
+}
+.modes p {
+    background-color : var(--icons-color-bg1);
+    padding : .6rem 3.2rem;
+    border-radius : 1rem;
+    font-size : 1.5rem;
+    font-weight : var(--font-bold);
+    cursor : pointer;
+
+}
+.filters {
+    display : flex;
+    gap : 1rem;
+    align-items : center;
+}
+.filters img {
+    width : 3.2rem;
+    cursor : pointer;
+}
+.filters p {
+    font-size : 2rem;
+    font-weight : var(--font-bold);
+    
+}
