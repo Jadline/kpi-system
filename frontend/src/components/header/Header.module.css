@@ -1,16 +1,25 @@
 header {
+  display : flex;
+  flex-direction : column;
+  gap : 1rem;
+  padding-block : 1rem;
+  /* background-color : blue; */
+
+}
+.headContainer{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: 1rem;
+  /* background-color : purple; */
 }
-header p {
+.headContainer p {
   font-size: 3rem;
   font-weight: var(--font-bold);
   color: var(--header-pry-clr1);
   margin-right: 3rem;
 }
-header img {
+.headContainer img {
   cursor: pointer;
 }
 

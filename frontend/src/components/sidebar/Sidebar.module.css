@@ -1,18 +1,15 @@
-/* .sidebarcontainer {
-    display : flex;
-    flex-direction : column;
-} */
 
-.sectionTitle {
-  color: var(--card-font-clr1);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  margin-inline: auto;
-  border-radius: 0.4rem;
-  background-color: var(--icons-color-bg);
-  margin-bottom: 1.8rem;
+
+.sectionTitle{
+    color :var(--card-font-clr1);
+    display : flex;
+    align-items : center;
+    gap : 1rem;
+    padding  : 1rem 2rem;
+    margin-inline:auto;
+    border-radius : .4rem;
+    background-color :var(--icons-color-bg);
+    margin-bottom : 2rem;
 }
 .sectionTitle p {
   font-size: 1.8rem;

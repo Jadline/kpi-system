@@ -1,7 +1,11 @@
 .container {
   display: grid;
   grid-template-columns: 26rem 2fr 1fr 1fr;
+<<<<<<< HEAD
+  grid-template-rows: 25vh 15rem 0.5fr 0.5fr;
+=======
   grid-template-rows: 15vh 21rem 0.5fr 0.5fr;
+>>>>>>> 5e03c4c6ee6314e3a85d7e1d57a1a04f7ebe9aa1
   grid-template-areas:
     "header  header header header"
     "sidebar card  card card"
