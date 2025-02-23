@@ -1,0 +1,4 @@
+define the actual db schema
+
+make queries to the db that makes/defines  the tables
+postgres sql queries that make the tables in the schemas

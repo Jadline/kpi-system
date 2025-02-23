@@ -1,0 +1,2 @@
+business logic
+create CRUD operations based on the routes then export the  function  then call it to get data in the specified routes
