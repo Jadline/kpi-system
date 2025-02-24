@@ -1,8 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import errorHandler from "./middlewares/errorMiddleware";
 import ordersRoutes from "./routes/ordersRoutes";
 import shippingRoutes from "./routes/shippingRoutes";
+import env from "dotenv";
+
+env.config();
 
 const app = express();
 const PORT = 4000;
@@ -17,6 +21,9 @@ app.use(express.static("public"));
 
 app.use("/api/orders", ordersRoutes);
 app.use("/api/shipments", shippingRoutes);
+
+// Error handling middleware (must be after all routes)
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`{Server running on http://localhost:${PORT}}`);
