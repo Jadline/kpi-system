@@ -17,25 +17,62 @@ function InsightCard({ className }) {
     }
   });
   return (
-    <div className={`${styles.cardcontainer} ${className}`}>
-      {cardsInfo.map((card, i) => (
-        <div key={i} className={styles.cardItem}>
-          <div className={styles.cardText}>
-            <p>{card.title}</p>
-            <p className={styles.cardValue}>{card.value}</p>
-          </div>
-          <div
-            className={styles.cardIcon}
-            style={{ backgroundColor: card.backgroundColor }}
-          >
-            <img
-              className={styles.iconImage}
-              src={card.icon}
-              alt={card.title}
-            />
-          </div>
+    // <div className={`${styles.cardcontainer} ${className}`}>
+    //   {cardsInfo.map((card, i) => (
+    //     <>
+    //     <div key={i} className={styles.cardItem}>
+    //       <div className={styles.cardText}>
+    //         <p>{card.title}</p>
+    //         <div
+    //         className={styles.cardIcon}
+    //         style={{ backgroundColor: card.backgroundColor }}
+    //       >
+    //         <img
+    //           className={styles.iconImage}
+    //           src={card.icon}
+    //           alt={card.title}
+    //         />
+    //       </div>          
+            
+    //       </div>
+         
+         
+    //     </div>
+    //      <div>
+    //      {card.type === 'number'? 
+    //         <p className={`${styles.cardValue}`}>{card.value}</p> :
+    //         <p className={`${styles.cardInsight} ${
+    //           (card.title === 'Worst Shipping Route' || card.title === 'Slowest Shipping Route') 
+    //             ? styles.redinsight 
+    //             : ''
+    //         }`}>{card.value}</p>}
+    //      </div>
+    //      </>
+    //   ))}
+    // </div>
+    <div  className={`${styles.cardcontainer} ${className}`}>
+      {cardsInfo.map((card,i) => (
+        <div key ={i} className={styles.cardItem}>
+           <div>
+            <p className={styles.cardTitle}>{card.title}</p>
+            <div style={{backgroundColor :card.backgroundColor }} className={styles.iconContainer}>
+              <img src={card.icon} alt="" className={styles.cardIcon}/>
+            </div>
+            </div>
+            <div className={styles.cardText}>
+            {card.type === 'number'? 
+              <p className={`${styles.cardValue}`}>{card.value}</p> :
+                <p className={`${styles.cardInsight} ${
+                (card.title === 'Worst Shipping Route' || card.title === 'Slowest Shipping Route') 
+                ? styles.redinsight 
+                  : ''
+                }`}>{card.value}</p>}
+    
+            </div>
         </div>
       ))}
+      
+      
     </div>
   );
 }
