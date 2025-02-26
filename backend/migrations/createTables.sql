@@ -1,7 +1,6 @@
 -- Contains SQL queries for creating all tables
 
 
-
 -- SQL query to create the average_delivery_time table
 CREATE TABLE average_delivery_time (
     delivery_id SERIAL PRIMARY KEY,  -- Unique identifier for each delivery
