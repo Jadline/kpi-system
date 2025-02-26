@@ -1,0 +1,79 @@
+
+progress {
+    appearance : none;
+    -webkit-appearance : none;
+    flex : 1;
+}
+progress::-webkit-progress-bar {
+    background-color: #0096c7;
+    border-radius: 5px;
+}
+progress::-webkit-progress-value {
+    background-color:var( --progressbar-bg1);
+    border-radius: 5px;
+}
+/* progress::-moz-progress-bar {
+    background-color: #007bff;
+    border-radius: 5px;
+} */
+.budgetContainer {
+    width : 100%;
+    display : flex;
+    gap : 2rem;
+    align-items : center;
+}
+
+.countryName {
+    font-weight :var(--font-bold);
+    width : 3.4rem;
+   
+   
+}
+.percentage {
+    
+    font-weight :var(--font-bold);
+    width : 5rem;
+}
+.budget {
+    display : flex;
+    flex-direction : column;
+    justify-content : space-evenly;
+    padding : 1.5rem;
+
+}
+.budgetinfo {
+    display : flex;
+    justify-content : space-between;
+   
+    width : 100%;
+    align-items : center;
+    padding : .2rem;
+}
+.budgetinfo h3 {
+    font-size :1.8rem;
+}
+.budgetUsed div, .totalbudget  div {
+  
+    border-radius : 50%;
+    width : 1.5rem;
+    height : 1.5rem;
+}
+.budgetUsed div{
+    background-color:var( --progressbar-bg1);
+}
+.totalbudget  div{
+    background-color: #0096c7;
+
+}
+.budgetUsed,.totalbudget {
+    display : flex;
+    gap : .5rem;
+}
+.totalcost {
+    display : flex;
+    gap : 1rem;
+    font-size : 1.6rem;
+}
+.totalcost p:last-child {
+    font-weight : var(--font-extrabold);
+}

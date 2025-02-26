@@ -1,0 +1,27 @@
+.activeorders{
+    display : flex;
+    gap : 3rem;
+    align-items : center;
+}
+.activeorders .ordersimg img {
+    width : 4.2rem;
+}
+.ordersimg {
+    height : 18rem;
+    width : 10rem;
+    display : flex;
+    background-color : var(--primary-clr2);
+  
+    align-items : center;
+    justify-content : center;
+    border-radius : 50%;
+}
+.orderstext p:first-child {
+    font-size : 2rem;
+    color :var(--activeOrders-clr);
+    font-weight:var(--font-extrabold)
+}
+.orderstext p:last-child {
+    font-size : 1.6rem;
+    font-weight :var(--font-bold);
+}
