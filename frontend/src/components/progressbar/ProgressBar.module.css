@@ -1,0 +1,20 @@
+.progressContainer {
+    display : flex;
+    align-items : center;
+    gap : 1rem;
+}
+.progressContainer img {
+    width : 3.2rem;
+    border-radius : 50%;
+    height : 3.2rem;
+
+}
+.progressInsights {
+    display : flex;
+    flex-direction : column;
+    padding-inline : 1rem;
+    justify-content : space-evenly;
+    border-radius : 1rem;
+    box-shadow : -0.2rem -0.2rem 1rem rgba(0,0,0,0.2);
+    background-color :#f8ffff;
+}

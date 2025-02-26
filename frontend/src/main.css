@@ -93,5 +93,8 @@ html {
 }
 body {
   font-family: var(--font-family);
+  background-color :#f8ffff;
+  min-height : 100vh;
+  padding : 1.2rem;
   /* background-color: var(--primary-clr21); */
 }

@@ -1,13 +1,13 @@
 .container {
   display: grid;
   grid-template-columns: 26rem 2fr 1fr 1fr;
-  grid-template-rows: 15vh 21rem 0.5fr 0.5fr;
+  grid-template-rows: 25vh 12rem 0.5fr 0.5fr;
   grid-template-areas:
     "header  header header header"
     "sidebar card  card card"
     "sidebar chart1 chart2 chart21"
     "nothing chart3 chart4 chart4";
-  gap: 1rem;
+  gap: 1.8rem;
   padding: 1rem;
 }
 .header {
@@ -18,11 +18,11 @@
 }
 .card {
   grid-area: card;
-  background-color: var(--primary-clr2);
+  /* background-color: var(--primary-clr2); */
 }
 .chart1 {
   grid-area: chart1;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 .chart2 {
   grid-area: chart2;
@@ -34,11 +34,13 @@
 }
 .chart3 {
   grid-area: chart3;
-  background-color: green;
+  box-shadow : 0.2rem 0.2rem 1rem rgba(0,0,0,0.2);
+  border-radius : 1rem;
+ 
 }
 .chart4 {
   grid-area: chart4;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 .chart1,
 .chart2,
