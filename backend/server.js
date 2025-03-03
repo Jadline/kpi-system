@@ -1,10 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import errorHandler from "./middlewares/errorMiddleware";
-import ordersRoutes from "./routes/ordersRoutes";
-import shippingRoutes from "./routes/shippingRoutes";
-import deliveryRoutes from "./routes/DeliveryRoutes.js";
+import errorHandler from "./middlewares/errorMiddleware.js";
+import orderRoutes from "./routes/orders.routes.js";
 
 import env from "dotenv";
 
@@ -21,12 +19,16 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// app.use("/api/orders", ordersRoutes);
-// app.use("/api/shipments", shippingRoutes);
-app.use("/api/delivery", deliveryRoutes);
+// app.use("/", (req, res) => {
+//   res.json(
+//     "Hello There! Oooops! Looks like you landed on the wrong page, nothing to be shown here....Proceed to the correct route!"
+//   );
+// });
+
+app.use("/api/orders", orderRoutes);
 
 // Error handling middleware (must be after all routes)
-// app.use(errorHandler);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`{Server running on http://localhost:${PORT}}`);

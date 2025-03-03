@@ -66,7 +66,7 @@ CREATE TABLE shipping_time (
 -- SQL to Create the transportation_cost Table
 CREATE TABLE transportation_cost (
     transport_id SERIAL PRIMARY KEY,
-    order_id VARCHAR(20) NOT NULL,
+    order_id INT NOT NULL,
     country VARCHAR(100) NOT NULL,
     weight_in_kgs INT NOT NULL,
     cost_per_kg NUMERIC(10,8) NOT NULL,

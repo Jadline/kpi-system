@@ -3,7 +3,7 @@ import {
   fetchShipments,
   fetchShipment,
   addShipment,
-} from "../controllers/shippingController.js";
+} from "../controllers/shipping-time.controller.js";
 
 const router = express.Router();
 
