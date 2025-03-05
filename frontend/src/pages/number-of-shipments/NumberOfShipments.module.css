@@ -1,39 +1,18 @@
 .container {
-  display: grid;
-  grid-template-columns: 26rem 0.5fr 0.5fr;
-  grid-template-rows: 25vh 12rem 0.5fr 0.5fr;
-  grid-template-areas:
-    "header  header header"
-    "sidebar card  card"
-    "sidebar chart1 chart1"
-    "nothing chart2 chart2";
-  gap: 1rem;
-  padding: 1rem;
+  display : grid;
+  grid-template-columns : 1fr 1fr;
+  grid-template-rows : 1fr 1fr;
+  width : 100%;
+  height : 100%;
+  grid-template-areas : 
+  "chart1 chart1"
+  "chart2 chart2";
+  padding : .5rem;
+  gap : 1.8rem;
 }
-.header {
-  grid-area: header;
-}
-.sidebar {
-  grid-area: sidebar;
-}
-.card {
-  grid-area: card;
-  /* background-color: var(--primary-clr2); */
-}
-.chart1 {
-  grid-area: chart1;
-  /* background-color: blueviolet; */
+.chart1{
+  grid-area : chart1;
 }
 .chart2 {
-  grid-area: chart2;
-  /* background-color: orange; */
-}
-
-.chart1,
-.chart2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  grid-area : chart2;
 }

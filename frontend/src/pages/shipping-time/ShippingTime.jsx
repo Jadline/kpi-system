@@ -47,15 +47,10 @@ function ShippingTime() {
   },[])
   return (
     <div className={styles.container}>
-      <Header className={styles.header} />
-      <Sidebar className={styles.sidebar} />
-      <InsightCard className={styles.card} />
+
       <STLine className={styles.chart1} data={shippingTimeData}/>
-      {/* <Chart className={styles.chart1} /> */}
-      {/* <Chart className={styles.chart2} /> */}
       <STBar className={styles.chart2} data={stackedData}/>
       <Map className={styles.chart3} data={mapdata}/>
-      {/* <Chart className={styles.chart3} /> */}
       <ProgressBar className={styles.chart4} data={countries}/>
      
     </div>

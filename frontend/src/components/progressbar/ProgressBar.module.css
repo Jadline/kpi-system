@@ -18,3 +18,9 @@
     box-shadow : -0.2rem -0.2rem 1rem rgba(0,0,0,0.2);
     background-color :#f8ffff;
 }
+@media screen and (max-width : 480.98px){
+    .progressInsights{
+        max-width : 50rem;
+        gap : 1rem;
+        }
+}

@@ -5,7 +5,7 @@ function TCLine({className,data}){
     const containerRef = useRef(null)
     const [dimensions,setDimensions] = useState({
         width : 700,
-        height : 400
+        height : 500
     })
     useEffect(() => {
         function updateSize(){

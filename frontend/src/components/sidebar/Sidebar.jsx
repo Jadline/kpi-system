@@ -1,59 +1,184 @@
+import { useState } from "react";
+import Logo from "../logo/Logo";
 import styles from "./Sidebar.module.css";
 import { NavLink } from "react-router-dom";
-function Sidebar({ className }) {
-  return (
-    <aside className={`${styles.sidebarcontainer} ${className}`}>
+// function Sidebar({ className,opensidebar,setOpenSidebar}) {
+//   return (
+//     <>
+//    <aside className={`${styles.sidebarcontainer} ${className} ${opensidebar ? styles.open : ""}`}>
+//       <div className={`${styles.sidebarmenu} ${styles.mobileOnly}`}>
+//         <Logo/>
+//         <p>Rolling Cargo Shipping Company</p>
+//         <p>X</p>
+//       </div>
+//       <h3 className={styles.sectionTitle}>
+//         <img
+//           src="./icons/metrics.png"
+//           alt="metrics-icon"
+//           className={styles.sidebarIcon}
+//         />
+//         <p>Performance Metrics</p>
+//       </h3>
+//       <ul className={styles.sidebarContent}>
+//         <li>
+//           <img
+//             src="./icons/perfect-order-rate.png"
+//             alt="perfect-order-rate-icon"
+//             className={styles.sidebarIcon}
+//           />
+//           <NavLink to="/">Perfect Order Rate</NavLink>
+//         </li>
+//         <li>
+//           <img
+//             src="./icons/number-of-shipments.png"
+//             alt="number-of-shipments-icon"
+//             className={styles.sidebarIcon}
+//           />
+//           <NavLink to="/number-of-shipments">Number Of Shipments</NavLink>
+//         </li>
+//         <li>
+//           <img
+//             src="./icons/shipping-time.png"
+//             alt="shipping-time-icon"
+//             className={styles.sidebarIcon}
+//           />
+//           <NavLink to="/shipping-time">Shipping Time</NavLink>
+//         </li>
+//         <li>
+//           <img
+//             src="./icons/average-time-delivery.png"
+//             alt="average-delivery-time-icon"
+//             className={styles.sidebarIcon}
+//           />
+//           <NavLink to="/average-delivery-time">Average Delivery Time</NavLink>
+//         </li>
+//         <li>
+//           <img
+//             src="./icons/transportation-cost.png"
+//             alt="transportation-cost-icon"
+//             className={styles.sidebarIcon}
+//           />
+//           <NavLink to="/transportation-cost">Transportation Cost</NavLink>
+//         </li>
+//       </ul>
+//       <div className={`${styles.darkmode} ${styles.mobileOnly}`}>
+//         <p>dark mode</p>
+//          <img role="button" src="./icons/dark.png" alt="dark-mode-icon"  />
+//       </div>
+//       <div className={`${styles.notifications} ${styles.mobileOnly}`}>
+//         <p>Notifications</p>
+//          <img role="button" src="./icons/notification.png" alt="notification-icon" />
+//       </div>
+//     </aside>
+//     </>
+//     ) 
+   
+// }
+
+function Sidebar({ className,opensidebar,setOpenSidebar}){
+  // const [opensidebar,setOpenSidebar] = useState(false)
+  return(
+    
+
+    <aside className={`${className} ${opensidebar ? styles.opened : ""}`}>
+     <div className={styles.topsidebar}>
+      <div className={styles.upperSidebar}>
+      <Logo opensidebar={opensidebar} setOpenSidebar={setOpenSidebar}/>
+      {/* {!opensidebar && <div className={styles.sidebarbutton}>
+        <img 
+      src="./icons/list.png" 
+      alt="" className={`${styles.menubar}`} 
+      role='button' 
+      onClick={() => setOpenSidebar(!opensidebar)}
+      /></div>} */}
+      </div>
+      <div className={styles.middleSidebar}>
+    
+      
       <h3 className={styles.sectionTitle}>
         <img
           src="./icons/metrics.png"
           alt="metrics-icon"
           className={styles.sidebarIcon}
         />
-        <p>Performance Metrics</p>
+        {!opensidebar && <p>Performance Metrics</p>}
       </h3>
       <ul className={styles.sidebarContent}>
         <li>
+          
+          <NavLink to="/">
           <img
             src="./icons/perfect-order-rate.png"
             alt="perfect-order-rate-icon"
             className={styles.sidebarIcon}
           />
-          <NavLink to="/">Perfect Order Rate</NavLink>
+          {!opensidebar && <span>Perfect Order Rate</span>}
+          </NavLink>
         </li>
         <li>
+         
+          <NavLink to="/number-of-shipments">
           <img
             src="./icons/number-of-shipments.png"
             alt="number-of-shipments-icon"
             className={styles.sidebarIcon}
           />
-          <NavLink to="/number-of-shipments">Number Of Shipments</NavLink>
+          {!opensidebar && <span>Number Of Shipments</span>}
+        </NavLink>
         </li>
         <li>
+         
+          <NavLink to="/shipping-time">
           <img
             src="./icons/shipping-time.png"
             alt="shipping-time-icon"
             className={styles.sidebarIcon}
           />
-          <NavLink to="/shipping-time">Shipping Time</NavLink>
+          {!opensidebar && <span>Shipping Time</span>}
+          </NavLink>
         </li>
         <li>
+          
+          <NavLink to="/average-delivery-time">
           <img
             src="./icons/average-time-delivery.png"
             alt="average-delivery-time-icon"
             className={styles.sidebarIcon}
           />
-          <NavLink to="/average-delivery-time">Average Delivery Time</NavLink>
+         {!opensidebar && <span>Average Delivery Time</span>}
+          </NavLink>
         </li>
         <li>
+          
+          <NavLink to="/transportation-cost">
           <img
             src="./icons/transportation-cost.png"
             alt="transportation-cost-icon"
             className={styles.sidebarIcon}
           />
-          <NavLink to="/transportation-cost">Transportation Cost</NavLink>
+          {!opensidebar && <span>Transportation Cost</span>}
+          </NavLink>
         </li>
       </ul>
-    </aside>
-  );
+
+
+      </div>
+      </div>
+      <div className={styles.lowerSidebar}>
+      <div className={`${styles.darkmode} ${styles.mobileOnly}`}>
+      <img role="button" src="./icons/dark.png" alt="dark-mode-icon"  />
+        {!opensidebar && <p>Dark Mode</p>}
+         
+      </div>
+      <div className={`${styles.notifications} ${styles.mobileOnly}`}>
+      <img role="button" src="./icons/notification.png" alt="notification-icon" />
+      {!opensidebar && <p>Notifications</p>}
+         
+      </div>
+      </div>
+      
+    </aside> 
+    
+  )
 }
-export default Sidebar;
+export default Sidebar

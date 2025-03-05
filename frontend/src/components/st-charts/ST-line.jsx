@@ -3,7 +3,7 @@ import {useEffect,useState,useRef} from 'react'
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 function STLine({data,className}){
     const containerRef = useRef(null)
-    const[dimensions,setDimensions] = useState({width : 700,height : 400})
+    const[dimensions,setDimensions] = useState({width : 700,height : 500})
     const groups = data.map((d) => d.month)
 
     useEffect(() => {

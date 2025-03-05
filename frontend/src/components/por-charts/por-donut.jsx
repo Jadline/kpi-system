@@ -1,5 +1,6 @@
 import { arc, pie, scaleOrdinal } from "d3";
 import { useRef, useState,useEffect } from "react";
+import styles from './por-donut.module.css'
 
 // const width = 700;
 // const height= 400;
@@ -14,6 +15,18 @@ function PORDonut({data,className}){
         width : 700,
         height : 400
     })
+    const [isMobile,setIsMobile] = useState(window.innerWidth <= 480)
+    
+    useEffect(() => {
+        function handleResize(){
+            setIsMobile(window.innerWidth <= 481)
+        }
+        handleResize()
+        window.addEventListener('resize',handleResize)
+        return ()  => {
+            window.removeEventListener('resize',handleResize)
+        }
+    },[])
 
     useEffect(()=> {
         function updateSize(){
@@ -56,7 +69,7 @@ function PORDonut({data,className}){
             width = '100%'
             height = '100%'
             viewBox ={`0 0 ${width} ${height}`}
-            preserveAspectRatio="xMidyMid meet"
+            preserveAspectRatio="xMidYMid meet"
             
         
             >
@@ -71,6 +84,7 @@ function PORDonut({data,className}){
             y={25}
             fontWeight ={800}
             fontSize={16}
+            className={styles.ordersummary}
             >
                 Order summary
             </text>
@@ -87,7 +101,7 @@ function PORDonut({data,className}){
             </g>
             <g>
                 <rect
-                width={22}
+                width={15}
                 height={15}
                 x={10}
                 y={32}
@@ -97,16 +111,18 @@ function PORDonut({data,className}){
                 <text
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
-                x={82}
+                x={isMobile ? 73 : 82}
                 y={40}
                 fontWeight={800}
+                fontSize={12}
+                className={styles.ordertitle}
                 >
                     untimely deliveries
                 </text>
                 <rect
-                width={22}
+                width={15}
                 height={15}
-                x={boundsWidth - width / 2 + 40}
+                x={isMobile ? boundsWidth - width / 2 + 60 : boundsWidth - width / 2 + 47}
                 y={32}
                 fill={'#00b4d8'}
                 rx={2}
@@ -114,14 +130,16 @@ function PORDonut({data,className}){
                 <text
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
-                x={boundsWidth - width / 2 + 105}
+                x={isMobile ? boundsWidth - width / 2 + 118 : boundsWidth - width / 2 + 110}
                 y={40}
                 fontWeight={800}
+                fontSize={12}
+                className={styles.ordertitle}
                 >
                     complete orders
                 </text>
                 <rect
-                width={22}
+                width={15}
                 height={15}
                 x={boundsWidth - width / 2 + 165}
                 y={32}
@@ -131,9 +149,11 @@ function PORDonut({data,className}){
                 <text
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
-                x={boundsWidth - width / 2 + 230}
+                x={isMobile ? boundsWidth - width / 2 + 221 : boundsWidth - width / 2 + 230}
                 y={40}
                 fontWeight={800}
+                fontSize={12}
+                className={styles.ordertitle}
                 >
                     timely deliveries
                 </text>

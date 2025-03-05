@@ -1,16 +1,42 @@
 .logoContainer {
     display : flex;
+    /* flex-direction : column; */
     align-items : center;
     justify-content : flex-start;
     gap : 1rem;
+    padding : 1rem;
+    width : 100%;
+  
    
 }
 .logoContainer h2 {
-    max-width : 50%;
+    max-width : 65%;
+  
     color : var(--header-pry-clr1);
+    /* white-space : nowrap; */
 }
 .logoContainer img {
     display : block;
-    max-width : 6.2rem;
+    max-width : 5rem;
     border-radius : 50%;
+}
+.shrinkimg {
+    width : 3.4rem;
+    
+}
+.menubar {
+    width : 4.4rem;
+    border-radius : 50%;
+    color: var(--sidebar-clr1);
+    padding : 1rem;
+    border : 2px solid #ccc;
+    
+}
+@media screen and (max-width : 480.98px){
+   .onMobile {
+    display : block;
+   }
+   .menubar {
+    display : none;
+   }
 }

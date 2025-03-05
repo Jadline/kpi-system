@@ -38,6 +38,8 @@ function TCPie({className,data}){
             display : 'flex',
             width : '100%',
             height : '100%',
+            minHeight : '400px',
+            maxHeight : '400px',
             alignItems : 'center',
             justifyContent : 'center',
             borderRadius : '1rem',
@@ -58,7 +60,7 @@ function TCPie({className,data}){
                 >
                     Total Cost (Air vs Sea)
                 </text>
-                <g transform={`translate(${width / 2},${height /2})`}>
+                <g transform={`translate(${width / 2},${height /2 + 20})`}>
                  { transportationPie(data).map((d,i) => {
                     const [x,y] = transportationArc.centroid(d)
                     return (

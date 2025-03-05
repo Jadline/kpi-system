@@ -1,0 +1,9 @@
+@media screen and (max-width : 480.98px){
+    .ordertitle {
+        font-size : .9rem;
+       
+    }
+    .ordersummary{
+        font-size : 1.4rem;
+    }
+}

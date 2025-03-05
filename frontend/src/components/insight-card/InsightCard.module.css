@@ -3,6 +3,7 @@
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 1rem;
 
+
 }
 .cardItem {
   /* border : 2px solid rgba(0, 0, 0,0.2); */
@@ -45,4 +46,27 @@
 }
 .redinsight {
   color : red;
+}
+@media screen and (max-width : 480.98px){
+  .cardcontainer{
+    grid-template-columns : 1fr ;
+  }
+}
+@media screen and (min-width : 481px) and (max-width : 768.98px){
+  .cardcontainer {
+    grid-template-columns: repeat(2, 1fr); 
+    
+  }
+  .cardItem:last-child:nth-child(odd){
+    grid-column : span 2;
+  }
+}
+@media screen and (min-width : 768px) and (max-width : 1024.98px){
+  .cardcontainer {
+    grid-template-columns: repeat(2, 1fr); 
+    
+  }
+  .cardItem:last-child:nth-child(odd){
+    grid-column : span 2;
+  }
 }

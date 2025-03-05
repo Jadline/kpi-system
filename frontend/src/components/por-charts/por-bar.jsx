@@ -1,5 +1,6 @@
 import { max, scaleBand, scaleLinear, schemeCategory10 } from "d3";
 import { useEffect, useState,useRef } from "react";
+import styles from './por-bar.module.css'
 
 // const width = 700;
 // const height = 400;
@@ -14,8 +15,19 @@ function PORBar({className,data}){
     const containerRef = useRef(null)
     const [dimensions,setDimensions] = useState({
         width : 700,
-        height : 400
+        height : 500
     })
+    const [isMobile,setIsMobile] = useState(window.innerWidth <= 480)
+    useEffect(() => {
+        function handleResize(){
+            setIsMobile(window.innerWidth <= 481)
+        }
+        handleResize()
+        window.addEventListener('resize',handleResize)
+        return () => {
+            window.removeEventListener('resize',handleResize)
+        }
+    },[])
     useEffect(() => {
         function updateSize(){
             if(containerRef.current){
@@ -36,7 +48,7 @@ function PORBar({className,data}){
     const {width,height} = dimensions
 
     const boundsWidth = width - MARGIN.left - MARGIN.right
-    const boundsHeight =height - MARGIN.top - MARGIN.bottom
+    const boundsHeight = height - MARGIN.top - MARGIN.bottom
     const groups = data.sort((a,b) => b.por - a.por).map((d) => d.country)
 
     const xScale = scaleLinear()
@@ -61,18 +73,20 @@ function PORBar({className,data}){
                 />
                 <text
                 x={xScale(d.por - 6)}
-                y={y + yScale.bandwidth() / 2}
+                y={y + yScale.bandwidth() / 2 + 3}
                 fill ={'#fff'}
                 fontSize={12}
+                className={styles.porvalue}
                 >
                     {d.por}
 
                 </text>
                 <text
                 x ={xScale(0) + 7}
-                y ={y + yScale.bandwidth() / 2}
+                y ={y + yScale.bandwidth() / 2 + 3}
                 fill= {'#fff'}
                 fontSize ={12}
+                className={styles.porvalue}
                 >
                     {d.country}
                 </text>
@@ -120,15 +134,16 @@ function PORBar({className,data}){
             width ='100%'
             height ='100%'
             viewBox={`0 0 ${width} ${height}`}
-            preserveAspectRatio='xMidyMid meet'
+            preserveAspectRatio='xMidYMid meet'
             >
                 <rect width ={width} height={height} rx={10} fill={'#f8ffff'}/>
                 <text
                 x={boundsWidth - width / 2 }
-                y={30}
+                y={isMobile ? 20 : 30}
                 fontSize={18}
                 fontWeight={800}
                 fill={'000'}
+                className={styles.portitle}
                 >
                     Perfect Order Rate by Route
                 </text>

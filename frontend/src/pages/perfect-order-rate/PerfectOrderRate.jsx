@@ -9,6 +9,7 @@ import PORBar from '../../components/por-charts/por-bar'
 import { porbardata,donutData} from '../../../public/project-data-files/MainPages'
 import PORDonut from '../../components/por-charts/por-donut'
 import ActiveOrders from '../../components/active-orders/ActiveOrders'
+import { useEffect, useState } from 'react'
 
 function PerfectOrderRate(){
     const januaryPOR = countriesporData.map((dataitem) => {
@@ -19,9 +20,6 @@ function PerfectOrderRate(){
     })
     return(
         <div className={styles.container}>
-            <Header className={styles.header}/>
-            <Sidebar className={styles.sidebar}/>
-            <InsightCard className={styles.card}/>
             <PORLine className={styles.chart1} data ={porData}/>
             <ActiveOrders className={styles.chart2}  />
             <PORBar className={styles.chart3} data={januaryPOR}/>
