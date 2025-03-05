@@ -1,67 +1,41 @@
 .container {
-  display: grid;
-  grid-template-columns: 26rem 1fr 1fr;
-  grid-template-rows: 25vh 12rem 1fr 1fr;
-  grid-template-areas:
-    "header  header header"
-    "sidebar card  card"
-    "sidebar chart1 chart2"
-    "nothing chart3 chart4";
-  gap: 1.8rem;
-  padding: 1rem;
-}
-.header {
-  grid-area: header;
-}
-.sidebar {
-  grid-area: sidebar;
-}
-.card {
-  grid-area: card;
-  /* background-color: var(--primary-clr2); */
-}
-.chart1 {
-  grid-area: chart1;
-  
+  display : grid;
+  grid-template-columns : 1fr 1fr;
+  grid-template-rows : 1fr 1fr;
+  width : 100%;
+  height : 100%;
+  grid-template-areas : 
+  "chart1 chart2"
+  "chart3 chart4";
+  padding : .5rem;
+  gap : 1.8rem;
 }
 .chart2 {
-  grid-area: chart2;
+  box-shadow : -0.2rem -0.2rem 1rem rgba(0,0,0,0.2);
   border-radius : 1rem;
-  box-shadow: -0.2rem .2rem 1rem rgba(0, 0, 0, 0.2);  
-
-  background-color: #f8ffff;
 }
-.chart3 {
-  grid-area: chart3;
- 
+.chart1,.chart2,.chart3,.chart4 {
+  display : flex;
+  align-items : center;
+  justify-content : center;
+  width : 100%;
+  height : 100%;
 }
-.chart4 {
-  grid-area: chart4;
-}
-.chart1,
-.chart2,
-.chart3,
-.chart4 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-/* 🔹 Small Screens (Mobile, 480px and below) */
-/* @media (max-width: 480px) {
+@media screen and (max-width : 480.98px){
   .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "header"
-      "sidebar"
-      "card"
-      "chart1"
-      "chart2"
-      "chart3"
-      "chart4";
-    gap: 0.5rem;
+    grid-template-columns : 1fr;
+  grid-template-rows : auto;
+  width : 100%;
+  height : 100%;
+  grid-template-areas : 
+  "chart1"
+  "chart2"
+  "chart3"
+  "chart4"
+  ;
+
+
   }
-} */
+}
+
+

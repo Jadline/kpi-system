@@ -49,6 +49,13 @@ progress::-webkit-progress-value {
     align-items : center;
     padding : .2rem;
 }
+.budgetdatainfo {
+    display : flex;
+    align-items : center;
+    justify-content : space-between;
+    /* background-color : red;
+     */
+}
 .budgetinfo h3 {
     font-size :1.8rem;
 }
@@ -76,4 +83,19 @@ progress::-webkit-progress-value {
 }
 .totalcost p:last-child {
     font-weight : var(--font-extrabold);
+}
+@media screen and (max-width : 480.98px){
+    .budgetinfo h3 {
+        font-size :1.5rem;
+    }
+    .budgetinfo {
+    
+        flex-direction : column;
+        gap : 1 rem;
+      
+    }
+    .budgetdatainfo {
+        width : 100%;
+    
+    }
 }

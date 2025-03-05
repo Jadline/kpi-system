@@ -400,4 +400,12 @@ export const ADTdata = [
   { name: "UAE", air: 12, sea: 6 },
   
 ];
-
+export const  budgetdata = {
+  totalCost : 750000,
+  budget : 1200000
+}
+export const adtgaugeairdata ={
+  avg_deliverytime : 5,
+  goal : 3
+  
+}

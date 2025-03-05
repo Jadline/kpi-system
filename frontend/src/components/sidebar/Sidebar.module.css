@@ -1,4 +1,4 @@
-
+/* 
 
 .sectionTitle{
     color :var(--card-font-clr1);
@@ -46,4 +46,190 @@ ul li a:hover {
 .sidebarContent {
   padding-inline: 2rem;
   padding-block: 1rem;
+  transition : transform 0.3s ease-in-out;
+  position : relative;
 }
+.mobileOnly{
+  display : none;
+}
+
+
+ */
+ aside {
+  /* background-color: #f8fffc; */
+  /* background-color :red; */
+  height : 100vh;
+ 
+  display : flex;
+
+  flex-direction : column;
+
+  /* gap : 3rem; */
+  justify-content : space-between;
+  padding : 1rem;
+  width : 100%;
+  transition : width 0.4s ease-in-out;
+  /* padding-left : 1rem; */
+  position : relative;
+  border-right : 2px solid rgba(204, 204, 204,0.4);
+  
+ }
+ .topsidebar {
+  display : flex;
+  flex-direction : column;
+  gap : 3rem;
+  align-items : center;
+ 
+ }
+.sidebarbutton img{
+  width :100%;
+  height : 100%;
+  
+  
+
+}
+.upperSidebar {
+  position : relative;
+}
+
+.sidebarbutton {
+  position: absolute;
+  top: 0.5%;
+  right: -2.6rem; /* Keeps it outside the sidebar edge */
+  border : 2px solid #000;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  padding: 1rem;
+  transition: right 0.4s ease;
+  
+  
+
+  
+  
+  
+}
+.sectionTitle {
+  border-radius : .5rem;
+}
+
+.middleSidebar img, .lowerSidebar img{
+  width : 2.2rem;
+}
+
+ul li {
+  list-style : none;
+}
+ul li a {
+  display : flex;
+  text-decoration : none;
+  font-size : 1.6rem;
+  gap : .5rem;
+  justify-content : flex-start;
+  align-items : center;
+  color: var(--sidebar-clr1);
+  transition: color 0.5s;
+  font-weight: var(--font-bold);
+  padding-inline : .5rem;
+}
+ul li a:hover {
+  color: var(--card-font-clr1);
+}
+li a:global(.active) {
+  color: var(--sidebar-active-clr);
+}
+ul  {
+  display : flex;
+  flex-direction : column ;
+  gap : 1.5rem;
+}
+h3 {
+  display : flex;
+  background-color :var(--icons-color-bg);
+  padding-block : 1rem;
+
+  gap : .5rem;
+  margin-bottom : 1.3rem;
+  align-items : center;
+  padding-inline : .5rem;
+
+}
+h3 p {
+  font-size : 1.8rem;
+}
+.lowerSidebar {
+  display : flex;
+  flex-direction : column;
+  gap : 1rem;
+}
+.darkmode,.notifications {
+  display : flex;
+  align-items : center;
+  font-size : 1.6rem;
+  gap : .5rem;
+  color: var(--sidebar-clr1);
+  padding-left : 1rem;
+  /* background-color : red; */
+}
+.opened {
+  width : 10rem;
+  display : flex;
+  align-items : center;
+  transition : width 0.4s ease;
+}
+
+@media screen and (max-width : 480.98px){
+  aside {
+    position: absolute;
+    left: -100%; 
+    top: 0;
+    height: 100vh;
+    width: 18rem;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000; 
+  }
+  .opened {
+    left : 0;
+  }
+  
+  /* .sidebar.opened {
+    left:0;
+  } */
+}
+.mobileOnly {
+  display : none;
+}
+@media screen and (min-width: 481px) and (max-width: 768.98px) {
+  aside {
+    position: absolute;
+    left: -100%; 
+    top: 0;
+    height: 100vh;
+    width: 18rem;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000; 
+   
+  }
+  .opened {
+    left : 0;
+  }
+  
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024.98px) {
+  aside {
+    position: absolute;
+    left: -100%; 
+    top: 0;
+    height: 100vh;
+    width: 18rem;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000; 
+   
+  }
+  .opened {
+    left : 0;
+  }
+  
+}
+

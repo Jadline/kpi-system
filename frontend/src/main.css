@@ -90,11 +90,15 @@
 }
 html {
   font-size: 62.5%;
+  width : 100%;
+  overflow-x: hidden;
 }
 body {
   font-family: var(--font-family);
   background-color :#f8ffff;
+  width : 100%;
+  overflow-x: hidden;
   min-height : 100vh;
   padding : 1.2rem;
-  /* background-color: var(--primary-clr21); */
+ 
 }

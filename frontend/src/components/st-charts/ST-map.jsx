@@ -33,7 +33,7 @@ function Map({data,className}){
         Sea : ''
     })
     const containerRef = useRef(null)
-    const[dimensions,setDimensions] = useState({width : 700,height : 400})
+    const[dimensions,setDimensions] = useState({width : 700,height : 500})
     useEffect(() => {
         function updateSize(){
             if(containerRef.current) {

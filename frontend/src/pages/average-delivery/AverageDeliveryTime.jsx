@@ -8,21 +8,20 @@ import { ADTareadata, ADTdata } from "../../../public/project-data-files/MainPag
 import ADTArea from "../../components/adt-charts/ADT-area";
 import { shippingtabledata } from "../../../public/project-data-files/MainPages";
 import ADTable from "../../components/adt-table/ADT-table";
+import AirGauge from "../../components/adt-gauges/airgauge";
+import { adtgaugeairdata } from "../../../public/project-data-files/MainPages";
 // import { ADTdata } from "../../../public/project-data-files/MainPages";
 function AverageDeliveryTime() {
+  
   return (
     <div className={styles.container}>
-      <Header className={styles.header} />
-      <Sidebar className={styles.sidebar} />
-      <InsightCard className={styles.card} />
+     
       <ADTBar className={styles.chart1} data={ADTdata}/>
-      {/* <Chart className={styles.chart1} /> */}
-      <Chart className={styles.chart2} />
+      <AirGauge data={adtgaugeairdata} className={styles.chart2}/>
       <Chart className={styles.chart21} />
-      {/* <Chart className={styles.chart3} /> */}
       <ADTable className={styles.chart3} data={shippingtabledata}/>
       <ADTArea className={styles.chart4} data={ADTareadata}/>
-      {/* <Chart className={styles.chart4} /> */}
+     
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { geoBounds, max, scaleBand, scaleLinear } from "d3";
+import styles from './NOS-bar.module.css'
 import { useState ,useEffect, useRef} from "react"
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 const categories = ["air", "sea"];
@@ -7,8 +8,19 @@ function NOSBar({data,className}){
     const containerRef = useRef(null)
     const [dimensions,setDimensions] = useState({
         width : 700,
-        height : 400
+        height : 500
     })
+    const[isMobile,setIsMobile] = useState(window.innerWidth <=481)
+    useEffect(() => {
+       function handleResize(){
+        setIsMobile(window.innerWidth <= 481)
+       }
+       handleResize()
+       window.addEventListener('resize',handleResize)
+       return() => {
+        window.removeEventListener('resize',handleResize)
+       }
+    },[])
     useEffect(() => {
         function updateSize(){
             if(containerRef.current){
@@ -78,6 +90,7 @@ function NOSBar({data,className}){
             y={yScale(value)}
             fontSize={12}
             color ={'#000'}
+            className={styles.barYlabels}
             
             >
                 {value}

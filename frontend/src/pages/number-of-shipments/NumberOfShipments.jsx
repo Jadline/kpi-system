@@ -11,12 +11,8 @@ import NOSPie from "../../components/nos-charts/NOS-pie";
 function NumberOfShipments() {
   return (
     <div className={styles.container}>
-      <Header className={styles.header} />
-      <Sidebar className={styles.sidebar} />
-      <InsightCard className={styles.card} />
       <NOSBar className={styles.chart1} data={stackedData}/>
       <NOSPie className={styles.chart2} data={NOSpiedata}/>
-      {/* <Chart className={styles.chart2} /> */}
     </div>
   );
 }

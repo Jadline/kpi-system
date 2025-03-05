@@ -5,6 +5,7 @@ function TCProgressBar({data,className}){
         <div className={`${className} ${styles.budget}`}>
             <div className={styles.budgetinfo}>
                 <h3>Budget Performance</h3>
+                <div className={styles.budgetdatainfo}>
                 <div className={styles.budgetUsed}>
                     <div ></div>
                     <p>Budget Used</p>
@@ -16,6 +17,7 @@ function TCProgressBar({data,className}){
                 <div className={styles.totalcost}>
                     <p>Total Cost </p>
                     <p>$1.2M</p>
+                </div>
                 </div>
             </div>
             {data.map((budgetitem,i) => (
