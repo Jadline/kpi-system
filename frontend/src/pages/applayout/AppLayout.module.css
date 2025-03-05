@@ -17,6 +17,11 @@
     /* padding : 1rem; */
     
 }
+/* .dark {
+  filter : invert(1);
+  background-color : black;
+} */
+
 .header {
     grid-area : header;
     

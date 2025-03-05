@@ -102,3 +102,17 @@ body {
   padding : 1.2rem;
  
 }
+.dark-mode {
+  filter : invert(97%);
+  
+}
+.dark-avatar {
+  filter : invert(97%);
+  background-color : #000;
+}
+
+
+/* .dark-mode img {
+  filter : invert(1);
+} */
+ 

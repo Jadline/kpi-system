@@ -12,7 +12,7 @@ import ProgressBar from "../../components/progressbar/ProgressBar";
 const MAP_URL = "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
 const COUNTRIES_URL ='https://restcountries.com/v3.1/all'
 import { stackedData } from "../../../public/project-data-files/MainPages";
-function ShippingTime() {
+function ShippingTime({isdarkmode}) {
   const [mapdata,setMapdata] = useState(null)
   const [countries,setCountries] = useState([])
   useEffect(() => {
@@ -51,7 +51,7 @@ function ShippingTime() {
       <STLine className={styles.chart1} data={shippingTimeData}/>
       <STBar className={styles.chart2} data={stackedData}/>
       <Map className={styles.chart3} data={mapdata}/>
-      <ProgressBar className={styles.chart4} data={countries}/>
+      <ProgressBar className={styles.chart4} data={countries} isdarkmode={isdarkmode}/>
      
     </div>
   );

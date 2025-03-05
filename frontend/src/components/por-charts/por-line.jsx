@@ -132,7 +132,7 @@ function PORLine({ data, className }) {
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="xMidYMid meet"
       >
-        <rect width={width} height={height} rx={10} fill="#f8ffff" />
+       
         <text
           x={boundsWidth - width / 2 - 10}
           y={30}

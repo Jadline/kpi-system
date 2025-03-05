@@ -73,12 +73,7 @@ function PORDonut({data,className}){
             
         
             >
-            <rect 
-            rx={10}
-            width ={width}
-            height={height}
-            fill='#f8ffff'
-            />
+           
             <text
             x={boundsWidth - width / 2 +20}
             y={25}

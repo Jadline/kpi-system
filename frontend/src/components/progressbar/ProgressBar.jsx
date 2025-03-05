@@ -9,7 +9,7 @@ const selectedCountries = [
     "Netherlands",
     "South Africa",
   ];
-function ProgressBar({className,data}){
+function ProgressBar({className,data,isdarkmode}){
     const filteredCountries = data?.filter((country) => {
        return selectedCountries.includes(country.name.common)
     })
@@ -18,7 +18,7 @@ function ProgressBar({className,data}){
         <div className={`${className || ''} ${styles.progressInsights}`}>
             {filteredCountries.map((country,i) => (
                 <div key={i} className={styles.progressContainer}>
-                    <img src={country.flags.png} alt=""  />
+                    <img src={country.flags.png} alt="" className={isdarkmode ? "dark-avatar" : ''} />
                     <Progress countryName={country.name.common}/>
 
                 </div>
