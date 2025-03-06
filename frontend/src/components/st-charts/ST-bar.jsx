@@ -1,33 +1,12 @@
 import { scaleBand, scaleLinear , max, stack} from "d3";
 import { useEffect, useRef, useState } from "react";
+import { useDimensions } from "../../reusable-components/useDimensions";
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 const categories = ["air", "sea"];
 const colors = { air: "#0096c7", sea: "#e9ecf1" };
 
 function STBar({data,className}){
-    const containerRef = useRef(null)
-    const [dimensions,setDimensions] = useState({
-        width : 700,
-        height : 500
-    })
-    useEffect(() => {
-        function updateSize(){
-            if(containerRef.current){
-                setDimensions({
-                    width : containerRef.current.clientWidth,
-                    height : containerRef.current.clientHeight
-                })
-            
-            }
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return() => {
-            window.removeEventListener('resize',updateSize)
-        }
-        
-    },[])
-    const {width,height} = dimensions
+    const {containerRef,width,height} = useDimensions(700,500)
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight = height - MARGIN.top - MARGIN.bottom
 

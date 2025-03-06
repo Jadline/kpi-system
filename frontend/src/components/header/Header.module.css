@@ -38,7 +38,9 @@ header {
   border-radius: 50%;
   padding: .8rem;
   background-color: var(--icons-color-bg);
+  border : .5px solid #ccc;
 }
+
 .imageicons {
   display : flex;
   
@@ -68,6 +70,10 @@ header {
  }
  .darkmode {
   max-width : 4rem;
+ }
+ .lightmode {
+  max-width : 4rem;
+  display : block;
  }
  .searchbox {
   display : none !important ;

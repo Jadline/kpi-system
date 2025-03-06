@@ -1,6 +1,8 @@
 import { max, scaleBand, scaleLinear, schemeCategory10 } from "d3";
 import { useEffect, useState, useRef } from "react";
 import styles from "./por-bar.module.css";
+import { useDimensions } from "../../reusable-components/useDimensions";
+import { useResize } from "../../reusable-components/useResize";
 
 // const width = 700;
 // const height = 400;
@@ -19,38 +21,8 @@ const colors = [
 ];
 
 function PORBar({ className, data }) {
-  const containerRef = useRef(null);
-  const [dimensions, setDimensions] = useState({
-    width: 700,
-    height: 500,
-  });
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
-  useEffect(() => {
-    function handleResize() {
-      setIsMobile(window.innerWidth <= 481);
-    }
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-  useEffect(() => {
-    function updateSize() {
-      if (containerRef.current) {
-        setDimensions({
-          width: containerRef.current.clientWidth,
-          height: containerRef.current.clientHeight,
-        });
-      }
-    }
-    updateSize();
-    window.addEventListener("resize", updateSize);
-    return () => {
-      window.removeEventListener("resize", updateSize);
-    };
-  }, []);
-  const { width, height } = dimensions;
+  const { containerRef, width, height } = useDimensions(700, 500);
+  const { isMobile, isTablet, isLaptop, isDesktop } = useResize();
 
   const boundsWidth = width - MARGIN.left - MARGIN.right;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
@@ -133,7 +105,6 @@ function PORBar({ className, data }) {
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="xMidYMid meet"
       >
-        <rect width={width} height={height} rx={10} fill={"#f8ffff"} />
         <text
           x={boundsWidth - width / 2}
           y={isMobile ? 20 : 30}

@@ -1,29 +1,10 @@
 import { line, max, scaleBand, scaleLinear } from "d3"
 import { useRef, useState,useEffect } from "react"
+import { useDimensions } from "../../reusable-components/useDimensions"
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 function TCLine({className,data}){
-    const containerRef = useRef(null)
-    const [dimensions,setDimensions] = useState({
-        width : 700,
-        height : 500
-    })
-    useEffect(() => {
-        function updateSize(){
-            if(containerRef.current){
-                setDimensions({
-                    width : containerRef.current.clientWidth,
-                    height : containerRef.current.clientHeight
-                })
-            }
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return() => {
-            window.removeEventListener('resize',updateSize)
-        }
-        
-    },[])
-    const{height,width} = dimensions
+    const {containerRef,width,height} = useDimensions(700,500)
+   
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight = height - MARGIN.top - MARGIN.bottom
     

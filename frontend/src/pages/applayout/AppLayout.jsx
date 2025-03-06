@@ -3,17 +3,20 @@ import Header from "../../components/header/Header"
 import Sidebar from "../../components/sidebar/Sidebar"
 import InsightCard from "../../components/insight-card/InsightCard"
 import styles from './AppLayout.module.css'
-import { useState } from "react"
+import { useState,useEffect } from "react"
+import { useUI } from "../../context/UI-Context"
 
 function AppLayout(){
-    const [opensidebar,setOpenSidebar] = useState(false)
+    const {opensidebar} = useUI()
+    
+    
     return (
-        <div className={styles.appLayout}
+        <div className={`${styles.appLayout}`}
         style={{'--sidebar-width' : !opensidebar ? "26rem" : '10rem'}}
         
         >
-            <Header className={styles.header} opensidebar={opensidebar} setOpenSidebar={setOpenSidebar}/>
-            <Sidebar className={styles.sidebar} opensidebar={opensidebar} setOpenSidebar={setOpenSidebar}/>
+            <Header className={styles.header} />
+            <Sidebar className={styles.sidebar}/>
             <InsightCard className={styles.card}/>
            <main>
             <Outlet/>

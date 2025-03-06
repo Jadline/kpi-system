@@ -1,31 +1,13 @@
 import { arc, pie } from "d3"
 import { useState,useRef, useEffect } from "react"
+import { useDimensions } from "../../reusable-components/useDimensions";
 const colors =['#5388d8','#f4be37']
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 function NOSPie({data,className}){
     console.log("Pie chart data:", data);
 
-    const containerRef = useRef(null)
-    const [dimensions,setDimensions] = useState({
-        width : 700,
-        height : 400
-    })
-    useEffect(() => {
-        function updateSize(){
-            if(containerRef.current){
-                setDimensions({
-                    width : containerRef.current.clientWidth,
-                    height : containerRef.current.clientHeight
-                })
-            }
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return() => {
-            window.removeEventListener('resize',updateSize)
-        }
-    },[])
-    const {height,width} = dimensions
+    const {containerRef,width,height} = useDimensions()
+    
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight = height - MARGIN.top - MARGIN.bottom
     const no_shipmentsArc = arc()

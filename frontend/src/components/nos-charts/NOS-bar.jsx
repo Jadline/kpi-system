@@ -1,16 +1,15 @@
 import { geoBounds, max, scaleBand, scaleLinear } from "d3";
 import styles from './NOS-bar.module.css'
 import { useState ,useEffect, useRef} from "react"
+import { useDimensions } from "../../reusable-components/useDimensions";
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 const categories = ["air", "sea"];
 const colors = { air: "#1f77b4", sea: "#ff7f0e" };
 function NOSBar({data,className}){
-    const containerRef = useRef(null)
-    const [dimensions,setDimensions] = useState({
-        width : 700,
-        height : 500
-    })
+    const {containerRef,width,height} = useDimensions(700,500)
+   
     const[isMobile,setIsMobile] = useState(window.innerWidth <=481)
+    
     useEffect(() => {
        function handleResize(){
         setIsMobile(window.innerWidth <= 481)
@@ -21,24 +20,9 @@ function NOSBar({data,className}){
         window.removeEventListener('resize',handleResize)
        }
     },[])
-    useEffect(() => {
-        function updateSize(){
-            if(containerRef.current){
-                setDimensions({
-                    width : containerRef.current.clientWidth ,
-                    height : containerRef.current.clientHeight 
-                })
-            }
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return() => {
-            window.removeEventListener('resize',updateSize)
-        }
+    
 
-    },[])
-
-    const {height,width} = dimensions
+   
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight = height - MARGIN.top - MARGIN.bottom
     const groups = data.map((d) => d.name)

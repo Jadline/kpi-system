@@ -1,6 +1,8 @@
+import { useUI } from '../../context/UI-Context';
 import styles from './Logo.module.css'
 import { useState,useEffect } from 'react';
-function Logo({className,opensidebar,setOpenSidebar}){
+function Logo({className}){
+        const {opensidebar,setOpenSidebar} = useUI()
     
         const [isMobile, setIsMobile] = useState(window.innerWidth <= 481);
     

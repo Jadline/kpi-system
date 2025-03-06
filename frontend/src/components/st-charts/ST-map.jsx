@@ -1,5 +1,6 @@
 import { geoNaturalEarth1, geoPath } from "d3";
 import { useEffect, useRef, useState } from "react";
+import { useDimensions } from "../../reusable-components/useDimensions";
 const MARGIN = {top : 30,left : 50,right : 50,bottom : 30}
 const countries = {
     "China": "red",
@@ -32,23 +33,8 @@ function Map({data,className}){
         Air : '',
         Sea : ''
     })
-    const containerRef = useRef(null)
-    const[dimensions,setDimensions] = useState({width : 700,height : 500})
-    useEffect(() => {
-        function updateSize(){
-            if(containerRef.current) {
-                setDimensions({
-                    width : containerRef.current.clientWidth,
-                    height : containerRef.current.clientHeight
-                })
-            }
-            
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return () => window.removeEventListener('resize',updateSize)
-    },[])
-    const {height,width} = dimensions
+    const {containerRef,width,height} = useDimensions(700,500);
+   
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight = height - MARGIN.top - MARGIN.bottom
 

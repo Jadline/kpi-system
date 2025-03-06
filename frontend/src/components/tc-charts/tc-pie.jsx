@@ -1,31 +1,12 @@
 import { arc, pie } from "d3"
+import { useDimensions } from "../../reusable-components/useDimensions"
 import { useEffect, useRef, useState } from "react"
 const colors =['#00b4d8','#ff9000']
 
-function TCPie({className,data}){
-    const containerRef = useRef(null)
-    const[dimensions,setDimensions] = useState({
-        width : 700,
-        height : 400
-    })
-    useEffect(() => {
-        function updateSize(){
-            if(containerRef.current){
-                setDimensions({
-                    width : containerRef.current.clientWidth,
-                    height : containerRef.current.clientHeight
-                })
-            }
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return() => {
-            window.removeEventListener('resize',updateSize)
-        }
-        
 
-    },[])
-    const {height,width} = dimensions
+function TCPie({className,data}){
+    const {containerRef,width,height} = useDimensions()
+   
     const transportationArc = arc().innerRadius(0).outerRadius(Math.min(width,height) / 2 - 22)
     const transportationPie = pie().value((d) => d.average_cost)
 
