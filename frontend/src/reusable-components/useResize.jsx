@@ -20,7 +20,7 @@ export function useResize(){
         return () => {
             window.removeEventListener('resize',handleResize)
         }
-    })
+    },[])
     return screensize
         
 }
