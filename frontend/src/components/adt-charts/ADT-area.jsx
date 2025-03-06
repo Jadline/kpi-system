@@ -1,28 +1,10 @@
 import { area, curveBasis, curveMonotoneX, max, scaleBand, scaleLinear } from "d3"
 import { useEffect, useRef, useState } from "react"
+import { useDimensions } from "../../reusable-components/useDimensions"
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 function ADTArea({className,data}){
-    const containerRef = useRef(null)
-    const [dimensions,setDimensions] = useState({
-        width : 700,
-        height : 400
-    })
-    useEffect(() => {
-        function updateSize(){
-            if(containerRef.current){
-                setDimensions({
-                    width : containerRef.current.clientWidth,
-                    height : containerRef.current.clientHeight
-                })
-            }
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return () => {
-            window.removeEventListener('resize',updateSize)
-        }
-    },[])
-    const {width,height} = dimensions
+    const {containerRef,width,height} = useDimensions()
+   
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight = height - MARGIN.top - MARGIN.bottom
 

@@ -1,29 +1,10 @@
 import { arc,scaleLinear} from "d3"
 import { useRef,useEffect,useState } from "react"
+import { useDimensions } from "../../reusable-components/useDimensions"
 
 function Gauge({totalCost,budget,className}){
-    const containerRef = useRef(null)
-    const [dimensions,setDimensions] = useState({
-        width : 700,
-        height : 400
-    })
-    useEffect(() => {
-        function updateSize(){
-            if(containerRef.current){
-                setDimensions({
-                    width : containerRef.current.clientWidth,
-                    height : containerRef.current.clientHeight
-                })
-            }
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return() => {
-            window.removeEventListener('resize',updateSize)
-        }
-
-    },[])
-    const {width,height} = dimensions
+   const {containerRef,width,height} = useDimensions()
+    
     const startAngle = -Math.PI / 2
     const endAngle = Math.PI / 2
     const budgetbands = [

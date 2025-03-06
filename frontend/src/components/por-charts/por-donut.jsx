@@ -1,6 +1,8 @@
 import { arc, pie, scaleOrdinal } from "d3";
 import { useRef, useState,useEffect } from "react";
 import styles from './por-donut.module.css'
+import { useResize } from "../../reusable-components/useResize";
+import { useDimensions } from "../../reusable-components/useDimensions";
 
 // const width = 700;
 // const height= 400;
@@ -8,42 +10,14 @@ import styles from './por-donut.module.css'
 const MARGIN = {top : 30,left : 50,bottom : 30,right : 50}
 // const boundsWidth = width - MARGIN.left - MARGIN.right
 // const boundsHeight =height - MARGIN.top - MARGIN.bottom
+
 const colors = ['#03045e','#0077b6','#00b4d8']
 function PORDonut({data,className}){
-    const containerRef = useRef(null)
-    const[dimensions,setDimensions] = useState({
-        width : 700,
-        height : 400
-    })
-    const [isMobile,setIsMobile] = useState(window.innerWidth <= 480)
+    const {containerRef,width,height} = useDimensions()
+     const {isMobile,isTablet,isLaptop,isDesktop} = useResize()
+
+
     
-    useEffect(() => {
-        function handleResize(){
-            setIsMobile(window.innerWidth <= 481)
-        }
-        handleResize()
-        window.addEventListener('resize',handleResize)
-        return ()  => {
-            window.removeEventListener('resize',handleResize)
-        }
-    },[])
-
-    useEffect(()=> {
-        function updateSize(){
-            if(containerRef.current){
-                setDimensions({
-                    width : containerRef.current.clientWidth,
-                    height : containerRef.current.clientHeight
-                })
-
-            
-            }
-        }
-        updateSize()
-        window.addEventListener('resize',updateSize)
-        return() => window.removeEventListener('resize',updateSize)
-    },[])
-    const {height,width} = dimensions
     const radius = Math.min(width,height)/2 -40
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight =height - MARGIN.top - MARGIN.bottom

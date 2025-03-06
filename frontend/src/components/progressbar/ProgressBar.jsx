@@ -1,5 +1,6 @@
 import styles from './ProgressBar.module.css'
 import Progress from '../progress/Progress';
+import { useUI } from '../../context/UI-Context';
 const selectedCountries = [
     "China",
     "United Kingdom",
@@ -9,7 +10,8 @@ const selectedCountries = [
     "Netherlands",
     "South Africa",
   ];
-function ProgressBar({className,data,isdarkmode}){
+function ProgressBar({className,data}){
+    const {isdarkmode} = useUI()
     const filteredCountries = data?.filter((country) => {
        return selectedCountries.includes(country.name.common)
     })

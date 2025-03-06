@@ -5,7 +5,9 @@ import Logo from "../logo/Logo";
 import SearchBox from "../searchbox/SearchBox";
 import { MdOutlineLightMode } from "react-icons/md";
 import SubHeader from "../subheader/SubHeader";
-function Header({ className,opensidebar,setOpenSidebar,isdarkmode,setIsDarkMode}) {
+import { useUI } from "../../context/UI-Context";
+function Header({ className}) {
+  const {opensidebar,setOpenSidebar,isdarkmode,setIsDarkMode} = useUI()
   const location = useLocation();
   const pageTitle = mainPages[location.pathname] || "";
   return (
