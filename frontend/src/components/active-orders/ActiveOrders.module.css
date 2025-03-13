@@ -21,7 +21,7 @@
     color :var(--activeOrders-clr);
     font-weight:var(--font-extrabold)
 }
-.orderstext p:last-child {
+.orderstext .ordersno {
     font-size : 1.6rem;
     font-weight :var(--font-bold);
 }

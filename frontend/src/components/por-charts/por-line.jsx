@@ -1,13 +1,18 @@
 import { line, max, scaleBand, scaleLinear } from "d3";
 import { useRef, useState, useEffect, useMemo } from "react";
 import styles from './por-line.module.css'
+import { FaEllipsisH } from "react-icons/fa";
+import ModeButton from "../../reusable-components/Button";
+
+
 const MARGIN = { top: 30, left: 50, bottom: 30, right: 50 };
 
 function PORLine({ data, className }) {
+  const[mode,setMode] = useState('air')
 
   const [dimensions, setDimensions] = useState({
     width: 700,
-    height: 400,
+    height: 500,
   });
   const [isMobile,setIsMobile] = useState(window.innerWidth <= 481)
   useEffect(() => {
@@ -135,8 +140,8 @@ function PORLine({ data, className }) {
       >
        
         <text
-          x={boundsWidth - width / 2 - 10}
-          y={30}
+          x={boundsWidth - width / 2 }
+          y={27}
           fontSize={16}
           fill="#000"
           fontWeight={800}
@@ -144,6 +149,61 @@ function PORLine({ data, className }) {
         >
           Perfect Order Rate 2024 %
         </text>
+        {/* <foreignObject
+        width={150}
+        height={45}
+        x={boundsWidth - width / 2 -  100}
+         y={10}
+       
+
+        >
+          <ModeButton mode={mode} setMode={setMode}/> */}
+        {/* <div
+        style={{
+          display : 'flex',
+          // backgroundColor : 'yellow',
+          gap : '1rem',
+          alignItems : 'center',
+          justifyContent : 'center'
+
+        }}
+        >
+        <button onClick={() => setMode("air")} style={{
+       background: mode === "air" ? "#0077b6" : "gray" ,
+       width : '6rem',
+       height : '2.2rem',
+       outline : 'none',
+       border : 'none',
+       borderRadius : '.5rem',
+       color :'#fff',
+       fontWeight : '600'
+      
+       
+       }}>
+      Air
+    </button>
+    <button 
+    onClick={() => setMode("sea")} 
+    style={{ 
+      background: mode === "sea" ? "#0077b6" : "gray" ,
+      width : '6rem',
+      height : '2.2rem',
+      outline : 'none',
+      border : 'none',
+      borderRadius :'.5rem',
+      color : '#fff',
+      fontWeight : '600'
+    
+    
+
+    }}
+    >
+      Sea
+    </button>
+       
+        </div> */}
+        {/* </foreignObject> */}
+        
         <g transform={`translate(${MARGIN.left},${MARGIN.top})`}>
           {gridLines}
           <path

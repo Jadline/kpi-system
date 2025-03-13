@@ -7,7 +7,9 @@ function ActiveOrders({className}){
             </div>
             <div className={styles.orderstext}>
                 <p>Active Orders</p>
-                <p>500</p>
+                <p className={styles.ordersno}>Air : 500</p>
+                <p className={styles.ordersno}>Sea : 500</p>
+                
             </div>
 
         </div>
