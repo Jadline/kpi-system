@@ -12,6 +12,8 @@ const db = new Pool({
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
+  statement_timeout: 0, // No timeout
+  idle_in_transaction_session_timeout: 600000, // 10 minutes
   ssl: {
     require: true,
   },
