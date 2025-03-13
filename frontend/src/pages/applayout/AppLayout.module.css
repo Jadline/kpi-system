@@ -4,9 +4,10 @@
 .appLayout {
     display : grid;
     grid-template-columns : var(--sidebar-width) 1fr;
-    grid-template-rows : 25vh auto 1fr;
+    grid-template-rows : 15vh 7vh auto 1fr;
     grid-template-areas : 
     "sidebar header"
+    "sidebar subheader"
     "sidebar card"
     "sidebar main"
     ;
@@ -21,6 +22,10 @@
   filter : invert(1);
   background-color : black;
 } */
+ .subheader {
+  grid-area : subheader;
+  
+ }
 
 .header {
     grid-area : header;

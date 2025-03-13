@@ -3,6 +3,7 @@ import { useEffect, useState,useRef } from "react";
 import styles from './por-bar.module.css'
 import { useDimensions } from "../../reusable-components/useDimensions";
 import { useResize } from "../../reusable-components/useResize";
+import ModeButton from "../../reusable-components/Button";
 
 // const width = 700;
 // const height = 400;
@@ -14,6 +15,7 @@ const MARGIN = {top : 30,left : 50,bottom : 30,right : 50}
 const colors = ['#03045e','#023e8a','#0077b6','#0096c7','#00b4d8','#48cae4','#8aebff']
 
 function PORBar({className,data}){
+    const [mode,setMode] = useState('sea')
     const {containerRef,width,height} = useDimensions(700,500)
     const {isMobile,isTablet,isLaptop,isDesktop} = useResize()
 
@@ -94,6 +96,7 @@ function PORBar({className,data}){
             height : '100%',
             display : 'flex',
             borderRadius : '1rem',
+            minHeight : '100%',
             
             boxShadow: '-0.2rem -0.2rem 1rem rgba(0, 0, 0, 0.2)'
 
@@ -108,7 +111,7 @@ function PORBar({className,data}){
             >
                 
                 <text
-                x={boundsWidth - width / 2 }
+                x={boundsWidth - width / 2 - 55}
                 y={isMobile ? 20 : 30}
                 fontSize={18}
                 fontWeight={800}
@@ -117,7 +120,17 @@ function PORBar({className,data}){
                 >
                     Perfect Order Rate by Route
                 </text>
-                <g transform={`translate(${MARGIN.left},${MARGIN.top})`}>
+                {/* <foreignObject
+        width={150}
+        height={45}
+        x={boundsWidth - width / 2 -  100}
+         y={10}
+       
+
+        >
+          <ModeButton mode={mode} setMode={setMode}/>
+        </foreignObject> */}
+                <g transform={`translate(${MARGIN.left - 25},${MARGIN.top + 10 })`}>
                     {gridLines}
                     {bars}
                 </g>

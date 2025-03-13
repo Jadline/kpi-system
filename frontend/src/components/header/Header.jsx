@@ -6,10 +6,12 @@ import SearchBox from "../searchbox/SearchBox";
 import { MdOutlineLightMode } from "react-icons/md";
 import SubHeader from "../subheader/SubHeader";
 import { useUI } from "../../context/UI-Context";
+import { useGetLocation } from "../../reusable-components/useGetLocation";
 function Header({ className}) {
   const {opensidebar,setOpenSidebar,isdarkmode,setIsDarkMode} = useUI()
-  const location = useLocation();
-  const pageTitle = mainPages[location.pathname] || "";
+  // const location = useLocation();
+  // const pageTitle = mainPages[location.pathname] || "";
+  const pageTitle = useGetLocation()
   return (
     <header className={className}>
       <div className={styles.headContainer}>
@@ -49,8 +51,7 @@ function Header({ className}) {
      
       </div>
      
-      <SubHeader/>
-       
+      
     </header>
   );
 }

@@ -19,6 +19,7 @@ function PerfectOrderRate(){
         }
     })
     return(
+       
         <div className={styles.container}>
             <PORLine className={styles.chart1} data ={porData}/>
             <ActiveOrders className={styles.chart2}  />

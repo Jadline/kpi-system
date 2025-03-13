@@ -3,7 +3,7 @@ import { useRef, useState,useEffect } from "react";
 import styles from './por-donut.module.css'
 import { useResize } from "../../reusable-components/useResize";
 import { useDimensions } from "../../reusable-components/useDimensions";
-
+import ModeButton from "../../reusable-components/Button";
 // const width = 700;
 // const height= 400;
 
@@ -11,14 +11,16 @@ const MARGIN = {top : 30,left : 50,bottom : 30,right : 50}
 // const boundsWidth = width - MARGIN.left - MARGIN.right
 // const boundsHeight =height - MARGIN.top - MARGIN.bottom
 
+
 const colors = ['#03045e','#0077b6','#00b4d8']
 function PORDonut({data,className}){
+    const[mode,setMode] = useState('air')
     const {containerRef,width,height} = useDimensions()
      const {isMobile,isTablet,isLaptop,isDesktop} = useResize()
 
 
     
-    const radius = Math.min(width,height)/2 -40
+    const radius = Math.min(width,height)/2 -60
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight =height - MARGIN.top - MARGIN.bottom
     const porArc = arc()
@@ -49,15 +51,25 @@ function PORDonut({data,className}){
             >
            
             <text
-            x={boundsWidth - width / 2 +20}
+            x={boundsWidth - width / 2 + 20}
             y={25}
             fontWeight ={800}
-            fontSize={16}
+            fontSize={18}
             className={styles.ordersummary}
             >
                 Order summary
             </text>
-            <g transform={`translate(${width / 2}, ${height / 2 + 30})`}>
+            {/* <foreignObject
+        width={150}
+        height={45}
+        x={boundsWidth - width / 2 + 140}
+         y={10}
+       
+
+        >
+          <ModeButton mode={mode} setMode={setMode}/>
+        </foreignObject> */}
+            <g transform={`translate(${width / 2}, ${height / 2 + 15})`}>
                 {porPie(data).map((d,i) => (
                     <path
                      key={i}
@@ -73,7 +85,7 @@ function PORDonut({data,className}){
                 width={15}
                 height={15}
                 x={10}
-                y={32}
+                y={boundsHeight + 30}
                 fill={'#0077b6'}
                 rx={2}
                 />
@@ -81,7 +93,7 @@ function PORDonut({data,className}){
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
                 x={isMobile ? 73 : 82}
-                y={40}
+                y={boundsHeight + 40}
                 fontWeight={800}
                 fontSize={12}
                 className={styles.ordertitle}
@@ -92,7 +104,7 @@ function PORDonut({data,className}){
                 width={15}
                 height={15}
                 x={isMobile ? boundsWidth - width / 2 + 60 : boundsWidth - width / 2 + 47}
-                y={32}
+                y={boundsHeight + 30}
                 fill={'#00b4d8'}
                 rx={2}
                 />
@@ -100,7 +112,7 @@ function PORDonut({data,className}){
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
                 x={isMobile ? boundsWidth - width / 2 + 118 : boundsWidth - width / 2 + 110}
-                y={40}
+                y={boundsHeight + 40}
                 fontWeight={800}
                 fontSize={12}
                 className={styles.ordertitle}
@@ -111,7 +123,7 @@ function PORDonut({data,className}){
                 width={15}
                 height={15}
                 x={boundsWidth - width / 2 + 165}
-                y={32}
+                y={boundsHeight + 30}
                 fill={'#03045e'}
                 rx={2}
                 />
@@ -119,7 +131,7 @@ function PORDonut({data,className}){
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
                 x={isMobile ? boundsWidth - width / 2 + 221 : boundsWidth - width / 2 + 230}
-                y={40}
+                y={boundsHeight + 40}
                 fontWeight={800}
                 fontSize={12}
                 className={styles.ordertitle}
