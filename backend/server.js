@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import errorHandler from "./middlewares/errorMiddleware.js";
 import orderRoutes from "./routes/orders.routes.js";
+import shipmentRoutes from "./routes/number-of-shipments.routes.js";
 
 import env from "dotenv";
 
@@ -26,6 +27,7 @@ app.use(express.static("public"));
 // });
 
 app.use("/api/orders", orderRoutes);
+app.use("/api/shipments", shipmentRoutes);
 
 // Error handling middleware (must be after all routes)
 app.use(errorHandler);

@@ -41,7 +41,7 @@ CREATE TABLE perfect_order_rate (
     month VARCHAR(20) NOT NULL,                -- Month name
     year INT NOT NULL,                         -- Year
     total_orders INT NOT NULL CHECK (total_orders >= 0),   -- Total number of orders
-    timely_deliver INT NOT NULL CHECK (timely_deliver >= 0), -- Orders delivered on time
+    timely_deliveries INT NOT NULL CHECK (timely_deliveries >= 0), -- Orders delivered on time
     complete_orders INT NOT NULL CHECK (complete_orders >= 0), -- Completed orders
     undamaged_orders INT NOT NULL CHECK (undamaged_orders >= 0), -- Orders without damage
     accurate_docs INT NOT NULL CHECK (accurate_docs >= 0),  -- Orders with accurate documentation
