@@ -1,0 +1,16 @@
+.buttonContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+}
+
+.filter {
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -15,19 +15,21 @@ function Logo({className}){
             return () => window.removeEventListener("resize", handleResize);
         }, []);
     return(
-        <div className={`${styles.logoContainer} ${className}`}>
-            {!opensidebar ? 
-            <img src="./logo/rolling-cargo.png" alt=""  className={isMobile && `${styles.onMobile}` } /> :
-             <img 
+        <div className={`${styles.logoContainer} ${className} ${opensidebar && styles.shrinkedlogo}`}>
+           
+            <img 
+            src="./logo/rolling-cargo.png" alt=""  
+            className={`${isMobile ? styles.onMobile : ''} ${opensidebar ? styles.menubar : ''}`} /> 
+             {/* <img 
                   src="./icons/list.png" 
                   alt=""
                   className={`${styles.menubar}`} 
                   role='button' 
                   
                   onClick={() => setOpenSidebar(!opensidebar)}
-                  /> 
-            }
-            {!opensidebar && <h2>Rolling Cargo Shipping Company</h2>}
+                  />  */}
+            
+           {!opensidebar && <h2><span>Rolling Cargo</span><span>Shipping Company</span> </h2>}
         </div>
 
     )

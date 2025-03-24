@@ -1,4 +1,4 @@
-import ModeButton from '../../reusable-components/Button'
+import ModeButton from '../../reusable-components/Button/Button'
 import MonthDropDown from '../../reusable-components/MonthDropDown'
 import { useGetLocation } from '../../reusable-components/useGetLocation'
 import YearDropDown from '../../reusable-components/YearDropDown'
@@ -10,7 +10,7 @@ function SubHeader({className}){
     const dropdowns  = {
         'Perfect Order Rate' : (
             <div className={`${styles.subheader} ${className}`}>
-                <span>Sort by Year<YearDropDown/></span>
+                <span><p className={styles.mobilehidden}>Sort by Year</p><YearDropDown/></span>
                 <ModeButton mode={mode} setMode={setMode}/>
             </div>
         ),
@@ -22,7 +22,7 @@ function SubHeader({className}){
         ),
         'Average Delivery Time': (
             <div className={`${styles.subheader} ${className}`}>
-                <span>Sort by Year<YearDropDown/></span>
+                <span><p>Sort by Year</p><YearDropDown/></span>
             </div>
         ),
         'Shipping Time' :(

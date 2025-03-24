@@ -5,12 +5,15 @@
     justify-content : flex-start;
     gap : 1rem;
     padding : 1rem;
-    width : 100%;
-  
+    /* background-color : red; */
+    min-width : auto;
+    margin-right : 2rem;
+    
+    /* flex-grow : 1; */
    
 }
 .logoContainer h2 {
-    max-width : 65%;
+    
   
     color : var(--header-pry-clr1);
     /* white-space : nowrap; */
@@ -20,23 +23,30 @@
     max-width : 5rem;
     border-radius : 50%;
 }
-.shrinkimg {
+.shrinking {
     width : 3.4rem;
     
 }
 .menubar {
-    width : 4.4rem;
-    border-radius : 50%;
+    width : 100%;
+    /* border-radius : 50%; */
     color: var(--sidebar-clr1);
-    padding : 1rem;
+    /* padding : 1rem; */
     border : 2px solid #ccc;
+    /* background-color : red; */
     
+}
+.shrinkedlogo{
+    width : 9rem;
+    align-items : center;
+    justify-content : center;
 }
 @media screen and (max-width : 480.98px){
    .onMobile {
     display : block;
    }
-   .menubar {
+   .logoContainer {
     display : none;
    }
+   
 }

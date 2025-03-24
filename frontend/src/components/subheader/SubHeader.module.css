@@ -16,22 +16,18 @@ span {
 }
 @media screen and (max-width : 480.98px){
     
-    .filters img {
-        width : 1.5rem;
+    span {
+        font-size: 1.2rem;
     }
-    .modes p {
-        background-color : rgb(213, 238, 172);
-        color : rgba(0,0,0,0.7);
-        font-size : 1.2rem;
-        padding : .3rem 1.4rem;
-        border-radius : .5rem;
-        
+    .mobilehidden {
+        display : none;
     }
-    .filters p {
-        font-size : 1rem;
-    }
+    /* .subheader {
+        flex-direction : column;
+        justify-content : center;
+    } */
 }
-@media screen and (min-width : 481px) and (max-width : 768.98px){
+/* @media screen and (min-width : 481px) and (max-width : 768.98px){
     .filters img {
         width : 2rem;
     }
@@ -64,4 +60,4 @@ span {
         font-size : 1rem;
     }
 
-}
+} */

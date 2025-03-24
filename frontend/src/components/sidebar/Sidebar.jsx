@@ -3,9 +3,11 @@ import Logo from "../logo/Logo";
 import styles from "./Sidebar.module.css";
 import { NavLink } from "react-router-dom";
 import { useUI } from "../../context/UI-Context";
+import { useResize } from "../../reusable-components/useResize";
 
 function Sidebar({ className}){
   const {opensidebar,setOpenSidebar} = useUI()
+  const {isMobile} = useResize()
  
   return(
     
@@ -13,7 +15,7 @@ function Sidebar({ className}){
     <aside className={`${className} ${opensidebar ? styles.opened : ""}`}>
      <div className={styles.topsidebar}>
       <div className={styles.upperSidebar}>
-      <Logo/>
+      {/* <Logo/> */}
       </div>
       <div className={styles.middleSidebar}>
     

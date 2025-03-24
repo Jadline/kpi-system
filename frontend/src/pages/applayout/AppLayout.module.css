@@ -1,12 +1,12 @@
 :root {
-    --sidebar-collapsed-width : 10rem;
+    --sidebar-collapsed-width : 5rem;
 }
 .appLayout {
     display : grid;
     grid-template-columns : var(--sidebar-width) 1fr;
-    grid-template-rows : 15vh 7vh auto 1fr;
+    grid-template-rows : 18vh 7vh auto 1fr;
     grid-template-areas : 
-    "sidebar header"
+    "header header"
     "sidebar subheader"
     "sidebar card"
     "sidebar main"
@@ -24,11 +24,13 @@
 } */
  .subheader {
   grid-area : subheader;
+  /* background-color: aqua; */
   
  }
 
 .header {
     grid-area : header;
+    /* background-color: red; */
     
 }
 .sidebar {
@@ -52,21 +54,23 @@ main {
     width : 100%;
     height : 100%;
 }
-@media screen and (max-width : 480.98px){
+/* @media screen and (max-width : 480.98px){
+  
     
       .appLayout {
-        grid-template-columns: 1fr;
+       
         grid-template-areas:     
        
-          "header"
-          "card"
-          "main";
-        grid-template-rows : 15vh auto 1fr;
+          "header header"
+          "sidebar subheader"
+          "sidebar card"
+          "sidebar main";
+        grid-template-rows : 8vh 10vh auto 1fr;
       }
       
       
-    }
-@media screen and (min-width : 481px) and (max-width : 768.98px){
+    } */
+/* @media screen and (min-width : 481px) and (max-width : 768.98px){
     .appLayout {
         grid-template-columns: 1fr;
         grid-template-areas:     
@@ -94,4 +98,4 @@ main {
 }
 
 
-
+ */

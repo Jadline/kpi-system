@@ -2,10 +2,11 @@ import { useContext,createContext } from "react"
 import {useState,useEffect} from 'react'
 const UIContext = createContext()
 function  UIProvider ({children}){
-     const [opensidebar,setOpenSidebar] = useState(false)
+     const [opensidebar,setOpenSidebar] = useState(true)
         const [isdarkmode,setIsDarkMode] = useState(() => {
             return localStorage.getItem('darkMode') === 'true'
         })
+        const [showdropDown,setshowdropDown] = useState(false)
     
         useEffect(() => {       
            if(isdarkmode !== null){
@@ -19,7 +20,9 @@ function  UIProvider ({children}){
                 opensidebar,
                 setOpenSidebar,
                 isdarkmode,
-                setIsDarkMode
+                setIsDarkMode,
+                showdropDown,
+                setshowdropDown
             }}>
                 {children}
 

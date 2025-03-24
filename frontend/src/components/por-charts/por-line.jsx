@@ -2,7 +2,7 @@ import { line, max, scaleBand, scaleLinear } from "d3";
 import { useRef, useState, useEffect, useMemo } from "react";
 import styles from './por-line.module.css'
 import { FaEllipsisH } from "react-icons/fa";
-import ModeButton from "../../reusable-components/Button";
+// import ModeButton from "../../reusable-components/Button";
 
 
 const MARGIN = { top: 30, left: 50, bottom: 30, right: 50 };

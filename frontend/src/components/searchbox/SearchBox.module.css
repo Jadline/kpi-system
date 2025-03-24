@@ -28,6 +28,11 @@
     font-size : 1.6rem;
 
 }
+@media screen and (max-width : 480.98px){
+    .search {
+        display : none;
+    }
+}
 /* @media screen and (max-width :481px){
     .search {
         display : none;
@@ -36,7 +41,7 @@
 /* @media screen and (max-width : 769px){
    
 }  */
-@media screen and (min-width : 481) and (max-width : 768.98px){
+/* @media screen and (min-width : 481) and (max-width : 768.98px){
     .search {
         padding-block : .8rem;
         
@@ -69,4 +74,4 @@
         height : 1.5rem;
         transform : translateY(43%);
     }
-}
+} */

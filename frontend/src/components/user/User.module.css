@@ -1,0 +1,16 @@
+.userContainer {
+    background-color : red;
+    /* position : absolute;
+    top : 0;
+    right : 0;
+    width : 10rem; */
+
+}
+.avatar {
+
+    max-width: 5rem;
+    border-radius: 50%;
+    padding: .8rem;
+    background-color: var(--icons-color-bg);
+    border : .5px solid #ccc;
+  }

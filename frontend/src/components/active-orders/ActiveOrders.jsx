@@ -6,9 +6,9 @@ function ActiveOrders({className}){
                 <img src="./icons/active order.png" alt="" />
             </div>
             <div className={styles.orderstext}>
-                <p>Active Orders</p>
-                <p className={styles.ordersno}>Air : 500</p>
-                <p className={styles.ordersno}>Sea : 500</p>
+                <p>Perfect Order Rate</p>
+                <p className={styles.ordersno}>88%</p>
+                {/* <p className={styles.ordersno}>Sea : 500</p> */}
                 
             </div>
 
