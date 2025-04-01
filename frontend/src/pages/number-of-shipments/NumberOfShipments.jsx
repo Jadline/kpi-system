@@ -6,7 +6,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import styles from "./NumberOfShipments.module.css";
 // import { NOSpiedata } from "../../project-data-files/MainPages";
 // import { NOSpiedata } from "../../../public/project-data-files/MainPages";
-import { stackedData } from "../../../public/project-data-files/MainPages";
+// import { stackedData } from "../../../public/project-data-files/MainPages";
 import NOSPie from "../../components/nos-charts/NOS-pie";
 import { useDashboard } from "../../context/state-Context";
 import { useQuery } from "@tanstack/react-query";
@@ -29,6 +29,12 @@ function NumberOfShipments() {
     ];
   
     console.log("Pie chart data:", NOSpiedata);
+    const stackedData = data.countries.map(({country,shipments_by_air,shipments_by_sea}) => ({
+      name : country,
+      air : shipments_by_air,
+      sea : shipments_by_sea
+    }))
+    
   // : [];
 
   return (

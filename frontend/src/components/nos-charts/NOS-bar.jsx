@@ -85,8 +85,8 @@ function NOSBar({data,className}){
     const xLabels = groups.map((country,i) => (
         <text
         key={i}
-        x={xScale(country) + xScale.bandwidth() / 2 }
-        y={boundsHeight + 15}
+        x={xScale(country) + xScale.bandwidth() / 27 }
+        y={boundsHeight + 18}
         color ={'#000'}
         fontSize ={12}
         fontWeight={600}

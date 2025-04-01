@@ -33,7 +33,11 @@ function SubHeader({className}){
     const dropdowns  = {
         'Perfect Order Rate' : (
             <div className={`${styles.subheader} ${className} ${styles.por}`}>
-                <span><p className={styles.mobilehidden}>Sort by Year</p><YearDropDown/></span>
+                <span><p className={styles.mobilehidden}>Sort by Year</p>
+                <YearDropDown
+                 year={filters.perfectorders.year} 
+                 setYear={(value) => handleFiltersChange('perfectorders','year',value)}/>
+                </span>
                 <ModeButton mode={mode} setMode={setMode} className={styles.sidebarfilters}/>
             </div>
         ),

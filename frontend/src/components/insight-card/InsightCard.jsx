@@ -3,6 +3,8 @@ import { mainPages } from "../../../public/project-data-files/MainPages";
 import { useLocation } from "react-router-dom";
 import useShipments from "../../reusable-components/useShipments";
 import { cardMappings } from "../../../public/project-data-files/data";
+import usePOR from "../../reusable-components/usePOR";
+import PerfectOrderRate from "../../pages/perfect-order-rate/PerfectOrderRate";
 
 function InsightCard({ className }) {
   const location = useLocation();
@@ -10,9 +12,11 @@ function InsightCard({ className }) {
   const pageTitle = mainPages[pagePath] || "";
 
   const shipmentsQuery = useShipments();
+  const PerfectordersQuery = usePOR()
 
   const apiHooks = {
     "/number-of-shipments": shipmentsQuery,
+    '/' : PerfectordersQuery
   };
 
   const { data: apiData, isLoading, error } = apiHooks[pagePath] || { data: null, isLoading: false, error: null };
@@ -24,9 +28,7 @@ function InsightCard({ className }) {
   if (!apiData) return <p>No data available</p>;
 
   
-  const apiProperties = Object.keys(apiData)
-    .filter((key) => key !== "countries")
-    .slice(0,3)
+  const apiProperties = Object.keys(apiData).filter((key) => !["countries", "perfect_order_rate", "perfect_order_rate_by_year"].includes(key));
 
   console.log(apiProperties)
 
