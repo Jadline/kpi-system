@@ -17,7 +17,9 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // app.use("/", (req, res) => {
@@ -33,5 +35,5 @@ app.use("/api/shipments", shipmentRoutes);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`{Server running on http://localhost:${PORT}}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
