@@ -6,13 +6,13 @@ export const cardMappings = {
       icon: "/icons/total-number-of-shipments.png",
       backgroundColor: "#FEF2D6",
     },
-    air_shipments: {
+    shipments_by_air: {
       title: "Shipments by Air",
       type: "number",
       icon: "/icons/cost-per-shipment.png",
       backgroundColor: "#E4E4FF",
     },
-    sea_shipments: {
+    shipments_by_sea: {
       title: "Shipments by Sea",
       type: "number",
       icon: "/icons/cost-per-shipment-by-sea.png",

@@ -24,8 +24,8 @@ function NumberOfShipments() {
     if (!data) return <p>No data available.</p>;
   
     const NOSpiedata = [
-      { category: "air", no_shipments: data.air_shipments || 0 },
-      { category: "sea", no_shipments: data.sea_shipments || 0 },
+      { category: "air", no_shipments: data.shipments_by_air || 0 },
+      { category: "sea", no_shipments: data.shipments_by_sea || 0 },
     ];
   
     console.log("Pie chart data:", NOSpiedata);
