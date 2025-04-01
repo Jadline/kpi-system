@@ -4,18 +4,54 @@ import {
   mainPages,
 } from "../../../public/project-data-files/MainPages";
 import { useLocation } from "react-router-dom";
+import { Query, useQuery } from "@tanstack/react-query";
+import { fetchShipments } from "../../Services/apiNOS";
+import useShipments from "../../reusable-components/useShipments";
+
+import { cardMappings } from "../../../public/project-data-files/data";
+
 
 function InsightCard({ className }) {
   const location = useLocation();
-  const pageTitle = mainPages[location.pathname] || "";
-  const cardsPages = Object.keys(cardsData);
-  let cardsInfo = [];
+  const pagePath = location.pathname
+  const pageTitle = mainPages[pagePath] || "";
 
-  cardsPages.forEach((cardPage) => {
-    if (mainPages[cardPage] === pageTitle) {
-      cardsInfo = [...cardsData[cardPage]];
-    }
-  });
+  const shipmentsQuery = useShipments()
+
+  const apiHooks = {
+    "/number-of-shipments": shipmentsQuery,
+   
+  };
+ 
+  const {data : apiData,isLoading,error} =  apiHooks[pagePath]  || { data: null, isLoading: false, error: null }
+ 
+  if(isLoading) return <p>Loading data...</p>
+
+  if(error) return <p>{error.message}</p>
+  if(!apiData) return <p>No data available</p>
+
+ const cardsInfo = Object.keys(apiData).map((key) => {
+  if(!cardMappings[pagePath]|| !cardMappings[pagePath][key]) return null 
+  return {
+    ...cardMappings[pagePath][key],
+    value : apiData[key]
+  }
+ })
+
+ 
+  // const cardsPages = Object.keys(cardsData);
+  // let cardsInfo = [];
+
+  
+
+  // cardsPages.forEach((cardPage) => {
+    
+  //   if (mainPages[cardPage] === pageTitle) {
+  //     cardsInfo = [...cardsData[cardPage]];
+  //   }
+  // });
+
+
   return (
     <div  className={`${styles.cardcontainer} ${className}`}>
       {cardsInfo.map((card,i) => (

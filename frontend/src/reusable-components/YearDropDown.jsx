@@ -1,5 +1,5 @@
 import { MdDateRange } from "react-icons/md";
-function YearDropDown(){
+function YearDropDown({year,setYear}){
     return (
         <div style={{
             display : 'flex',
@@ -11,7 +11,10 @@ function YearDropDown(){
             borderRadius : '.8rem'
         }}>
             <MdDateRange size={30} color='#FFBF00'/>
-            <select style ={{
+            <select 
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+            style ={{
                 width : '10rem',
                 height: '3rem',
                 outline : 'none',

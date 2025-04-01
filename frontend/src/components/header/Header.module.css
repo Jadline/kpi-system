@@ -90,71 +90,26 @@ header {
   width : 2.8rem;
   margin-right : 1rem;
 }
+
 @media screen and (max-width : 480.98px){
   .mobilehidden {
     display : none;
   }
-  /* .menubar {
+  .headContainer .pagetitle {
+    font-size : 2.4rem;
+  }
+}
+
+
+@media screen and (min-width : 481px) and (max-width : 768.98px){
+  .mobilehidden {
     display : none;
-  } */
-  
-  /* .mobilehidden {
-    display : none !important;
   }
-  
- .headContainer p {
-  font-size : 1.8rem;
-  white-space : nowrap;
-  
- }
- .darkmode {
-  max-width : 4rem;
- }
- .lightmode {
-  max-width : 4rem;
-  display : block;
- }
- .searchbox {
-  display : none !important ;
-} */
- 
 }
+@media screen and (min-width:769px) and (max-width:1024.98px){
+  .headContainer{
+    align-items : center;
+    /* background-color : red !important; */
 
-
-/* @media screen and (min-width: 481px) and (max-width: 768.98px){
-  html {
-    font-size : 55%;
   }
-  .mobilehidden {
-    display : none !important;
-  }
-  .headContainer p {
-    font-size : 2.5rem;
-    white-space : nowrap;
-    
-   }
-  
- 
-  .searchbox {
-    display : block !important ;
-  }
- 
 }
-@media screen and (min-width : 769px) and (max-width : 1024.98px){
-  .mobilehidden {
-    display : none !important;
-  }
-  .headContainer p {
-    font-size : 2.5rem;
-    white-space : nowrap;
-    
-   }
-  
- 
-  .searchbox {
-    display : block !important ;
-  }
- 
-  
-}
- */

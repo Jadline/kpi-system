@@ -7,6 +7,7 @@ import {QueryClient,QueryClientProvider} from '@tanstack/react-query'
 import {Toaster} from 'react-hot-toast'
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
 import { UIProvider } from "./context/UI-Context";
+import { DashboardProvider } from "./context/state-Context";
 const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<BrowserRouter>
@@ -14,7 +15,9 @@ root.render(<BrowserRouter>
     client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false}/>
        <UIProvider>
+        <DashboardProvider>
             <App />
+        </DashboardProvider>
        </UIProvider>
     </QueryClientProvider>
     <Toaster 

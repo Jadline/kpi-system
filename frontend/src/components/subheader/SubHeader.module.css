@@ -3,6 +3,7 @@
     justify-content : space-between;
     padding-inline : 1rem;
     align-items : center; 
+    
    
     /* background-color: red; */
     
@@ -14,7 +15,20 @@ span {
     font-size : 1.8rem;
     font-weight : var(--font-bold);
 }
+
+
 @media screen and (max-width : 480.98px){
+   .subheader {
+    justify-content : flex-start;
+    gap : 4rem;
+   }
+    
+    .sidebarfilters {
+        padding : .5rem 2rem;
+    }
+    /* .sidebarfilters {
+        align-items : flex-start;
+    }  */
     
     span {
         font-size: 1.2rem;
@@ -22,42 +36,15 @@ span {
     .mobilehidden {
         display : none;
     }
-    /* .subheader {
-        flex-direction : column;
-        justify-content : center;
-    } */
+   
 }
-/* @media screen and (min-width : 481px) and (max-width : 768.98px){
-    .filters img {
-        width : 2rem;
+@media screen and (min-width : 481px) and (max-width : 768.98px){
+    .sidebarfilters {
+        padding : .5rem 2rem;
     }
-    .modes p {
-        background-color : rgb(213, 238, 172);
-        color : rgba(0,0,0,0.7);
-        font-size : 1.2rem;
-        padding : .3rem 1.6rem;
-        border-radius : .5rem;
-        
-    }
-    .filters p {
-        font-size : 1rem;
-    }
-
 }
 @media screen and (min-width : 769px) and (max-width : 1024.98px){
-    .filters img {
-        width : 2rem;
+    .sidebarfilters {
+        padding : .5rem 2rem;
     }
-    .modes p {
-        background-color : rgb(213, 238, 172);
-        color : rgba(0,0,0,0.7);
-        font-size : 1.2rem;
-        padding : .3rem 1.6rem;
-        border-radius : .5rem;
-        
-    }
-    .filters p {
-        font-size : 1rem;
-    }
-
-} */
+}

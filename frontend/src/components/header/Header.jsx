@@ -34,7 +34,10 @@ function Header({ className}) {
             src="./icons/list.png" 
             alt="" className={`${styles.menubar}`} 
             role='button' 
-            onClick={() => setOpenSidebar(!opensidebar)}
+            onClick={() => {
+              console.log("Toggle Clicked! Current State:", opensidebar); // Debugging
+              setOpenSidebar(prev => !prev);
+            }}
            
       />
  

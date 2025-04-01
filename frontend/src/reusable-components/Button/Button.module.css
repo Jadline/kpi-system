@@ -13,4 +13,10 @@
     color: #fff;
     font-weight: 600;
     cursor: pointer;
+    padding : var(--button-padding,1rem 4rem);
+}
+@media screen and (min-width: 769px) and (max-width:1024.98px){
+    .buttonContainer{
+        gap : .2rem;
+    }
 }
