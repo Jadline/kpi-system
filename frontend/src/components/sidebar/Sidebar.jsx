@@ -6,13 +6,16 @@ import { useUI } from "../../context/UI-Context";
 import { useResize } from "../../reusable-components/useResize";
 
 function Sidebar({ className}){
-  const {opensidebar,setOpenSidebar} = useUI()
-  const {isMobile} = useResize()
+  const {opensidebar,setOpenSidebar,isdarkmode,setIsDarkMode} = useUI()
+  const {isMobile,isTablet} = useResize()
+  console.log("Mobile:", isMobile, "Sidebar Open:", opensidebar);
  
   return(
     
 
-    <aside className={`${className} ${opensidebar ? styles.opened : ""}`}>
+     <aside className={`${className} 
+      ${isMobile || isTablet ? (!opensidebar ? styles.mobileOpen : styles.mobileClosed) 
+                 : (opensidebar ? styles.desktopExpanded : styles.desktopCollapsed)}`}>
      <div className={styles.topsidebar}>
       <div className={styles.upperSidebar}>
       {/* <Logo/> */}
@@ -90,8 +93,17 @@ function Sidebar({ className}){
       </div>
       </div>
       <div className={styles.lowerSidebar}>
-      <div className={`${styles.darkmode} ${styles.mobileOnly}`}>
-      <img role="button" src="./icons/dark.png" alt="dark-mode-icon"  />
+      <div 
+      className={`${styles.darkmode} 
+      ${styles.mobileOnly}`}
+      onClick={() => setIsDarkMode(!isdarkmode)}
+      >
+      <img
+       role="button" 
+       src="./icons/dark.png" 
+       alt="dark-mode-icon" 
+       
+        />
         {!opensidebar && <p>Dark Mode</p>}
          
       </div>

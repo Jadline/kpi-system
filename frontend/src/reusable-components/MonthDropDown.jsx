@@ -1,6 +1,6 @@
 import { FiClock } from "react-icons/fi";
 
-function MonthDropDown(){
+function MonthDropDown({month,setMonth}){
     return(
         <div
         style={{
@@ -25,19 +25,21 @@ function MonthDropDown(){
             backgroundColor : 'transparent',
         
         }}
+        value={month}
+        onChange={(e) => setMonth(e.target.value)}
         >
-        <option>January</option>
-        <option>February</option>
-        <option>March</option>
-        <option>April</option>
-        <option>May</option>
-        <option>June</option>
-        <option>July</option>
-        <option>August</option>
-        <option>September</option>
-        <option>October</option>
-        <option>November</option>
-        <option>December</option>
+        <option value='January'>January</option>
+        <option value='February'>February</option>
+        <option value='March'>March</option>
+        <option value='April'>April</option>
+        <option value='May'>May</option>
+        <option value='June'>June</option>
+        <option value='July'>July</option>
+        <option value='August'>August</option>
+        <option value='September'>September</option>
+        <option value='October'>October</option>
+        <option value='November'>November</option>
+        <option value='December'>December</option>
     </select>
         </div>
     )

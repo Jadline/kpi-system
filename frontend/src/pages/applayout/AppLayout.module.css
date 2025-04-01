@@ -4,7 +4,7 @@
 .appLayout {
     display : grid;
     grid-template-columns : var(--sidebar-width) 1fr;
-    grid-template-rows : 18vh 7vh auto 1fr;
+    grid-template-rows : 18vh 7vh  auto 1fr;
     grid-template-areas : 
     "header header"
     "sidebar subheader"
@@ -12,7 +12,10 @@
     "sidebar main"
     ;
     gap : 1.8rem;
-    /* height : 100vh; */
+ 
+    
+    /* height : auto;
+    min-height : 100vh; */
   
     position : relative;
     /* padding : 1rem; */
@@ -30,6 +33,7 @@
 
 .header {
     grid-area : header;
+    
     /* background-color: red; */
     
 }
@@ -45,57 +49,65 @@
     
     
 }
+
+
+
 main {
     grid-area: main;
-    /* background-color : red; */
     display : flex;
     align-items : center;
     justify-content : center;
     width : 100%;
-    height : 100%;
-}
-/* @media screen and (max-width : 480.98px){
-  
     
-      .appLayout {
-       
-        grid-template-areas:     
-       
-          "header header"
-          "sidebar subheader"
-          "sidebar card"
-          "sidebar main";
-        grid-template-rows : 8vh 10vh auto 1fr;
-      }
-      
-      
-    } */
-/* @media screen and (min-width : 481px) and (max-width : 768.98px){
-    .appLayout {
-        grid-template-columns: 1fr;
-        grid-template-areas:     
-       
-          "header"
-          "card"
-          "main";
-        grid-template-rows : 15vh auto 1fr;
-      }
     
-
-}
-@media screen and (min-width : 769px) and (max-width : 1024.98px){
+} 
+@media screen and (max-width : 480.98px){
   .appLayout {
-      grid-template-columns: 1fr;
-      grid-template-areas:     
-     
-        "header"
-        "card"
-        "main";
-      grid-template-rows : 13vh auto 1fr;
-    }
+    grid-template-columns : 1fr;
+    grid-template-rows : 10vh 7vh auto 1fr;
+    grid-template-areas : 
+    'header'
+    'subheader'
+    'card'
+    'main';
+   
+  }
+  main {
+    overflow-y : auto;
+  }
   
-
+  
 }
-
-
- */
+@media screen and (min-width : 481px) and (max-width : 768.98px){
+  .appLayout {
+    
+    grid-template-rows : 10vh 7vh auto 1fr;
+    grid-template-areas : 
+    'header header'
+    'subheader subheader'
+    'card card'
+    'main';
+   
+  }
+}
+@media screen and (min-width:769px) and (max-width:1024.98px){
+  .appLayout {
+    display : grid;
+    grid-template-columns : var(--sidebar-width) 1fr;
+    grid-template-rows : 10vh 5vh  auto 1fr;
+    grid-template-areas : 
+    "header header"
+    "sidebar subheader"
+    "sidebar card"
+    "sidebar main"
+    ;
+    gap : 1.8rem;
+ 
+    
+    
+  
+    position : relative;
+    
+    
+}
+}

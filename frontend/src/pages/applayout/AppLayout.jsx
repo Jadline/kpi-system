@@ -6,23 +6,30 @@ import styles from "./AppLayout.module.css";
 import { useState, useEffect } from "react";
 import { useUI } from "../../context/UI-Context";
 import SubHeader from "../../components/subheader/SubHeader";
+import { useResize } from "../../reusable-components/useResize";
 
 function AppLayout() {
   const { opensidebar } = useUI();
+  const {isMobile,isTablet} = useResize()
 
   return (
+    <>
     <div
-      className={`${styles.appLayout}`}
-      style={{ "--sidebar-width": !opensidebar ? "26rem" : "10rem" }}
-    >
+    className={`${styles.appLayout}`}
+    style={{
+      "--sidebar-width": isMobile || isTablet ? "0" : opensidebar ? "10rem" : "26rem",
+    }}
+  >
       <Header className={styles.header} />
       <SubHeader className={styles.subheader} />
-      <Sidebar className={styles.sidebar} />
+      {!isMobile && <Sidebar className={styles.sidebar} />}
       <InsightCard className={styles.card} />
       <main>
         <Outlet />
       </main>
     </div>
+    {isMobile && <Sidebar/>}
+    </>
   );
 }
 export default AppLayout;

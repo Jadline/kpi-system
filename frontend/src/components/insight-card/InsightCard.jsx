@@ -4,6 +4,9 @@ import {
   mainPages,
 } from "../../../public/project-data-files/MainPages";
 import { useLocation } from "react-router-dom";
+import { Query, useQuery } from "@tanstack/react-query";
+import { fetchShipments } from "../../Services/apiNOS";
+import useShipments from "../../reusable-components/useShipments";
 
 function InsightCard({ className }) {
   const location = useLocation();
@@ -11,11 +14,16 @@ function InsightCard({ className }) {
   const cardsPages = Object.keys(cardsData);
   let cardsInfo = [];
 
+  const {data} = useShipments()
+
   cardsPages.forEach((cardPage) => {
+    
     if (mainPages[cardPage] === pageTitle) {
       cardsInfo = [...cardsData[cardPage]];
     }
   });
+
+
   return (
     <div  className={`${styles.cardcontainer} ${className}`}>
       {cardsInfo.map((card,i) => (

@@ -2,7 +2,7 @@ import { useContext,createContext } from "react"
 import {useState,useEffect} from 'react'
 const UIContext = createContext()
 function  UIProvider ({children}){
-     const [opensidebar,setOpenSidebar] = useState(true)
+     const [opensidebar,setOpenSidebar] = useState(false)
         const [isdarkmode,setIsDarkMode] = useState(() => {
             return localStorage.getItem('darkMode') === 'true'
         })
