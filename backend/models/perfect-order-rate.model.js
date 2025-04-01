@@ -86,7 +86,6 @@ export const fetchPerfectOrderRates = async ({ year, mode }) => {
     monthlyData = monthlyResults;
     countryData = countryResults;
     totalData = totalResults;
-    console.log(totalData);
   } catch (error) {
     console.error("Database query error: ", error.message);
     throw new Error("Failed to fetch data from the database.");

@@ -1,15 +1,41 @@
 -- Contains SQL queries for creating all tables
 
+-- Step 1: Drop table if it already exists
+DROP TABLE IF EXISTS average_delivery_time_countries;
 
--- SQL query to create the average_delivery_time table
-CREATE TABLE average_delivery_time (
-    delivery_id SERIAL PRIMARY KEY,  -- Unique identifier for each delivery
-    dispatch_date DATE NOT NULL,          -- Date when the package was sent
-    delivery_date DATE ,          -- Date when the package was delivered
-    duration_days INT CHECK (duration_days >= 0)  -- Ensuring duration is not negative
+-- Step 2: Create the table
+CREATE TABLE average_delivery_time_countries (
+    dispatch_date DATE,
+    country VARCHAR(50),
+    shipment_type VARCHAR(10),
+    total_deliveries INT,
+    ontime_deliveries INT,
+    ontime_deliveries_pct DECIMAL(5,2),
+    delivery_completion_date DATE,
+    average_delivery_time INT,
+    average_delivery_time_goal INT,
+    status INT
 );
+-- to allow the status column change the TYPE to accept decimals
+ALTER TABLE average_delivery_time_countries
+ALTER COLUMN status TYPE DECIMAL(5,2) USING status::DECIMAL(5,2);
 
 
+-- Step 1: Drop old table if it exists
+DROP TABLE IF EXISTS average_delivery_time;
+
+-- Step 2: Create new table
+CREATE TABLE average_delivery_time (
+    year INT,
+    month VARCHAR(20),
+    average_delivery_by_air DECIMAL(5,2),
+    average_delivery_by_sea DECIMAL(5,2),
+    total_ontime_deliveries INT,
+    ontime_deliveries_pct DECIMAL(10,6),
+    total_deliveries INT,
+    avg_goal_by_air DECIMAL(5,2),
+    avg_goal_by_sea DECIMAL(5,2)
+);
 
 -- SQL Query for number_of_shipments Table
 -- Drop the existing table if it exists

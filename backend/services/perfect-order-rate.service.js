@@ -1,19 +1,16 @@
 import CustomError from "../helpers/CustomError.js";
+import { formatYear } from "../helpers/formatResponse.js";
 import { fetchPerfectOrderRates } from "../models/perfect-order-rate.model.js";
 
 export const getPerfectOrderRates = async (year, mode) => {
-  if (!year || isNaN(year)) {
-    throw new CustomError("Valid  year is required", 400);
-  }
-
+  const formattedYear = formatYear(year);
   if (!mode || !["air", "sea"].includes(mode.toLowerCase())) {
     throw new CustomError("Valid Mode ('air' or 'sea') is required", 400);
   }
   const data = await fetchPerfectOrderRates({
-    year: Number(year),
+    year: formattedYear,
     mode: mode.toLowerCase(),
   });
-  console.log(data);
 
   if (!data.totalData) {
     throw new CustomError("No data found for the given year and mode", 404);

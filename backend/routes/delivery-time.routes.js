@@ -1,8 +1,8 @@
 import express from "express";
-import { fetchAverageDeliveryTime } from "../controllers/averageDeliveryTime.js";
+import { handleGetAverageDeliveryTime } from "../controllers/delivery-time.controller.js";
 
 const router = express.Router();
 
-router.get("/", fetchAverageDeliveryTime);
+router.get("/", handleGetAverageDeliveryTime);
 
 export default router;

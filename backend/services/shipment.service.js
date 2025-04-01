@@ -1,24 +1,18 @@
 import { fetchShipments } from "../models/shipment.model.js";
-import { formatMonth } from "../helpers/formatResponse.js";
+import { formatMonth, formatYear } from "../helpers/formatResponse.js";
 import { formatCountry } from "../helpers/formatCountry.helper.js";
 import CustomError from "../helpers/CustomError.js";
 export const getShipments = async ({ month, year, country }) => {
-  if (!year || isNaN(year)) {
-    return res.status(400).json({ error: "Valid year year is required" });
-  }
+  const formattedYear = formatYear(year);
   const formattedMonth = formatMonth(month);
-  if (!formattedMonth) {
-    throw new CustomError("Valid month (1-12 or month name) is required", 400);
-  }
-
-  const formattedCountry = formatCountry(country);
-  if (country && !formattedCountry) {
-    throw new CustomError("Invalid country provided, 400");
-  }
+  const formattedCountry = country ? formatCountry(country) : null; // Handle optional country
 
   // Call model function to fetch data
-  const data = await fetchShipments({ month, year, country });
-  console.log(data);
+  const data = await fetchShipments({
+    month: formattedMonth,
+    year: formattedYear,
+    country: formattedCountry,
+  });
   if (!data) {
     throw new Error("No data found for the given month, year and country ");
   }
