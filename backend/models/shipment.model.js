@@ -39,6 +39,13 @@ export const fetchShipments = async ({ month, year, country }) => {
   try {
     const { rows: totalResults } = await db.query(totalQuery, values);
     const { rows: countryResults } = await db.query(countryQuery, values);
+    console.log(countryResults);
+
+    const formattedCountryData = countryResults.map((row) => ({
+      country: row.country,
+      shipments_by_air: Number(row.shipments_by_air),
+      shipments_by_sea: Number(row.shipments_by_sea),
+    }));
 
     return {
       totalData: totalResults[0] || {
@@ -46,7 +53,7 @@ export const fetchShipments = async ({ month, year, country }) => {
         shipments_by_air: 0,
         shipments_by_sea: 0,
       },
-      countries: countryResults,
+      countries: formattedCountryData,
     };
   } catch (error) {
     console.error("Database query error: ", error.message);

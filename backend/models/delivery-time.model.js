@@ -46,9 +46,15 @@ export const fetchAverageDeliveryTime = async ({ year }) => {
       countryValues
     );
     console.log(countryDeliveryTime);
-    const formattedCountryData = countryDeliveryTime.map((row) => {
+    const formattedCountryData = countryDeliveryTime.map((row) => ({
+      country: row.country,
+      average_delivery_air: Number(row.average_delivery_air),
+      average_delivery_sea: Number(row.average_delivery_sea),
+      goal_air: Number(row.goal_air),
+      goal_sea: Number(row.goal_sea),
+      status: Number(row.status),
       // format data
-    });
+    }));
 
     return {
       yearlyData:
@@ -61,7 +67,7 @@ export const fetchAverageDeliveryTime = async ({ year }) => {
               total_ontime_deliveries: 0,
               ontime_deliveries_percentage: 0,
             },
-      countryData: countryDeliveryTime,
+      countryData: formattedCountryData,
     };
   } catch (error) {
     console.error("Database error:", error);

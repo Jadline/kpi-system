@@ -2,7 +2,11 @@ import { getTransportationCost } from "../services/transportation-cost.service.j
 
 export const handleGetTransportationCost = async (req, res, next) => {
   try {
-    const {} = req.query;
+    const { year } = req.query;
+    const data = await getTransportationCost({
+      year,
+    });
+    res.json(data);
   } catch (error) {
     next(error);
   }
