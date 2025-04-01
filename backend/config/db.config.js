@@ -5,6 +5,7 @@ import env from "dotenv";
 env.config();
 
 const { Pool } = pg;
+// Neon connection
 
 const db = new Pool({
   // user: process.env.PG_USER,

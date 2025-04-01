@@ -1,14 +1,7 @@
 import express from "express";
-import {
-  fetchShipments,
-  fetchShipment,
-  addShipment,
-} from "../controllers/shipping-time.controller.js";
-
+import { handleGetPerfectOrderRates } from "../controllers/perfect-order-rate.controller.js";
 const router = express.Router();
 
-router.get("/", fetchShipments);
-router.get("/:id", fetchShipment);
-router.post("/", addShipment);
+router.get("/", handleGetPerfectOrderRates);
 
 export default router;
