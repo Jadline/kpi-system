@@ -28,10 +28,13 @@ function PORBar({ className, data }) {
 
   const boundsWidth = width - MARGIN.left - MARGIN.right;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
-  const groups = data.sort((a, b) => b.por - a.por).map((d) => d.country);
+
+  const sortedData = [...data].sort((a,b) => b.por - a.por)
+  const groups = sortedData.map((d) => d.country)
+  // const groups = data.sort((a, b) => b.por - a.por).map((d) => d.country);
 
   const xScale = scaleLinear()
-    .domain([0, max(data, (d) => d.por)])
+    .domain([0, max(data, (d) => d.por) ])
     .range([0, boundsWidth]);
   const yScale = scaleBand()
     .domain(groups)
@@ -51,7 +54,7 @@ function PORBar({ className, data }) {
           fill={colors[i % colors.length]}
         />
         <text
-          x={xScale(d.por - 6)}
+          x={xScale(d.por - 10)}
           y={y + yScale.bandwidth() / 2 + 3}
           fill={"#fff"}
           fontSize={12}
