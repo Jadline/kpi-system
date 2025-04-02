@@ -59,8 +59,14 @@ function SubHeader({className}){
         ),
         'Shipping Time' :(
             <div className={`${styles.subheader} ${className}`}>
-                <MonthDropDown/>
-                <YearDropDown/>
+                <MonthDropDown 
+                month={filters.shippingtime.month}
+                setMonth={(value) => handleFiltersChange('shippingtime','month',value)}
+                />
+                <YearDropDown
+                year={filters.shippingtime.year}
+                setYear={(value) => handleFiltersChange('shippingtime','year',value)}
+                />
             </div>
         ),
         'Transportation Cost': (

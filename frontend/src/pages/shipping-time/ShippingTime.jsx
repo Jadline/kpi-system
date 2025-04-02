@@ -5,7 +5,7 @@ import InsightCard from "../../components/insight-card/InsightCard";
 import Sidebar from "../../components/sidebar/Sidebar";
 import STLine from "../../components/st-charts/ST-line";
 import styles from "./ShippingTime.module.css";
-import { shippingTimeData } from "../../../public/project-data-files/MainPages";
+// import { shippingTimeData } from "../../../public/project-data-files/MainPages";
 import Map from "../../components/st-charts/ST-map";
 import STBar from "../../components/st-charts/ST-bar";
 import ProgressBar from "../../components/progressbar/ProgressBar";
@@ -15,7 +15,9 @@ import toast from "react-hot-toast";
 
 const MAP_URL = "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson";
 const COUNTRIES_URL = 'https://restcountries.com/v3.1/all';
-import { stackedData } from "../../../public/project-data-files/MainPages";
+// import { stackedData } from "../../../public/project-data-files/MainPages";
+import useST from "../../reusable-components/useST";
+
 
 
 async function fetchMapData() {
@@ -43,21 +45,36 @@ async function fetchCountriesData() {
 }
 
 function ShippingTime() {
-  
+
+  const {data : apiData,isLoading,error} = useST()
+
   const { data: mapdata, error: mapError, isLoading: isLoadingMapData } = useQuery({
     queryKey: ['Mapdata'],
     queryFn: fetchMapData,
   });
-
   const { data: countries, error: countriesError, isLoading: isLoadingCountries } = useQuery({
     queryKey: ['Countriesdata'],
     queryFn: fetchCountriesData,
   });
-
   useEffect(() => {
     if (mapError) toast.error(mapError.message);
     if (countriesError) toast.error(countriesError.message);
   }, [mapError, countriesError]);
+
+  const shippingTimeData = apiData?.monthly_shipping_time?.map(({month,average_shipping_time_air,average_shipping_time_sea}) => ({
+    month : month,
+    air : average_shipping_time_air,
+    sea : average_shipping_time_sea
+  }))
+  const stackedData = apiData?.country_shipping_time?.map(({country,average_shipping_time_air,average_shipping_time_sea}) => ({
+    name: country === 'Netherlands' ? 'Nether lands' : country,
+    air : average_shipping_time_air,
+    sea : average_shipping_time_sea
+  }))
+  if(isLoading) return <p>Data is loading....</p>
+  if(error) return <p>Error....</p>
+  
+
 
   if (isLoadingMapData || isLoadingCountries) return <p>Loading ....</p>;
 

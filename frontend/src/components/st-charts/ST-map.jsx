@@ -1,6 +1,7 @@
 import { geoNaturalEarth1, geoPath } from "d3";
 import { useEffect, useRef, useState } from "react";
 import { useDimensions } from "../../reusable-components/useDimensions";
+import useST from "../../reusable-components/useST";
 const MARGIN = {top : 30,left : 50,right : 50,bottom : 30}
 const countries = {
     "China": "red",
@@ -14,17 +15,23 @@ const countries = {
 
   const ukRegions = ["England", "Scotland", "Wales", "Northern Ireland"];
 
-  const shippingTimes = {
-    "United Kingdom": { air: "3 days", sea: "20 days" },
-    "China": { air: "5 days", sea: "30 days" },
-    "South Africa": { air: "4 days", sea: "25 days" },
-    "Netherlands": { air: "2 days", sea: "15 days" },
-    "Turkey": { air: "3 days", sea: "18 days" },
-    "United Arab Emirates": { air: "3 days", sea: "20 days" },
-    "Italy": { air: "2 days", sea: "15 days" }
-  };
+//   const shippingTimes = {
+//     "United Kingdom": { air: "3 days", sea: "20 days" },
+//     "China": { air: "5 days", sea: "30 days" },
+//     "South Africa": { air: "4 days", sea: "25 days" },
+//     "Netherlands": { air: "2 days", sea: "15 days" },
+//     "Turkey": { air: "3 days", sea: "18 days" },
+//     "United Arab Emirates": { air: "3 days", sea: "20 days" },
+//     "Italy": { air: "2 days", sea: "15 days" }
+//   };
+
 
 function Map({data,className}){
+
+    const {data : apiData,isLoading,error} = useST()
+
+   
+
     const[tooltip,setTooltip] = useState({
         visible : false,
         name : '',
@@ -40,6 +47,17 @@ function Map({data,className}){
 
     const projection = geoNaturalEarth1().scale(140).translate([width/2,height/2])
     const pathGenerator = geoPath().projection(projection)
+
+    const shippingTimes = apiData?.country_shipping_time?.reduce((acc,{country,average_shipping_time_air,average_shipping_time_sea}) => {
+        const new_country = country === 'UAE' ? 'United Arab Emirates' : country
+        acc[new_country] = {
+            air : average_shipping_time_air,
+            sea : average_shipping_time_sea
+        }
+        return acc
+       },{})
+       if(isLoading) return <p>Data is loading....</p>
+       if(error) return <p>There was an error...</p>
     return(
         <div 
         className={className} 

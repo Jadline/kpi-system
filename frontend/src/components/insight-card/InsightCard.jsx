@@ -5,6 +5,7 @@ import useShipments from "../../reusable-components/useShipments";
 import { cardMappings } from "../../../public/project-data-files/data";
 import usePOR from "../../reusable-components/usePOR";
 import PerfectOrderRate from "../../pages/perfect-order-rate/PerfectOrderRate";
+import useST from "../../reusable-components/useST";
 
 function InsightCard({ className }) {
   const location = useLocation();
@@ -15,10 +16,12 @@ function InsightCard({ className }) {
 
   const shipmentsQuery = useShipments();
   const PerfectordersQuery = usePOR()
+  const shippingtimeQuery = useST()
 
   const apiHooks = {
     "/number-of-shipments": shipmentsQuery,
-    '/' : PerfectordersQuery
+    '/' : PerfectordersQuery,
+    '/shipping-time' : shippingtimeQuery
   };
 
   const { data: apiData, isLoading, error } = apiHooks[pagePath] || { data: null, isLoading: false, error: null };
@@ -30,12 +33,12 @@ function InsightCard({ className }) {
   if (!apiData) return <p>No data available</p>;
 
   
-  const apiProperties = Object.keys(apiData).filter((key) => !["countries", "perfect_order_rate", "pefect_order_rate_by_year"].includes(key));
+  // const apiProperties = Object.keys(apiData).filter((key) => !["countries", "perfect_order_rate", "pefect_order_rate_by_year"].includes(key));
 
-  console.log(apiProperties)
+  // console.log(apiProperties)
 
  
-  const cardsInfo = apiProperties.map((key) => {
+  const cardsInfo = Object.keys(apiData).map((key) => {
     
     console.log(`Mapping for key: ${key}`, cardMappings[pagePath]?.[key]);
   

@@ -18,7 +18,7 @@ const colors = [
   "#0096c7",
   "#00b4d8",
   "#48cae4",
-  "#8aebff",
+  "#8aebff", 
 ];
 
 function PORBar({ className, data }) {
