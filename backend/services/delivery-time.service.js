@@ -18,6 +18,9 @@ export const getAverageDeliveyTime = async (year) => {
     ontime_deliveries_percentage: Number(
       data.yearlyData.ontime_deliveries_percentage
     ),
+    average_goal_by_air: Number(data.yearlyData.average_goal_by_air),
+    average_goal_by_sea: Number(data.yearlyData.average_goal_by_sea),
     countryData: data.countryData,
+    monthlyData: data.monthlyData,
   };
 };

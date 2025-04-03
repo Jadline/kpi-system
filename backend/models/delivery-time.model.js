@@ -7,7 +7,9 @@ export const fetchAverageDeliveryTime = async ({ year }) => {
       CEIL(AVG(average_delivery_by_air)) AS average_delivery_air,
       CEIL(AVG(average_delivery_by_sea)) AS average_delivery_sea,
       CEIL(SUM(total_ontime_deliveries)) AS total_ontime_deliveries,
-      CEIL(AVG(ontime_deliveries_pct)) AS ontime_deliveries_percentage
+      CEIL(AVG(ontime_deliveries_pct)) AS ontime_deliveries_percentage,
+      CEIL(AVG(avg_goal_by_air)) AS average_goal_by_air,
+      CEIL(AVG(avg_goal_by_sea)) AS average_goal_by_sea
     FROM average_delivery_time
   `;
 
@@ -39,13 +41,35 @@ export const fetchAverageDeliveryTime = async ({ year }) => {
   }
 
   countryQuery += ` GROUP BY country ORDER BY country;`;
+
+  let monthlyQuery = `
+    SELECT
+      month,
+      CEIL(AVG(average_delivery_by_air)) AS average_delivery_air,
+      CEIL(AVG(average_delivery_by_sea)) AS average_delivery_sea
+    FROM average_delivery_time
+  `;
+
+  let monthlyValues = [];
+
+  if (year) {
+    monthlyQuery += ` WHERE year = $1`;
+    monthlyValues.push(year);
+  }
+
+  monthlyQuery += ` GROUP BY month ORDER BY TO_DATE(month, 'Month')::DATE;`;
+
   try {
     const { rows: yearlyDeliveryTime } = await pool.query(query, values);
     const { rows: countryDeliveryTime } = await pool.query(
       countryQuery,
       countryValues
     );
-    console.log(countryDeliveryTime);
+    const { rows: monthlyDeliveryTime } = await pool.query(
+      monthlyQuery,
+      monthlyValues
+    );
+
     const formattedCountryData = countryDeliveryTime.map((row) => ({
       country: row.country,
       average_delivery_air: Number(row.average_delivery_air),
@@ -54,6 +78,11 @@ export const fetchAverageDeliveryTime = async ({ year }) => {
       goal_sea: Number(row.goal_sea),
       status: Number(row.status),
       // format data
+    }));
+    const formattedMonthlyData = monthlyDeliveryTime.map((row) => ({
+      month: row.month,
+      average_delivery_air: Number(row.average_delivery_air),
+      average_delivery_sea: Number(row.average_delivery_sea),
     }));
 
     return {
@@ -66,8 +95,11 @@ export const fetchAverageDeliveryTime = async ({ year }) => {
               average_delivery_sea: 0,
               total_ontime_deliveries: 0,
               ontime_deliveries_percentage: 0,
+              average_goal_by_air: 0,
+              average_goal_by_sea: 0,
             },
       countryData: formattedCountryData,
+      monthlyData: formattedMonthlyData,
     };
   } catch (error) {
     console.error("Database error:", error);
