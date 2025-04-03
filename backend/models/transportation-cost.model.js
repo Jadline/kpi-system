@@ -79,16 +79,16 @@ export const fetchTransportationCost = async ({ year }) => {
     const formattedCostPerShipmentOverTime = costPerShipmentOverTime.map(
       (row) => ({
         month: row.month,
-        cost_per_shipment: Math.ceil(Number(row.average_cost)), // Ensure it's a number
+        cost_per_shipment: Math.ceil(Number(row.cost_per_shipment)), // Ensure it's a number
       })
     );
+    console.log(formattedCostPerShipmentOverTime);
 
     const formattedCountryBudget = countryBudget.map((row) => ({
       country: row.country,
       total_budget_percentage: Number(row.total_budget_percentage),
       budget_used_percentage: Number(row.budget_used_percentage), // Ensure it's a number
     }));
-    console.log(formattedCountryBudget);
 
     return {
       totalTransportationCost:
