@@ -54,7 +54,12 @@ function SubHeader({className}){
         ),
         'Average Delivery Time': (
             <div className={`${styles.subheader} ${className}`}>
-                <span><p>Sort by Year</p><YearDropDown/></span>
+                <span><p>Sort by Year</p>
+                <YearDropDown
+                year={filters.deliverytime.year}
+                setYear={(value) => handleFiltersChange('deliverytime','year',value)}
+                />
+                </span>
             </div>
         ),
         'Shipping Time' :(

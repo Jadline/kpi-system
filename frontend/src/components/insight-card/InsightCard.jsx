@@ -6,6 +6,7 @@ import { cardMappings } from "../../../public/project-data-files/data";
 import usePOR from "../../reusable-components/usePOR";
 import PerfectOrderRate from "../../pages/perfect-order-rate/PerfectOrderRate";
 import useST from "../../reusable-components/useST";
+import useADT from "../../reusable-components/useADT";
 
 function InsightCard({ className }) {
   const location = useLocation();
@@ -17,11 +18,13 @@ function InsightCard({ className }) {
   const shipmentsQuery = useShipments();
   const PerfectordersQuery = usePOR()
   const shippingtimeQuery = useST()
+  const deliverytimeQuery = useADT()
 
   const apiHooks = {
     "/number-of-shipments": shipmentsQuery,
     '/' : PerfectordersQuery,
-    '/shipping-time' : shippingtimeQuery
+    '/shipping-time' : shippingtimeQuery,
+    '/average-delivery-time' : deliverytimeQuery,
   };
 
   const { data: apiData, isLoading, error } = apiHooks[pagePath] || { data: null, isLoading: false, error: null };

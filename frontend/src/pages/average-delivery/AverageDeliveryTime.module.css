@@ -3,7 +3,7 @@
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: 0.5fr 0.5fr;
   grid-template-areas:
-    "chart1 chart2 chart21"
+    "chart1 chart21 chart2"
     "chart3 chart4 chart4";
   gap: 1.8rem;
   padding: 1rem;
@@ -16,11 +16,12 @@
 }
 .chart2 {
   grid-area: chart2;
-  background-color: orange;
+  /* background-color: orange; */
+   
 }
 .chart21 {
   grid-area: chart21;
-  background-color: orange;
+  /* background-color: orange; */
 }
 .chart3 {
   grid-area: chart3;

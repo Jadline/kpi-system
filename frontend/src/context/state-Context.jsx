@@ -14,6 +14,9 @@ function DashboardProvider({children}){
             'shippingtime' : {
                 'month' : 'June',
                 'year' : '2022'
+            },
+            'deliverytime' : {
+                'year' : '2023'
             }
         })
     return(

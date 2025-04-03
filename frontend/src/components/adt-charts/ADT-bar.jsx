@@ -78,7 +78,11 @@ function ADTBar({className,data}){
             alignmentBaseline={'middle'}
             fontSize={12}
             >
-                {country}
+                 {country.includes(" ") ? country.split(" ").map((word, index) => (
+    <tspan key={index} x={x + xScale.bandwidth() / 2} dy={index * 12}>
+      {word}
+    </tspan>
+  )) : country}
 
             </text>
         )
@@ -105,6 +109,14 @@ function ADTBar({className,data}){
             viewBox={`0 0 ${width} ${height}`}
             preserveAspectRatio={'xMidYMid meet'}
             >
+                <text
+                x={width / 2 - 130}
+                y={25}
+                fontSize={18}
+                fontWeight ={700}
+                >
+                    Average Delivery Time by Route
+                </text>
                 <g transform={`translate(${MARGIN.left},${MARGIN.top})`}>
                     {gridlines}
                     {barShapes}

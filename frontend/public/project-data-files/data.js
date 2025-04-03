@@ -74,5 +74,32 @@ export const cardMappings = {
       icon: "/icons/on-time-shipment-icon.png",
       backgroundColor: "#FEF2D6",
     },
+  },
+  '/average-delivery-time': {
+    average_delivery_time_by_air : {
+      title: "Average Delivery Time by Air",
+      type: "number",
+      icon: "/icons/average-delivery-time.png",
+      backgroundColor: "#FFDED2",
+    },
+    average_delivery_time_by_sea : {
+      title: "Average Delivery Time by Sea",
+      type: "number",
+      icon: "/icons/best-shipping-time-icon.png",
+      backgroundColor: "#FEF2D6",
+    },
+    total_ontime_deliveries : {
+      title: "Total On-Time Deliveries",
+
+      type: "number",
+      icon: "/icons/worst-shipping-route-icon.png",
+      backgroundColor: "#E4E4FF",
+    },
+    ontime_deliveries_percentage : {
+      title: "On-Time Delivery %",
+      type: "number",
+      icon: "/icons/on-time.png",
+      backgroundColor: "#FEF2D6",
+    },
   }
 };
