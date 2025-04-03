@@ -4,6 +4,7 @@ import CustomError from "../helpers/CustomError.js";
 
 export const getTransportationCost = async (year) => {
   const formattedYear = formatYear(year);
+
   const data = await fetchTransportationCost({ year: formattedYear });
 
   if (!data) {
@@ -12,8 +13,22 @@ export const getTransportationCost = async (year) => {
 
   return {
     total_transportation_cost:
-      Math.ceil(Number(data.total_transportation_cost)) || 0,
-    average_transportation_cost:
-      Math.ceil(Number(data.average_transportation_cost)) || 0,
+      Math.ceil(
+        Number(data.totalTransportationCost.total_transportation_cost)
+      ) || 0,
+    average_transportation_cost_per_shipment:
+      Math.ceil(
+        Number(data.totalTransportationCost.average_cost_per_shipment)
+      ) || 0,
+    cost_per_shipment_air:
+      Math.ceil(Number(data.costPerShipment.average_cost_per_shipment_air)) ||
+      0,
+    cost_per_shipment_sea:
+      Math.ceil(Number(data.costPerShipment.average_cost_per_shipment_sea)) ||
+      0,
+    total_cost_air: Math.ceil(Number(data.costPerShipment.total_cost_air)) || 0,
+    total_cost_sea: Math.ceil(Number(data.costPerShipment.total_cost_sea)) || 0,
+    costPerShipmentOverTime: data.costPerShipmentOverTime || [],
+    budgetPerfomance: data.countryBudget,
   };
 };

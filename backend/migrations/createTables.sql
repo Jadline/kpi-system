@@ -138,13 +138,41 @@ CREATE TABLE shipping_time (
 
 
 -- SQL to Create the transportation_cost Table
+DROP TABLE IF EXISTS transportation_cost;
+
 CREATE TABLE transportation_cost (
     transport_id SERIAL PRIMARY KEY,
-    order_id INT NOT NULL,
+    year INT NOT NULL,
+    month VARCHAR(20) NOT NULL,
     country VARCHAR(100) NOT NULL,
-    weight_in_kgs INT NOT NULL,
-    cost_per_kg NUMERIC(10,8) NOT NULL,
-    fixed_cost_per_country INT NOT NULL,
-    total_cost NUMERIC(12,6) NOT NULL,
-    CONSTRAINT fk_order FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE
+    shipment_type VARCHAR(10) NOT NULL,
+    total_budget_million NUMERIC(10,2) NOT NULL,
+    budget_used_million NUMERIC(10,2) NOT NULL,
+    remaining_budget_million NUMERIC(10,2) NOT NULL,
+    budget_used_percentage NUMERIC(5,2) NOT NULL,
+    total_shipments INT NOT NULL,
+    avg_cost_per_shipment NUMERIC(10,2) NOT NULL
+);
+
+
+
+-- SQL to create Transport agrregation
+
+DROP TABLE IF EXISTS transport_aggregation;
+
+CREATE TABLE transport_aggregation (
+    year INT,
+    month VARCHAR(20),
+    avg_cost_per_shipment_air NUMERIC(12,6),
+    avg_cost_per_shipment_sea NUMERIC(12,6),
+    budget_used_pct_air NUMERIC(8,6),
+    budget_used_pct_sea NUMERIC(8,6),
+    remaining_budget_air_million NUMERIC(12,6),
+    remaining_budget_sea_million NUMERIC(12,6),
+    total_budget_air_million NUMERIC(12,6),
+    total_budget_sea_million NUMERIC(12,6),
+    total_budget_used_air_million NUMERIC(12,6),
+    total_budget_used_sea_million NUMERIC(12,6),
+    total_shipments_air INT,
+    total_shipments_sea INT
 );

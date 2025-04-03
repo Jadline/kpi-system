@@ -45,13 +45,18 @@ export const formatMonth = (month) => {
 // Year Formatter
 export const formatYear = (year) => {
   const currentYear = new Date().getFullYear();
-  if (!year) throw new InvalidMonthError("Year cannot be null or undefined");
 
-  if (!isNaN(year)) {
-    year = Number(year);
-    if (year >= 2010 && year <= currentYear) return year;
-    throw new InvalidYearError(`Year must be between 1900 and ${currentYear}`);
+  if (!year) throw new InvalidYearError("Year cannot be null or undefined");
+
+  year = Number(year); // Convert first
+
+  if (isNaN(year)) {
+    throw new InvalidYearError("Year must be a valid number");
   }
 
-  throw new InvalidYearError("Year must be a valid number");
+  if (year < 2021 || year > currentYear) {
+    throw new InvalidYearError(`Year must be between 2021 and ${currentYear}`);
+  }
+
+  return year;
 };

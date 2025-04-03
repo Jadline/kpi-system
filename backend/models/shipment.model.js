@@ -10,7 +10,8 @@ export const fetchShipments = async ({ month, year, country }) => {
   let countryQuery = `SELECT
                         country,
                         SUM(CASE WHEN shipment_type = 'Air' THEN total_shipments ELSE 0 END) AS shipments_by_air,
-                        SUM(CASE WHEN shipment_type = 'Sea' THEN total_shipments ELSE 0 END) AS shipments_by_sea
+                        SUM(CASE WHEN shipment_type = 'Sea' THEN total_shipments ELSE 0 END) AS shipments_by_sea,
+
                       FROM number_of_shipments WHERE 1=1
 `;
   let values = [];
