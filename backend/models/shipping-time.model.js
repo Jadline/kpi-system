@@ -76,8 +76,6 @@ export const fetchShippingTime = async ({ month, year }) => {
     }
 
     countryShippingTimeQuery += ` GROUP BY country ORDER BY country;`;
-    console.log("Country Query:", countryShippingTimeQuery);
-    console.log("Values Passed:", countryValues);
 
     // Execute Queries
     const { rows: totalResults } = await db.query(totalQuery, values);

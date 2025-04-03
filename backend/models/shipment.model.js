@@ -10,8 +10,7 @@ export const fetchShipments = async ({ month, year, country }) => {
   let countryQuery = `SELECT
                         country,
                         SUM(CASE WHEN shipment_type = 'Air' THEN total_shipments ELSE 0 END) AS shipments_by_air,
-                        SUM(CASE WHEN shipment_type = 'Sea' THEN total_shipments ELSE 0 END) AS shipments_by_sea,
-
+                        SUM(CASE WHEN shipment_type = 'Sea' THEN total_shipments ELSE 0 END) AS shipments_by_sea
                       FROM number_of_shipments WHERE 1=1
 `;
   let values = [];
@@ -40,7 +39,6 @@ export const fetchShipments = async ({ month, year, country }) => {
   try {
     const { rows: totalResults } = await db.query(totalQuery, values);
     const { rows: countryResults } = await db.query(countryQuery, values);
-    console.log(countryResults);
 
     const formattedCountryData = countryResults.map((row) => ({
       country: row.country,
@@ -57,7 +55,7 @@ export const fetchShipments = async ({ month, year, country }) => {
       countries: formattedCountryData,
     };
   } catch (error) {
-    console.error("Database query error: ", error.message);
+    console.error("error message", error.message);
     throw new Error("Failed to fetch data from the database.");
   }
 };

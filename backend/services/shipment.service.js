@@ -14,7 +14,9 @@ export const getShipments = async ({ month, year, country }) => {
     country: formattedCountry,
   });
   if (!data) {
-    throw new Error("No data found for the given month, year and country ");
+    throw new CustomError(
+      "No data found for the given month, year and country "
+    );
   }
 
   return {
