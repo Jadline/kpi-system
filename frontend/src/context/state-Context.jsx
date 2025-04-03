@@ -10,10 +10,10 @@ function DashboardProvider({children}){
             },
             'perfectorders' : {
                 'year' : '2021'
-
-
-
-
+            },
+            'shippingtime' : {
+                'month' : 'June',
+                'year' : '2022'
             }
         })
     return(

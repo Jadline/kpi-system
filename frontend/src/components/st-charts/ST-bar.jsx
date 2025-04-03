@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDimensions } from "../../reusable-components/useDimensions";
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 const categories = ["air", "sea"];
+const MAX_WORD_LENGTH = 10
 const colors = { air: "#0096c7", sea: "#e9ecf1" };
 
 function STBar({data,className}){
@@ -58,14 +59,18 @@ function STBar({data,className}){
         return(
             <g key={i}>
                 <text
-                x={x + xScale.bandwidth()/2 }
+                x={x + xScale.bandwidth()/2  }
                 y={boundsHeight + 15}
                 color ={'#000'}
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
                 
                 >
-                    {country}
+                 {country.includes(" ") ? country.split(" ").map((word, index) => (
+    <tspan key={index} x={x + xScale.bandwidth() / 2} dy={index * 12}>
+      {word}
+    </tspan>
+  )) : country}
                 </text>
                 
             </g>
