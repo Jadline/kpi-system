@@ -66,7 +66,9 @@ export const fetchShippingTime = async ({ month, year }) => {
       SELECT
         country,
         CEIL(AVG(CASE WHEN shipment_type = 'Air' THEN average_shipping_time ELSE NULL END)) AS average_shipping_time_air,
-        CEIL(AVG(CASE WHEN shipment_type = 'Sea' THEN average_shipping_time ELSE NULL END)) AS average_shipping_time_sea
+        CEIL(AVG(CASE WHEN shipment_type = 'Sea' THEN average_shipping_time ELSE NULL END)) AS average_shipping_time_sea,
+        MAX(CASE WHEN shipment_type = 'Air' THEN goal ELSE NULL END) AS goal_air,
+        MAX(CASE WHEN shipment_type = 'Sea' THEN goal ELSE NULL END) AS goal_sea
       FROM shipping_time
     `;
 
@@ -107,6 +109,8 @@ export const fetchShippingTime = async ({ month, year }) => {
       average_shipping_time_sea: row.average_shipping_time_sea
         ? Number(row.average_shipping_time_sea)
         : 0,
+      goal_air: row.goal_air ? Number(row.goal_air) : 0,
+      goal_sea: row.goal_air ? Number(row.goal_sea) : 0,
     }));
 
     return {
