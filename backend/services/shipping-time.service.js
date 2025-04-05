@@ -1,16 +1,21 @@
 import { fetchShippingTime } from "../models/shipping-time.model.js";
 import CustomError from "../helpers/CustomError.js";
-import { formatMonth, formatYear } from "../helpers/formatResponse.js";
-export const getShippingTime = async ({ month, year }) => {
+import {
+  formatMode,
+  formatMonth,
+  formatYear,
+} from "../helpers/formatResponse.js";
+export const getShippingTime = async ({ month, year, mode }) => {
   const formattedMonth = formatMonth(month);
   const formattedYear = formatYear(year);
+  const formattedMode = formatMode(mode);
 
   //fetch output from model
   const data = await fetchShippingTime({
     month: formattedMonth,
     year: formattedYear,
+    mode: formattedMode,
   });
-  console.log(data);
 
   //  if no ouput throw custom error and error code
   if (!data) {

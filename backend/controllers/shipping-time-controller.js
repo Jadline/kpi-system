@@ -3,10 +3,11 @@ import { getShippingTime } from "../services/shipping-time.service.js";
 export const handleGetShippingTime = async (req, res, next) => {
   // in a try-catch block
   try {
-    const { month, year } = req.query;
+    const { month, year, mode } = req.query;
     const data = await getShippingTime({
       month,
       year,
+      mode,
     });
     res.json(data);
   } catch (error) {

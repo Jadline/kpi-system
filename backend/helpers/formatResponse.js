@@ -60,3 +60,15 @@ export const formatYear = (year) => {
 
   return year;
 };
+
+export const formatMode = (mode) => {
+  const formatted = mode?.trim().toLowerCase();
+  if (!mode) return null;
+
+  if (formatted === "air") return "Air";
+  if (formatted === "sea") return "Sea";
+
+  throw new Error(
+    `Invalid mode: '${input}'. Mode must be either 'Air' or 'Sea'.`
+  );
+};

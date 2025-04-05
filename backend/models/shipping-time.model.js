@@ -1,9 +1,8 @@
 import db from "../config/db.config.js";
 
-export const fetchShippingTime = async ({ month, year }) => {
-  try {
-    let values = [];
-    let totalQuery = `
+export const fetchShippingTime = async ({ month, year, mode }) => {
+  let values = [];
+  let totalQuery = `
       SELECT
         month,
         year,
@@ -15,20 +14,20 @@ export const fetchShippingTime = async ({ month, year }) => {
       WHERE 1=1
     `;
 
-    if (month) {
-      values.push(month);
-      totalQuery += ` AND month = $${values.length}`;
-    }
-    if (year) {
-      values.push(Number(year)); // Ensure year is a number
-      totalQuery += ` AND year = $${values.length}`;
-    }
+  if (month) {
+    values.push(month);
+    totalQuery += ` AND month = $${values.length}`;
+  }
+  if (year) {
+    values.push(Number(year)); // Ensure year is a number
+    totalQuery += ` AND year = $${values.length}`;
+  }
 
-    totalQuery += ` GROUP BY month, year;`;
+  totalQuery += ` GROUP BY month, year;`;
 
-    // Query for monthly shipping time
-    let monthlyValues = [];
-    let monthlyShippingTimeQuery = `
+  // Query for monthly shipping time
+  let monthlyValues = [];
+  let monthlyShippingTimeQuery = `
       SELECT
         month,
         CEIL(AVG(CASE WHEN shipment_type = 'Air' THEN average_shipping_time ELSE NULL END)) AS average_shipping_time_air,
@@ -36,12 +35,12 @@ export const fetchShippingTime = async ({ month, year }) => {
       FROM shipping_time
     `;
 
-    if (year) {
-      monthlyValues.push(Number(year));
-      monthlyShippingTimeQuery += ` WHERE year = $1`;
-    }
+  if (year) {
+    monthlyValues.push(Number(year));
+    monthlyShippingTimeQuery += ` WHERE year = $1`;
+  }
 
-    monthlyShippingTimeQuery += `
+  monthlyShippingTimeQuery += `
       GROUP BY month
       ORDER BY
         CASE month
@@ -60,25 +59,38 @@ export const fetchShippingTime = async ({ month, year }) => {
         END;
     `;
 
-    // Query for country-wise shipping time
-    let countryValues = [];
-    let countryShippingTimeQuery = `
+  // Query for country-wise shipping time
+  let countryValues = [];
+  let countryShippingTimeQuery = `
       SELECT
         country,
         CEIL(AVG(CASE WHEN shipment_type = 'Air' THEN average_shipping_time ELSE NULL END)) AS average_shipping_time_air,
         CEIL(AVG(CASE WHEN shipment_type = 'Sea' THEN average_shipping_time ELSE NULL END)) AS average_shipping_time_sea,
-        MAX(CASE WHEN shipment_type = 'Air' THEN goal ELSE NULL END) AS goal_air,
-        MAX(CASE WHEN shipment_type = 'Sea' THEN goal ELSE NULL END) AS goal_sea
-      FROM shipping_time
+
     `;
 
-    if (year) {
-      countryValues.push(Number(year));
-      countryShippingTimeQuery += ` WHERE year = $${countryValues.length}`;
-    }
+  if (mode === "Air") {
+    countryShippingTimeQuery += `
+    MAX(CASE WHEN shipment_type = 'Air' THEN goal ELSE NULL END) AS goal
+  `;
+  } else if (mode === "Sea") {
+    countryShippingTimeQuery += `
+    MAX(CASE WHEN shipment_type = 'Sea' THEN goal ELSE NULL END) AS goal
+  `;
+  } else {
+    countryShippingTimeQuery += `
+    NULL AS goal
+  `;
+  }
+  countryShippingTimeQuery += ` FROM shipping_time`;
 
-    countryShippingTimeQuery += ` GROUP BY country ORDER BY country;`;
+  if (year) {
+    countryValues.push(Number(year));
+    countryShippingTimeQuery += ` WHERE year = $${countryValues.length}`;
+  }
 
+  countryShippingTimeQuery += ` GROUP BY country ORDER BY country;`;
+  try {
     // Execute Queries
     const { rows: totalResults } = await db.query(totalQuery, values);
     const { rows: monthlyResults } = await db.query(
@@ -101,6 +113,8 @@ export const fetchShippingTime = async ({ month, year }) => {
         : 0,
     }));
 
+    console.log(countryResults[0]);
+
     const formattedCountryResults = countryResults.map((row) => ({
       country: row.country,
       average_shipping_time_air: row.average_shipping_time_air
@@ -109,8 +123,7 @@ export const fetchShippingTime = async ({ month, year }) => {
       average_shipping_time_sea: row.average_shipping_time_sea
         ? Number(row.average_shipping_time_sea)
         : 0,
-      goal_air: row.goal_air ? Number(row.goal_air) : 0,
-      goal_sea: row.goal_air ? Number(row.goal_sea) : 0,
+      [`goal_${mode}`]: row.goal !== null ? Number(row.goal) : null,
     }));
 
     return {
