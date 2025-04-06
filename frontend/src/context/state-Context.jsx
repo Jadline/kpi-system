@@ -9,14 +9,19 @@ function DashboardProvider({children}){
                 'year' : '2024'
             },
             'perfectorders' : {
-                'year' : '2021'
+                'year' : '2021',
+                'mode' : 'air'
             },
             'shippingtime' : {
                 'month' : 'June',
-                'year' : '2022'
+                'year' : '2022',
+                'mode' : 'sea'
             },
             'deliverytime' : {
                 'year' : '2023'
+            },
+            'transportationcost' : {
+                'year' : '2021'
             }
         })
     return(

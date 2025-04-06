@@ -4,31 +4,50 @@ import { useDimensions } from "../../reusable-components/useDimensions";
 
 const MARGIN = { left: 30, top: 30, right: 30, bottom: 30 };
 
-function GaugeChart({ avg_deliverytime, goal, className }) {
-  const { containerRef, width, height } = useDimensions();
+function GaugeChart({ avg_deliverytime, goal, className,mode }) {
+  console.log("avg_deliverytime:", avg_deliverytime, "goal:", goal);
 
+  const { containerRef, width, height } = useDimensions();
   const size = Math.min(width, height); 
   const bounds = size - MARGIN.left - MARGIN.right;  
   const radius = bounds / 2.2;  
   const arcWidth = radius * 0.25; 
   const startAngle = -Math.PI / 2; 
   const endAngle = Math.PI * 1.5;  
-  const percentage = avg_deliverytime / goal;
-  const filledAngle = startAngle + percentage * (endAngle - startAngle); 
 
- 
+  // Ensure goal is valid
+  const safeGoal = goal > 0 ? goal : 1;
+  const safeAvg = avg_deliverytime ?? 0;
+
+  // **New Progress Calculation**
+  const percentage = safeAvg <= safeGoal 
+    ? (safeAvg / safeGoal) * 100 // Progress toward goal
+    : (safeGoal / safeAvg) * 100; // How much of the goal we have covered
+
+  const filledAngle = startAngle + (percentage / 100) * (endAngle - startAngle);
+
+  // Arc for the background
   const arc = d3.arc()
     .innerRadius(radius - arcWidth)
     .outerRadius(radius)
     .startAngle(startAngle)
     .endAngle(endAngle);
 
-  
+  // Arc for progress
   const progressArc = d3.arc()
     .innerRadius(radius - arcWidth)
     .outerRadius(radius)
     .startAngle(startAngle)
     .endAngle(filledAngle);
+
+  // Determine status text
+  const statusText =
+    safeAvg <= safeGoal
+      ? `On Track (${Math.round(100 - percentage)}% remaining)`
+      : `Behind Schedule (${Math.round(100 - percentage)}% left)`;
+
+  // Dynamic color: Green if on track, Red if behind
+  const progressColor = safeAvg <= safeGoal ? "#28a745" : "#ff3b30";
 
   return (
     <div
@@ -37,41 +56,43 @@ function GaugeChart({ avg_deliverytime, goal, className }) {
       style={{
         width: "100%",
         textAlign: "center",
-         boxShadow : '-0.2rem -0.2rem 1rem rgba(0,0,0,0.2)',
-         borderRadius : '1rem',
-         display : 'flex',
-         alignItems : 'center',
-         justifyContent : 'center'
+        boxShadow: "-0.2rem -0.2rem 1rem rgba(0,0,0,0.2)",
+        borderRadius: "1rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
       }}
     >
-        {/* <h3 style={{ fontSize: "20px", fontWeight: "bold", color: "#333",textAlign : 'center',display : 'flex'}}>
-         title
-        </h3> */}
-       
-       
       <svg
         width="100%"
         height={size}
         viewBox={`0 0 ${size} ${size}`} 
-        
         preserveAspectRatio="xMidYMid meet"
       >
-      
-        
+          <foreignObject x="0" y="0" width={size} height="30">
+          <div xmlns="http://www.w3.org/1999/xhtml" style={{ fontSize: "18px", fontWeight: "700", textAlign: "center" }}>
+            Performance by {mode}
+          </div>
+        </foreignObject>
         <g transform={`translate(${size / 2}, ${size / 2})`}> 
-        
-         
-          <path d={arc()} fill="#ff7f0e" />
+          {/* Background arc */}
+          <path d={arc()} fill="#ddd" />
           
-          <path d={progressArc()} fill="#007bff" />
-         
-          <text textAnchor="middle" dy="-10" fontSize="24px" fontWeight="bold">
-            {Math.round(percentage * 100)}%
+          {/* Progress arc */}
+          <path d={progressArc()} fill={progressColor} />
+
+          {/* Percentage label */}
+          <text textAnchor="middle" dy="15" fontSize="24px" fontWeight="bold">
+            {Math.round(percentage)}%
           </text>
-         
-          <text textAnchor="middle" dy="20" fontSize="16px" fill="#666">
-            {avg_deliverytime > goal ? "Overdue" : "On Track"}
+
+          {/* Status text */}
+          <text textAnchor="middle" dy="90" fontSize="16px" fill="#666">
+            {avg_deliverytime - goal} days left
           </text>
+          {/* <text textAnchor="middle" dy="30" fontSize="16px" fill="#666">
+            days left
+          </text> */}
         </g>
       </svg>
     </div>

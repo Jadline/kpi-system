@@ -11,7 +11,17 @@ function useShipments(){
             queryFn : () => fetchShipments(yearshipments,monthshipments),
             enabled : !!monthshipments && !!yearshipments
         })
-    return {data,isLoading,error}
+        const NOSpiedata = [
+            { category: "air", no_shipments: data?.shipments_by_air || 0 },
+            { category: "sea", no_shipments: data?.shipments_by_sea || 0 },
+          ];
+          const stackedData = data?.countries?.map(({country,shipments_by_air,shipments_by_sea}) => ({
+            name : country,
+            air : shipments_by_air,
+            sea : shipments_by_sea
+          }))
+         
+    return {data,isLoading,error,NOSpiedata,stackedData}
     
 }
 export default useShipments 

@@ -1,4 +1,7 @@
 // import { max } from 'd3';
+import useST from '../../reusable-components/useST';
+import useTC from '../../reusable-components/useTC';
+import Spinner from '../Spinner/Spinner';
 import styles from './Progress.module.css'
 import { useState } from 'react';
 const airShippingData = [
@@ -10,14 +13,18 @@ const airShippingData = [
     { country: "United Arab Emirates", averageShippingTime: 3, goal: 2.8 },
     { country: "Italy", averageShippingTime: 2, goal: 1.7 }
 ];
-  
+
 function Progress({countryName}){
-    const countrydata = airShippingData.find((d) => d.country === countryName)
+    if (!airShippingData || airShippingData?.length === 0) return <p>No data available</p>;
+
+
+    
+    const countrydata = airShippingData?.find((d) => d.country === countryName)
     if(!countrydata) return
-    const maxValue = Math.max(countrydata.averageShippingTime, countrydata.goal);
+    const maxValue = Math.max(countrydata?.averageShippingTime, countrydata.goal);
     return(
         <>
-        <progress value={countrydata.goal} max={maxValue}>
+        <progress value={countrydata?.goal} max={maxValue}>
 
 
         </progress>

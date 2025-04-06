@@ -3,12 +3,13 @@ import { useRef, useState,useEffect } from "react"
 import { useDimensions } from "../../reusable-components/useDimensions"
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 function TCLine({className,data}){
+    console.log('data',data)
     const {containerRef,width,height} = useDimensions(700,500)
    
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight = height - MARGIN.top - MARGIN.bottom
     
-    const groups = data.map((d) => d.month)
+    const groups = data?.map((d) => d.month)
     const xScale = scaleBand()
                    .domain(groups)
                    .range([0,boundsWidth])
@@ -119,7 +120,7 @@ function TCLine({className,data}){
                 >
                     Cost per shipment over time
                 </text>
-                <g transform={`translate(${MARGIN.left + 10},${MARGIN.top})`}>
+                <g transform={`translate(${MARGIN.left + 30},${MARGIN.top})`}>
                     {gridLines}
                     <path
                     d={lineAirCost(data)}
@@ -137,7 +138,54 @@ function TCLine({className,data}){
                     />
                     {cirlesSea}
                     {xLabels}
+
                 </g>
+                <text
+                x ={width / 2 - 100}
+                y ={boundsHeight + 90}
+                fontSize={16}
+                fontWeight={700}
+                >
+                    Months
+                </text>
+                <text
+                x ={-160}
+                y ={boundsHeight/2 + 5 }
+                fontSize={16}
+                fontWeight={700}
+                transform={`rotate(-90,0,${boundsHeight/2 - 14})`}
+                >
+                    Cost per shipment(Air Vs Sea)
+                </text>
+                <rect
+                    width ={15}
+                    height ={10}
+                    fill={'#ff7f0e'}
+                    x={boundsWidth}
+                    y ={15}
+                    /
+                    >
+                    <text
+                    x={boundsWidth + 20}
+                    y={24}
+                    >
+                        Sea
+
+
+                    </text>
+                    <rect
+                    x={boundsWidth }
+                    y={28}
+                    width={15}
+                    height ={10}
+                    fill ={'#1f77b4'}
+                    />
+                    <text
+                    x={boundsWidth + 20}
+                    y ={35}
+                    >
+                        Air
+                    </text>
             </svg>
         </div>
     )

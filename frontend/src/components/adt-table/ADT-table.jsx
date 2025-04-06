@@ -12,7 +12,7 @@ function ADTable({ className, data }) {
       { Header: "Goal (by Air)", accessor: "goalByAir" },
       { Header: "Avg (by Sea)", accessor: "avgBySea" },
       { Header: "Goal (by Sea)", accessor: "goalBySea" },
-      { Header: "Status", accessor: "status" }, // Ensure status is included
+      // { Header: "Status", accessor: "status" }, // Ensure status is included
     ],
     []
   );
@@ -22,6 +22,7 @@ function ADTable({ className, data }) {
 
   return (
     <div className={`${className} ${styles.tableContainer}`}>
+      <p style={{fontWeight:'bold',fontSize: '1.6rem'}}>Performance Vs Goal Table</p>
       <table {...getTableProps()} className={styles.table}>
         <thead>
           {headerGroups.map((headerGroup) => (

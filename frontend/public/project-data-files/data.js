@@ -101,5 +101,31 @@ export const cardMappings = {
       icon: "/icons/on-time.png",
       backgroundColor: "#FEF2D6",
     },
+  },
+  '/transportation-cost' : {
+    total_transportation_cost : {
+      title: "Total Transportation Cost",
+      type: "number",
+      icon: "/icons/total-transportation-cost-icon.png",
+      backgroundColor: "#E4E4FF",
+    },
+    average_transportation_cost_per_shipment :{
+      title: "Avg Cost per Shipment",
+      type: "number",
+      icon: "/icons/average-cost-per-shipment.png",
+      backgroundColor: "#FEF2D6",
+    },
+    cost_per_shipment_air :{
+      title: "Cost per Shipment (Air)",
+      type: "number",
+      icon: "/icons/cost-per-shipment.png",
+      backgroundColor: "#FFDED2",
+    },
+    cost_per_shipment_sea : {
+      title: "Cost per Shipment (Sea)",
+      type: "number",
+      icon: "/icons/cost-per-shipment-by-sea.png",
+      backgroundColor: "#FEF2D6",
+    },
   }
 };

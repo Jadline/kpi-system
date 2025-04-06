@@ -34,7 +34,7 @@ function TCPie({className,data}){
              preserveAspectRatio = 'xMidYMid meet'
             >
                 <text
-                x ={width / 2 - 100}
+                x ={width / 2 -60}
                 y ={30}
                 fontSize={16}
                 fontWeight={700}
@@ -56,6 +56,37 @@ function TCPie({className,data}){
                  })}
 
                 </g>
+                <g>
+                    <rect
+                    width ={15}
+                    height ={10}
+                    fill={'#ff7f0e'}
+                    x={20}
+                    y ={15}
+                    /
+                    >
+                    <text
+                    x={37}
+                    y={24}
+                    >
+                        Sea
+
+
+                    </text>
+                    <rect
+                    x={20}
+                    y={28}
+                    width={15}
+                    height ={10}
+                    fill ={'#1f77b4'}
+                    />
+                    <text
+                    x={37}
+                    y ={35}
+                    >
+                        Air
+                    </text>
+                    </g>
 
             </svg>
         </div>

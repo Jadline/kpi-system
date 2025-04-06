@@ -1,4 +1,4 @@
-import { area, curveBasis, curveMonotoneX, max, scaleBand, scaleLinear } from "d3"
+import { area, curveBasis, curveMonotoneX, max, scaleBand, scaleLinear, scalePoint } from "d3"
 import { useEffect, useRef, useState } from "react"
 import { useDimensions } from "../../reusable-components/useDimensions"
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
@@ -8,9 +8,9 @@ function ADTArea({className,data}){
     const boundsWidth = width - MARGIN.left - MARGIN.right
     const boundsHeight = height - MARGIN.top - MARGIN.bottom
 
-    const groups = data.map((d) => d.month)
+    const groups = data?.map((d) => d.month)
 
-    const xScale = scaleBand()
+    const xScale = scalePoint()
                   .domain(groups)
                   .range([0,boundsWidth])
     const yScale = scaleLinear()
@@ -108,7 +108,7 @@ function ADTArea({className,data}){
             viewBox={`0 0 ${width} ${height}`}
             preserveAspectRatio='xMidYMid meet'
             >
-                <g transform={`translate(${MARGIN.left},${MARGIN.top})`}>
+                <g transform={`translate(${MARGIN.left + 20},${MARGIN.top})`}>
                     {gridlines}
                     <path
                      d = {airArea(data)}
@@ -124,6 +124,52 @@ function ADTArea({className,data}){
                       {circlesSea}
                      {xLabels}
                 </g>
+                <text
+                x ={width / 2 - 100}
+                y ={boundsHeight + 90}
+                fontSize={16}
+                fontWeight={700}
+                >
+                    Months
+                </text>
+                <text
+                x ={-160}
+                y ={boundsHeight/2 + 5 }
+                fontSize={16}
+                fontWeight={700}
+                transform={`rotate(-90,0,${boundsHeight/2 - 14})`}
+                >
+                    Average delivery time (Air Vs Sea) 
+                </text>
+                <rect
+                    width ={15}
+                    height ={10}
+                    fill={'#00a651'}
+                    x={boundsWidth}
+                    y ={15}
+                    /
+                    >
+                    <text
+                    x={boundsWidth + 20}
+                    y={24}
+                    >
+                        Sea
+
+
+                    </text>
+                    <rect
+                    x={boundsWidth }
+                    y={28}
+                    width={15}
+                    height ={10}
+                    fill ={'#1f77b4'}
+                    />
+                    <text
+                    x={boundsWidth + 20}
+                    y ={35}
+                    >
+                        Air
+                    </text>
             </svg>
 
         </div>

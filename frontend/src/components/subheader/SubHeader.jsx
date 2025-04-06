@@ -8,14 +8,8 @@ import { useEffect, useState } from 'react'
 import { fetchShipments } from '../../Services/apiNOS'
 import { useDashboard } from '../../context/state-Context'
 function SubHeader({className}){
-    const [mode,setMode] = useState('air')
-    // const [filters,setFilters] = useState({
-    //     'numberofshipments' : {
-    //         'month' : 'March',
-    //         'year' : '2023'
-    //     },
-
-    // })
+    
+    // const [mode,setMode] = useState('air')
     const {filters,setFilters} = useDashboard()
     const pageTitle = useGetLocation()
     function handleFiltersChange(section,key,value){
@@ -38,7 +32,10 @@ function SubHeader({className}){
                  year={filters.perfectorders.year} 
                  setYear={(value) => handleFiltersChange('perfectorders','year',value)}/>
                 </span>
-                <ModeButton mode={mode} setMode={setMode} className={styles.sidebarfilters}/>
+                <ModeButton 
+                mode={filters.perfectorders.mode} 
+                setMode={(value) => handleFiltersChange('perfectorders','mode',value)} 
+                className={styles.sidebarfilters}/>
             </div>
         ),
         'Number of Shipments' : (
@@ -76,7 +73,10 @@ function SubHeader({className}){
         ),
         'Transportation Cost': (
             <div className={`${styles.subheader} ${className}`}>
-                <span>Sort by Year<YearDropDown/></span>
+                <span>Sort by Year<YearDropDown
+                year={filters.transportationcost.year}
+                setYear={(value) => handleFiltersChange('transportationcost','year',value)}
+                /></span>
             </div>
         )
 
