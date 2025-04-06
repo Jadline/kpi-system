@@ -108,6 +108,16 @@ function ADTArea({className,data}){
             viewBox={`0 0 ${width} ${height}`}
             preserveAspectRatio='xMidYMid meet'
             >
+                 <text
+                          x={boundsWidth - width / 2 - 70 }
+                          y={27}
+                          fontSize={16}
+                          fill="#000"
+                          fontWeight={800}
+                          
+                        >
+                          Average delivery Time (Air Vs Sea)
+                        </text>
                 <g transform={`translate(${MARGIN.left + 20},${MARGIN.top})`}>
                     {gridlines}
                     <path
@@ -133,13 +143,13 @@ function ADTArea({className,data}){
                     Months
                 </text>
                 <text
-                x ={-160}
+                x ={-90}
                 y ={boundsHeight/2 + 5 }
                 fontSize={16}
                 fontWeight={700}
                 transform={`rotate(-90,0,${boundsHeight/2 - 14})`}
                 >
-                    Average delivery time (Air Vs Sea) 
+                    Days
                 </text>
                 <rect
                     width ={15}

@@ -3,6 +3,7 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import styles from './por-line.module.css'
 import { FaEllipsisH } from "react-icons/fa";
 import usePOR from "../../reusable-components/usePOR";
+import { useDashboard } from "../../context/state-Context";
 // import ModeButton from "../../reusable-components/Button";
 
 
@@ -12,6 +13,7 @@ const MARGIN = { top: 30, left: 50, bottom: 30, right: 50 };
 function PORLine({ data, className }) {
   // const[mode,setMode] = useState('air')
 
+  const {filters} = useDashboard()
   
 
   const [dimensions, setDimensions] = useState({
@@ -151,7 +153,7 @@ function PORLine({ data, className }) {
           fontWeight={800}
           className={styles.portitle}
         >
-          Perfect Order Rate 2024 %
+          Perfect Order Rate {filters.perfectorders?.year} %
         </text>
         {/* <foreignObject
         width={150}
@@ -226,13 +228,13 @@ function PORLine({ data, className }) {
             <rect
               width={15}
               height={15}
-              x={isMobile ? boundsWidth - 80 : boundsWidth - 100}
-              y={20}
+              x={isMobile ? boundsWidth - 80 : boundsWidth - 40}
+              dy={-3}
               fill="#eda10d"
             />
             <text
-              x={isMobile ? boundsWidth - 60 : boundsWidth - 80}
-              y={30}
+              x={isMobile ? boundsWidth - 60 : boundsWidth - 20}
+              y={10}
               fontSize={14}
               fill="#000"
               fontWeight={600}

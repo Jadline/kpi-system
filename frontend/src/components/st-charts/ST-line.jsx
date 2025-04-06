@@ -101,7 +101,7 @@ function STLine({data,className}){
             >
                 Monthly Shipping Time 2024
             </text>
-                <g transform={`translate(${MARGIN.left},${MARGIN.top})`}>
+                <g transform={`translate(${MARGIN.left + 20},${MARGIN.top})`}>
                     {gridLines}
                     <path
                     d={lineAir(data)}
@@ -170,6 +170,24 @@ function STLine({data,className}){
                     </g>
                     {xLabels}
                 </g>
+                <text
+                x ={-90}
+                y ={boundsHeight/2 +5}
+                fontSize={16}
+                fontWeight={700}
+                transform={`rotate(-90,0,${boundsHeight/2 - 14})`}
+                >
+                   Days
+                </text>
+                <text
+                x ={width / 2 - 100}
+                y ={boundsHeight + 90}
+                fontSize={16}
+                fontWeight={700}
+                >
+                  Months
+                </text>
+                    
 
             </svg>
         </div>

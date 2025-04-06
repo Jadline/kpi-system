@@ -123,7 +123,7 @@ function NOSBar({data,className}){
                 >
                     Number of Shipments by Country
                 </text>
-                <g transform={`translate(${MARGIN.left},${MARGIN.top})`}>
+                <g transform={`translate(${MARGIN.left + 20},${MARGIN.top})`}>
                     {gridlines}
                     {barshapes}
                     <g>
@@ -157,6 +157,23 @@ function NOSBar({data,className}){
                         Air
                     </text>
                     </g>
+                    <text
+                x ={-70}
+                y ={boundsHeight/2 - 40}
+                fontSize={16}
+                fontWeight={700}
+                transform={`rotate(-90,0,${boundsHeight/2 - 14})`}
+                >
+                    Number of shipments
+                </text>
+                <text
+                x ={width / 2 - 100}
+                y ={boundsHeight + 35}
+                fontSize={16}
+                fontWeight={700}
+                >
+                   Shipment Routes
+                </text>
                     
 
                    

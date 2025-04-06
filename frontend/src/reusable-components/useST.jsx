@@ -22,12 +22,12 @@ function useST(){
         air : average_shipping_time_air,
         sea : average_shipping_time_sea
       }))
-      
-    //   const airShippingData = data?.country_shipping_time?.map(({ country, average_shipping_time_air,goal_air }) => ({
-    //     country: country,
-    //     averageShippingTime: average_shipping_time_air,
-    //     goal: goal_air,
-    // })) || [];
-   return {data,isLoading,error,shippingTimeData,stackedData}
+
+      const airShippingData = data?.country_shipping_time?.map(({ country, average_shipping_time_air,goal_air }) => ({
+        country: country,
+        averageShippingTime: average_shipping_time_air,
+        goal: goal_air,
+    })) || [];
+   return {data,isLoading,error,shippingTimeData,stackedData,airShippingData}
 }
 export default useST

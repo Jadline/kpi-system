@@ -117,12 +117,29 @@ function ADTBar({className,data}){
                 >
                     Average Delivery Time by Route
                 </text>
-                <g transform={`translate(${MARGIN.left},${MARGIN.top})`}>
+                <g transform={`translate(${MARGIN.left + 20},${MARGIN.top})`}>
                     {gridlines}
                     {barShapes}
                     {xLabels}
 
                 </g>
+                <text
+                x ={-90}
+                y ={boundsHeight/2 + 5 }
+                fontSize={16}
+                fontWeight={700}
+                transform={`rotate(-90,0,${boundsHeight/2 - 14})`}
+                >
+                    Days
+                </text>
+                <text
+                x ={width / 2 - 100}
+                y ={boundsHeight + 90}
+                fontSize={16}
+                fontWeight={700}
+                >
+                   Delivery Routes
+                </text>
 
             </svg>
 

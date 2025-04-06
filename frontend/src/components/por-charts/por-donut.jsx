@@ -52,7 +52,7 @@ function PORDonut({data,className}){
            
             <text
             x={boundsWidth - width / 2 + 20}
-            y={25}
+            y={30}
             fontWeight ={800}
             fontSize={18}
             className={styles.ordersummary}
@@ -103,7 +103,7 @@ function PORDonut({data,className}){
                 <rect
                 width={15}
                 height={15}
-                x={isMobile ? boundsWidth - width / 2 + 60 : boundsWidth - width / 2 + 47}
+                x={isMobile ? boundsWidth - width / 2 + 60 : boundsWidth - width / 2 + 37}
                 y={boundsHeight + 30}
                 fill={'#00b4d8'}
                 rx={2}
@@ -111,7 +111,7 @@ function PORDonut({data,className}){
                 <text
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
-                x={isMobile ? boundsWidth - width / 2 + 118 : boundsWidth - width / 2 + 110}
+                x={isMobile ? boundsWidth - width / 2 + 118 : boundsWidth - width / 2 + 100}
                 y={boundsHeight + 40}
                 fontWeight={800}
                 fontSize={12}
@@ -122,7 +122,7 @@ function PORDonut({data,className}){
                 <rect
                 width={15}
                 height={15}
-                x={boundsWidth - width / 2 + 165}
+                x={boundsWidth - width / 2 + 155}
                 y={boundsHeight + 30}
                 fill={'#03045e'}
                 rx={2}
@@ -130,7 +130,7 @@ function PORDonut({data,className}){
                 <text
                 textAnchor={'middle'}
                 alignmentBaseline={'middle'}
-                x={isMobile ? boundsWidth - width / 2 + 221 : boundsWidth - width / 2 + 230}
+                x={isMobile ? boundsWidth - width / 2 + 221 : boundsWidth - width / 2 + 220}
                 y={boundsHeight + 40}
                 fontWeight={800}
                 fontSize={12}
