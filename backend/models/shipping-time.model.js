@@ -113,16 +113,40 @@ export const fetchShippingTime = async ({ month, year, mode }) => {
         : 0,
     }));
 
-    const formattedCountryResults = countryResults.map((row) => ({
-      country: row.country,
-      average_shipping_time_air: row.average_shipping_time_air
-        ? Number(row.average_shipping_time_air)
-        : 0,
-      average_shipping_time_sea: row.average_shipping_time_sea
-        ? Number(row.average_shipping_time_sea)
-        : 0,
-      [`goal_${mode}`]: row.goal !== null ? Number(row.goal) : null,
-    }));
+    // const formattedCountryResults = countryResults.map((row) => ({
+    //   country: row.country,
+    //   average_shipping_time_air: row.average_shipping_time_air
+    //     ? Number(row.average_shipping_time_air)
+    //     : 0,
+    //   average_shipping_time_sea: row.average_shipping_time_sea
+    //     ? Number(row.average_shipping_time_sea)
+    //     : 0,
+    //   [`goal_${mode}`]: row.goal !== null ? Number(row.goal) : null,
+    // }));
+
+    const formattedCountryResults = countryResults.map((row) => {
+      const base = {
+        country: row.country,
+      };
+
+      if (mode === "Air") {
+        base[`average_shipping_time_Air`] =
+          Number(row.average_shipping_time_air) || 0;
+        base[`goal_Air`] = row.goal !== null ? Number(row.goal) : null;
+      } else if (mode === "Sea") {
+        base[`average_shipping_time_Sea`] =
+          Number(row.average_shipping_time_sea) || 0;
+        base[`goal_Sea`] = row.goal !== null ? Number(row.goal) : null;
+      } else {
+        // No mode specified — include both average times, but no goal field
+        base["average_shipping_time_Air"] =
+          Number(row.average_shipping_time_air) || 0;
+        base["average_shipping_time_Sea"] =
+          Number(row.average_shipping_time_sea) || 0;
+      }
+
+      return base;
+    });
 
     return {
       totalData: totalResults[0] || {
