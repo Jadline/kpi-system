@@ -113,8 +113,6 @@ export const fetchShippingTime = async ({ month, year, mode }) => {
         : 0,
     }));
 
-    console.log(countryResults[0]);
-
     const formattedCountryResults = countryResults.map((row) => ({
       country: row.country,
       average_shipping_time_air: row.average_shipping_time_air

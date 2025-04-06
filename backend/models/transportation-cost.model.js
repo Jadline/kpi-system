@@ -3,32 +3,33 @@ import db from "../config/db.config.js";
 export const fetchTransportationCost = async ({ year }) => {
   let costQuery = `
     SELECT
-      SUM(avg_cost_per_shipment) AS total_transportation_cost,
-      AVG(avg_cost_per_shipment) AS average_cost_per_shipment
+      SUM(budget_used_million) AS total_transportation_cost,
+      ROUND((SUM(budget_used_million)* 1000000) / NULLIF(SUM(total_shipments), 0), 2) AS average_transportation_cost
     FROM transportation_cost
   `;
 
   let aggregationQuery = `
     SELECT
-      AVG(avg_cost_per_shipment_air) AS average_cost_per_shipment_air,
-      SUM(avg_cost_per_shipment_air) AS total_cost_air,
-      AVG(avg_cost_per_shipment_sea) AS average_cost_per_shipment_sea,
-      SUM(avg_cost_per_shipment_sea) AS total_cost_sea
+      ROUND((SUM(total_budget_used_air_million) * 1000000) / NULLIF(SUM(total_shipments_air), 0), 2) AS average_cost_per_shipment_air,
+      SUM(total_budget_used_air_million) AS total_cost_air,
+      ROUND((SUM(total_budget_used_sea_million) * 1000000) / NULLIF(SUM(total_shipments_sea), 0), 2) AS average_cost_per_shipment_sea,
+      SUM(total_budget_used_sea_million) AS total_cost_sea
     FROM transport_aggregation
   `;
 
   let costPerShipmentOverTimeQuery = `
     SELECT
       month,
-      AVG(avg_cost_per_shipment) AS cost_per_shipment
+      ROUND(AVG(CASE WHEN shipment_type = 'air' THEN avg_cost_per_shipment END), 2) AS cost_per_shipment_air,
+      ROUND(AVG(CASE WHEN shipment_type = 'sea' THEN avg_cost_per_shipment END), 2) AS cost_per_shipment_sea
     FROM transportation_cost
   `;
 
   let countryBudgetQuery = `
     SELECT
       country,
-      100 AS total_budget_percentage,
-      ROUND((SUM(budget_used_million) / SUM(total_budget_million)) * 100, 2) AS budget_used_percentage
+      SUM(total_budget_million) AS total_budget,
+      SUM(budget_used_million) AS total_budget_used
     FROM transportation_cost
     WHERE year = $1
     GROUP BY country
@@ -74,33 +75,62 @@ export const fetchTransportationCost = async ({ year }) => {
     const { rows: countryBudget } = await db.query(countryBudgetQuery, values);
 
     // console.log(costPerShipmentOverTime);
-    // console.log(countryBudget);
 
     const formattedCostPerShipmentOverTime = costPerShipmentOverTime.map(
       (row) => ({
         month: row.month,
-        cost_per_shipment: Math.ceil(Number(row.cost_per_shipment)), // Ensure it's a number
+        cost_per_shipment_air: Number(
+          parseFloat(row.cost_per_shipment_air).toFixed(2)
+        ),
+        cost_per_shipment_sea: Number(
+          parseFloat(row.cost_per_shipment_sea).toFixed(2)
+        ),
       })
     );
 
     const formattedCountryBudget = countryBudget.map((row) => ({
       country: row.country,
-      total_budget_percentage: Number(row.total_budget_percentage),
-      budget_used_percentage: Number(row.budget_used_percentage), // Ensure it's a number
+      total_budget: Number(row.total_budget),
+      total_budget_used: Number(row.total_budget_used),
     }));
+
+    const formattedTotalCost = {
+      total_transportation_cost: Number(
+        transportationCost[0]?.total_transportation_cost
+      ), // if needed
+      average_transportation_cost_per_shipment: Number(
+        transportationCost[0]?.average_transportation_cost
+      ),
+    };
+
+    const formattedCostPerShipment = {
+      average_cost_per_shipment_air: Number(
+        transportAggregation[0]?.average_cost_per_shipment_air
+      ),
+      total_cost_air: Number(transportAggregation[0]?.total_cost_air),
+      average_cost_per_shipment_sea: Number(
+        transportAggregation[0]?.average_cost_per_shipment_sea
+      ),
+      total_cost_sea: Number(transportAggregation[0]?.total_cost_sea),
+    };
+
+    console.log(transportAggregation[0]);
 
     return {
       totalTransportationCost:
         transportationCost.length > 0
-          ? transportationCost[0]
-          : { total_transportation_cost: 0, average_cost_per_shipment: 0 },
+          ? formattedTotalCost
+          : {
+              total_transportation_cost: 0,
+              average_transportation_cost_per_shipment: 0,
+            },
       costPerShipment:
         transportAggregation.length > 0
-          ? transportAggregation[0]
+          ? formattedCostPerShipment
           : {
               average_cost_per_shipment_air: 0,
-              average_cost_per_shipment_sea: 0,
               total_cost_air: 0,
+              average_cost_per_shipment_sea: 0,
               total_cost_sea: 0,
             },
       costPerShipmentOverTime: formattedCostPerShipmentOverTime,
