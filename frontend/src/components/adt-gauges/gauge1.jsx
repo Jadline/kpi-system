@@ -15,38 +15,38 @@ function GaugeChart({ avg_deliverytime, goal, className,mode }) {
   const startAngle = -Math.PI / 2; 
   const endAngle = Math.PI * 1.5;  
 
-  // Ensure goal is valid
+
   const safeGoal = goal > 0 ? goal : 1;
   const safeAvg = avg_deliverytime ?? 0;
 
-  // **New Progress Calculation**
+ 
   const percentage = safeAvg <= safeGoal 
-    ? (safeAvg / safeGoal) * 100 // Progress toward goal
-    : (safeGoal / safeAvg) * 100; // How much of the goal we have covered
+    ? (safeAvg / safeGoal) * 100 
+    : (safeGoal / safeAvg) * 100; 
 
   const filledAngle = startAngle + (percentage / 100) * (endAngle - startAngle);
 
-  // Arc for the background
+  
   const arc = d3.arc()
     .innerRadius(radius - arcWidth)
     .outerRadius(radius)
     .startAngle(startAngle)
     .endAngle(endAngle);
 
-  // Arc for progress
+
   const progressArc = d3.arc()
     .innerRadius(radius - arcWidth)
     .outerRadius(radius)
     .startAngle(startAngle)
     .endAngle(filledAngle);
 
-  // Determine status text
+  
   const statusText =
     safeAvg <= safeGoal
       ? `On Track (${Math.round(100 - percentage)}% remaining)`
       : `Behind Schedule (${Math.round(100 - percentage)}% left)`;
 
-  // Dynamic color: Green if on track, Red if behind
+  
   const progressColor = safeAvg <= safeGoal ? "#28a745" : "#ff3b30";
 
   return (
@@ -75,24 +75,22 @@ function GaugeChart({ avg_deliverytime, goal, className,mode }) {
           </div>
         </foreignObject>
         <g transform={`translate(${size / 2}, ${size / 2})`}> 
-          {/* Background arc */}
+          
           <path d={arc()} fill="#ddd" />
           
-          {/* Progress arc */}
+         
           <path d={progressArc()} fill={progressColor} />
 
-          {/* Percentage label */}
+         
           <text textAnchor="middle" dy="15" fontSize="24px" fontWeight="bold">
             {Math.round(percentage)}%
           </text>
 
-          {/* Status text */}
+       
           <text textAnchor="middle" dy="90" fontSize="16px" fill="#666">
             {avg_deliverytime - goal} days left
           </text>
-          {/* <text textAnchor="middle" dy="30" fontSize="16px" fill="#666">
-            days left
-          </text> */}
+         
         </g>
       </svg>
     </div>
