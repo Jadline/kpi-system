@@ -15,13 +15,13 @@ import { useState } from 'react';
 // ];
 
 function Progress({countryName}){
-    const{airShippingData,isLoading} = useST()
+    const{shippingData,isLoading} = useST()
     if(isLoading) return <Spinner/>
-    if (!airShippingData || airShippingData?.length === 0) return <p>No data available</p>;
+    if (!shippingData || shippingData?.length === 0) return <p>No data available</p>;
 
 
 
-    const countrydata = airShippingData?.find((d) => d.country === countryName)
+    const countrydata = shippingData?.find((d) => d.country === countryName)
     if(!countrydata) return
     const maxValue = Math.max(countrydata?.averageShippingTime, countrydata.goal);
     return(

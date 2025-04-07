@@ -23,11 +23,18 @@ function useST(){
         sea : average_shipping_time_sea
       }))
 
-      const airShippingData = data?.country_shipping_time?.map(({ country, average_shipping_time_air,goal_air }) => ({
-        country: country,
-        averageShippingTime: average_shipping_time_air,
-        goal: goal_air,
+     
+    const normalizedMode = mode?.charAt(0).toUpperCase() + mode?.slice(1).toLowerCase();
+
+    const averageKey = `average_shipping_time_${normalizedMode}`;
+    const goalKey = `goal_${normalizedMode}`;
+
+    const shippingData = data?.country_progress?.map((item) => ({
+      country: item.country,
+      averageShippingTime: item[averageKey],
+      goal: item[goalKey],
     })) || [];
-   return {data,isLoading,error,shippingTimeData,stackedData,airShippingData}
+
+   return {data,isLoading,error,shippingTimeData,stackedData,shippingData}
 }
 export default useST
