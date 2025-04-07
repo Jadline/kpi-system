@@ -70,14 +70,14 @@ function Gauge({ totalCost, budget, className }) {
             })}
 
             {/* Needle */}
-            <line
+            {/* <line
               x1={0}
               y1={0}
               x2={outerRadius * Math.cos(angleScale(utilization))}
               y2={outerRadius * Math.sin(angleScale(utilization))}
               stroke="black"
               strokeWidth={3}
-            />
+            /> */}
 
             {/* Center dot */}
             <circle r={5} fill="black" />
