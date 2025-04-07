@@ -44,7 +44,7 @@ function Header({ className}) {
       {pageTitle && <p className={styles.pagetitle}>{pageTitle}</p>}
       </div>
      <div className={styles.rightHeader}>
-     <SearchBox className={`${styles.searchbox}`}/>
+   
       <div className={styles.imageicons}>
       {isdarkmode ? (
   <MdOutlineLightMode 
