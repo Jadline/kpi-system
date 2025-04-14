@@ -7,6 +7,8 @@ import perfectOrderRoutes from "./routes/perfect-order-rate.routes.js";
 import shippingTimeRoutes from "./routes/shipping-time.routes.js";
 import deliveryTimeRoutes from "./routes/delivery-time.routes.js";
 import transportationCostRoutes from "./routes/transportation-cost.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+
 import env from "dotenv";
 
 env.config();
@@ -21,9 +23,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.use("/api/auth", authRoutes);
 app.use("/api/shipments", shipmentRoutes);
 app.use("/api/perfect-order", perfectOrderRoutes);
 app.use("/api/shipping-time", shippingTimeRoutes);

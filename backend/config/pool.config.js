@@ -9,8 +9,8 @@ const { Pool } = pg;
 const pool = new Pool({
   connectionString: process.env.SUPABASE_DATABASE_URL,
   ssl: {
-    // rejectUnauthorized: false,
-    ca: fs.readFileSync("./certs/prod-ca-2021.crt").toString(),
+    rejectUnauthorized: false,
+    // ca: fs.readFileSync("./certs/prod-ca-2021.crt").toString(),
   },
 });
 

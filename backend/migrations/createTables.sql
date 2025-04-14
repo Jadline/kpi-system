@@ -176,3 +176,15 @@ CREATE TABLE transport_aggregation (
     total_shipments_air INT,
     total_shipments_sea INT
 );
+
+
+-- SQL to create users Table
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  role VARCHAR(50),
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
