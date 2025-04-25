@@ -114,7 +114,7 @@ export const fetchTransportationCost = async ({ year }) => {
       total_cost_sea: Number(transportAggregation[0]?.total_cost_sea),
     };
 
-    console.log(transportAggregation[0]);
+    // console.log(transportAggregation[0]);
 
     return {
       totalTransportationCost:
