@@ -53,11 +53,11 @@ function NOSPie({data,className}){
                     fill={'#5388d8'}
                     width={15}
                     height={10}
-                    x={300}
+                    x={420}
                     y= {-100}
                     />
                     <text
-                    x={ 327}
+                    x={ 450}
                     y = {-90}
                     textAnchor={'middle'}
                     fontWeight ={500}
@@ -65,14 +65,14 @@ function NOSPie({data,className}){
                         Air
                     </text>
                     <rect
-                    x={300}
+                    x={420}
                     y={-70}
                     width={15}
                     height={10}
                     fill={'#f4be37'}
                     />
                     <text
-                    x={326}
+                    x={450}
                     y ={-60}
                     textAnchor={'middle'}
                     fontWeight={500}

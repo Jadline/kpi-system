@@ -87,10 +87,10 @@ function GaugeChart({ avg_deliverytime, goal, className,mode }) {
           </text>
 
        
-          <text textAnchor="middle" dy="90" fontSize="16px" fill="#666">
+          {/* <text textAnchor="middle" dy="90" fontSize="16px" fill="#666">
             {avg_deliverytime - goal} days left
           </text>
-         
+          */}
         </g>
       </svg>
     </div>

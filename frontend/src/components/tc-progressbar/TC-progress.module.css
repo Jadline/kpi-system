@@ -74,12 +74,19 @@ progress::-webkit-progress-value {
 }
 .budgetUsed,.totalbudget {
     display : flex;
-    gap : .5rem;
+    gap : .3rem;
+    align-items : center;
+    justify-content : center;
+}
+.budgetUsed p ,.totalbudget p{
+    margin-right : 2rem;
+    font-size : 1.6rem;
 }
 .totalcost {
     display : flex;
     gap : 1rem;
     font-size : 1.6rem;
+    font-weight : 600;
 }
 .totalcost p:last-child {
     font-weight : var(--font-extrabold);

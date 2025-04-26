@@ -51,6 +51,7 @@ header {
   display : flex;
   gap : 1rem;
 }
+
 .headContainer .pagetitle {
   font-size: 3rem;
   font-weight: var(--font-bold);
