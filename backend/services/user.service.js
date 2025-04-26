@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { createUser, findUserByEmail } from "../models/User.model.js";
+import { createUser, findUserByEmail } from "../models/user.model.js";
 import CustomError from "../helpers/CustomError.js";
 
 export const registerUser = async (userData) => {
@@ -7,7 +7,19 @@ export const registerUser = async (userData) => {
   if (existing) throw new CustomError("That email is already registered.", 400);
 
   const hashedPassword = await bcrypt.hash(userData.password, 10);
-  return await createUser({ ...userData, password: hashedPassword });
+
+  const newUser = {
+    fullName: userData.full_name,  // 🚀 map correctly here
+    username: userData.username,
+    role: userData.role,
+    email: userData.email,
+    password: hashedPassword
+  };
+
+  return await createUser( newUser );
+
+
+
 };
 
 export const loginUser = async (email, password) => {

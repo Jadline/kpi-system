@@ -17,7 +17,7 @@ export const createUser = async ({
     return result.rows[0];
   } catch (error) {
     console.error("Database Insert Error:", error);
-    throw new CustomError("Cannot create user", 404);
+    throw new CustomError("Failed to create user. Please check your data.", 500);
   }
 };
 
