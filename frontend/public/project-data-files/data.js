@@ -104,7 +104,7 @@ export const cardMappings = {
   },
   '/transportation-cost' : {
     total_transportation_cost : {
-      title: "Total Transportation Cost",
+      title: "Total Transportation Cost (in Millions)",
       type: "number",
       icon: "/icons/total-transportation-cost-icon.png",
       backgroundColor: "#E4E4FF",

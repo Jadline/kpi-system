@@ -4,9 +4,9 @@ import { useDimensions } from "../../reusable-components/useDimensions";
 function Gauge({ totalCost, budget, className }) {
   const { containerRef, width, height } = useDimensions();
 
-  const startAngle = -Math.PI / 2; // -90°
-  const endAngle = Math.PI / 2; // 90°
-  const utilization = Math.min((totalCost / budget) * 100, 100); // Cap at 100%
+  const startAngle = -Math.PI / 2; 
+  const endAngle = Math.PI / 2;    
+  const utilization = Math.min((totalCost / budget) * 100, 100); 
 
   const budgetbands = [
     { range: [0, 70], color: "green" },
@@ -14,13 +14,13 @@ function Gauge({ totalCost, budget, className }) {
     { range: [90, 100], color: "red" },
   ];
 
-  // Ensure the angle scale maps 0-100% to -90° to 90°
   const angleScale = scaleLinear()
     .domain([0, 100])
     .range([startAngle, endAngle]);
 
   const outerRadius = Math.min(width, height) / 2 - 20;
   const innerRadius = Math.min(width, height) / 3.5;
+  const needleLength = (innerRadius + outerRadius) / 2;
 
   return (
     <div
@@ -43,7 +43,7 @@ function Gauge({ totalCost, budget, className }) {
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* Title */}
+        
         <text
           x={width / 2}
           y={25}
@@ -55,10 +55,10 @@ function Gauge({ totalCost, budget, className }) {
           Transportation cost utilization
         </text>
 
-        {/* Gauge arcs and needle */}
+       
         {width > 0 && height > 0 && (
           <g transform={`translate(${width / 2}, ${height * 0.6})`}>
-            {/* Budget bands */}
+            
             {budgetbands.map(({ range, color }, i) => {
               const bandArc = arc()
                 .innerRadius(innerRadius)
@@ -69,22 +69,23 @@ function Gauge({ totalCost, budget, className }) {
               return <path key={i} d={bandArc()} fill={color} />;
             })}
 
-            {/* Needle */}
-            {/* <line
+           
+            <line
               x1={0}
               y1={0}
-              x2={outerRadius * Math.cos(angleScale(utilization))}
-              y2={outerRadius * Math.sin(angleScale(utilization))}
+              x2={needleLength * Math.cos(angleScale(utilization) - Math.PI / 2)}
+              y2={needleLength * Math.sin(angleScale(utilization) - Math.PI / 2)}
               stroke="black"
               strokeWidth={3}
-            /> */}
+              strokeLinecap="round"
+            />
 
-            {/* Center dot */}
+          
             <circle r={5} fill="black" />
           </g>
         )}
 
-        {/* Utilization label */}
+       
         <text
           x={width / 2}
           y={height - 30}
@@ -99,4 +100,3 @@ function Gauge({ totalCost, budget, className }) {
 }
 
 export default Gauge;
-

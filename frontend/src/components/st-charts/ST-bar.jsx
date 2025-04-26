@@ -138,25 +138,25 @@ function STBar({data,className}){
                         <rect
                         width={15}
                         height={10}
-                        x={boundsWidth - 40}
+                        x={width / 2 + 10}
                         fill={'#0096c7'}
                         />
                         <text 
-                        x={boundsWidth - 20}
-                        y={8}
+                        x={width / 2 +  29}
+                        y={10}
                         
                         >Air</text>
                         <rect
                         width={15}
                         height={10}
                         fill={'#e9ecf1'}
-                        x ={boundsWidth - 40}
-                         y={15}
+                        x ={width / 2 - 40}
+                         y={2}
                          fontWeight={600}
                         />
                         <text
-                        y={25}
-                        x ={boundsWidth - 20}
+                        y={9.6}
+                        x ={width/2 - 20}
                         fontWeight ={600}
                         >Sea</text>
                     </g>

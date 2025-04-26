@@ -1,37 +1,25 @@
-// import { max } from 'd3';
 import useST from '../../reusable-components/useST';
-import useTC from '../../reusable-components/useTC';
 import Spinner from '../Spinner/Spinner';
-import styles from './Progress.module.css'
-import { useState } from 'react';
-// const airShippingData = [
-//     { country: "United Kingdom", averageShippingTime: 3, goal: 2.5 },
-//     { country: "China", averageShippingTime: 5, goal: 3.5 },
-//     { country: "South Africa", averageShippingTime: 4, goal: 3.5 },
-//     { country: "Netherlands", averageShippingTime: 2, goal: 1.8 },
-//     { country: "Turkey", averageShippingTime: 3, goal: 2.7 },
-//     { country: "United Arab Emirates", averageShippingTime: 3, goal: 2.8 },
-//     { country: "Italy", averageShippingTime: 2, goal: 1.7 }
-// ];
 
-function Progress({countryName}){
-    const{shippingData,isLoading} = useST()
-    if(isLoading) return <Spinner/>
-    if (!shippingData || shippingData?.length === 0) return <p>No data available</p>;
+function Progress({ countryName }) {
+    const { shippingData, isLoading } = useST();
 
+    if (isLoading) return <Spinner />;
+    if (!shippingData || shippingData.length === 0) return <p>No data available</p>;
 
+    const countrydata = shippingData.find((d) => d.country === countryName);
+    if (!countrydata) return null;
 
-    const countrydata = shippingData?.find((d) => d.country === countryName)
-    if(!countrydata) return
-    const maxValue = Math.max(countrydata?.averageShippingTime, countrydata.goal);
-    return(
+    const { averageShippingTime, goal } = countrydata;
+
+    
+    const maxValue = Math.max(goal, averageShippingTime);
+
+    return (
         <>
-        <progress value={countrydata?.goal} max={maxValue}>
-
-
-        </progress>
-        {/* <p>Avg: {countrydata.averageShippingTime} days | Goal: {countrydata.goal} days</p> */}
+            <progress value={averageShippingTime} max={maxValue} />
         </>
-    )
+    );
 }
-export default Progress
+
+export default Progress;

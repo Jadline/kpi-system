@@ -34,7 +34,7 @@ function Account(){
         },
         onError: (error) => {
             console.error(error);
-            toast.error(error?.response?.data?.message || "Something went wrong. Please try again.");
+            toast.error(error?.response?.data?.message || "Wrong Password or Email. Please try again.");
           }
     })
     function onhandleSubmit(data){

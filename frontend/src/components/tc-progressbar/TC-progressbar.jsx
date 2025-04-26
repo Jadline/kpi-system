@@ -16,7 +16,7 @@ function TCProgressBar({data,className,totaltransportationcost}){
                 </div>
                 <div className={styles.totalcost}>
                     <p>Total Cost </p>
-                    <p>{totaltransportationcost ? totaltransportationcost : '1.2M'}</p>
+                    <p>{totaltransportationcost ? totaltransportationcost + 'M' : '1.2M'}</p>
                 </div>
                 </div>
             </div>
