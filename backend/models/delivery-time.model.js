@@ -1,4 +1,5 @@
 import pool from "../config/pool.config.js";
+import db from  "../config/db.config.js"
 
 export const fetchAverageDeliveryTime = async ({ year }) => {
   let query = `
@@ -60,12 +61,12 @@ export const fetchAverageDeliveryTime = async ({ year }) => {
   monthlyQuery += ` GROUP BY month ORDER BY TO_DATE(month, 'Month')::DATE;`;
 
   try {
-    const { rows: yearlyDeliveryTime } = await pool.query(query, values);
-    const { rows: countryDeliveryTime } = await pool.query(
+    const { rows: yearlyDeliveryTime } = await db.query(query, values);
+    const { rows: countryDeliveryTime } = await db.query(
       countryQuery,
       countryValues
     );
-    const { rows: monthlyDeliveryTime } = await pool.query(
+    const { rows: monthlyDeliveryTime } = await db.query(
       monthlyQuery,
       monthlyValues
     );
