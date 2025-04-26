@@ -45,9 +45,9 @@ function InsightCard({ className }) {
   // console.log(apiProperties)
 
  
-  const cardsInfo = Object.keys(apiData).map((key) => {
+  const cardsInfo = Object.keys(apiData)?.map((key) => {
     
-    console.log(`Mapping for key: ${key}`, cardMappings[pagePath]?.[key]);
+    // console.log(`Mapping for key: ${key}`, cardMappings[pagePath]?.[key]);
   
     
     if (!cardMappings[pagePath] || !cardMappings[pagePath][key]) return null;
