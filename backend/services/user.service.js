@@ -7,7 +7,7 @@ export const registerUser = async (userData) => {
   if (existing) throw new CustomError("That email is already registered.", 400);
 
   const hashedPassword = await bcrypt.hash(userData.password, 10);
-  return await createUser({ ...userData, hashedPassword });
+  return await createUser({ ...userData, password: hashedPassword });
 };
 
 export const loginUser = async (email, password) => {

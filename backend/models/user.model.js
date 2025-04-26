@@ -6,16 +6,17 @@ export const createUser = async ({
   username,
   role,
   email,
-  hashedPassword,
+  password,
 }) => {
   try {
     const query = `
       INSERT INTO users (full_name, username, role, email, password)
       VALUES ($1, $2, $3, $4, $5) RETURNING *`;
-    const values = [fullName, username, role, email, hashedPassword];
+    const values = [fullName, username, role, email, password];
     const result = await db.query(query, values);
     return result.rows[0];
   } catch (error) {
+    console.error("Database Insert Error:", error);
     throw new CustomError("Cannot create user", 404);
   }
 };
