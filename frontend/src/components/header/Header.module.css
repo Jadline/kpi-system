@@ -64,8 +64,8 @@ header {
 }
 
 .notification,
-.darkmode,
-.avatar {
+.darkmode
+ {
 
   max-width: 5rem;
   border-radius: 50%;
@@ -89,6 +89,20 @@ header {
   display : block;
   width : 2.8rem;
   margin-right : 1rem;
+}
+.avatar{
+  width : 5rem;
+  height : 5rem;
+  border-radius : 50%;
+  border : .1rem solid #ccc;
+  background-color: var(--icons-color-bg);
+  font-weight : var(--font-extrabold);
+  display : flex;
+  align-items : center;
+  cursor : pointer;
+  justify-content : center;
+  font-size: 2rem;
+
 }
 
 @media screen and (max-width : 480.98px){

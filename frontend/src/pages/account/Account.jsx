@@ -3,20 +3,44 @@ import styles from './Account.module.css'
 import {useForm} from 'react-hook-form'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { CreateAccount } from '../../Services/apiAccount'
+import { useMutation } from '@tanstack/react-query'
+import { useUser} from '../../context/user-Context'
+import toast from 'react-hot-toast'
+import { getInitials } from '../../helpers/initials'
 function Account(){
     const navigate = useNavigate()
+    const {setUserData} = useUser()
     const [signUp,setsignUp] = useState(true)
     const{register,getValues,reset,handleSubmit,formState} = useForm()
     const {errors} = formState
+    const {mutate,isLoading,error} = useMutation({
+        mutationFn : (data) => CreateAccount(data,signUp),
+        onSuccess : (data) => {
+            console.log(data)
+            toast.success(signUp ? "Account created successfully!" : "Login successful!");
+            const userWithInitials ={
+                ...data.user,
+                initials : getInitials(data.user.full_name)
+            }
+           setUserData(userWithInitials)
+            if(signUp){
+                setsignUp(false)
+                reset()
+            }
+            else{
+                navigate('/')
+            }
+        },
+        onError: (error) => {
+            console.error(error);
+            toast.error(error?.response?.data?.message || "Something went wrong. Please try again.");
+          }
+    })
     function onhandleSubmit(data){
-        console.log('data submited',data)
-        if(signUp){
-            setsignUp(false)
-            reset()
-        }
-        else {
-            navigate('/')
-        }
+        const {confirmpassword,...cleandata} = data
+        console.log(cleandata)
+        mutate(cleandata)
     }
     return (
         <div className={styles.formContainer}>
@@ -29,7 +53,7 @@ function Account(){
                 type="text"
                 id='name'
                 {
-                    ...register('name',{
+                    ...register('full_name',{
                         required : 'This field is required'
                     })
                 }
@@ -106,17 +130,18 @@ function Account(){
                  {errors.confirmpassword && <p className={styles.errortag}>{errors?.confirmpassword?.message}</p>}
             </div>}
            <div className={styles.buttonContainer}>
-            {/* <button onClick={(e) =>{
-                e.preventDefault()
-                setsignUp(false)
-            }}>
-                login
-            </button> */}
+            
              {!signUp && <p>Dont have an account? <span onClick={() => setsignUp(true)}>Sign Up</span></p>}
              {signUp && <p>Already have an account? <span onClick={() => setsignUp(false)}>Login</span></p>}
-            {/* {!signUp && <p>Already have an account ?</p>} */}
-           <button type='submit'>
-                {!signUp ? 'Login' : 'Create Account'}
+           <button 
+           type='submit' 
+           disabled={isLoading}
+           className={`${isLoading ? 'loadingButton' : ''}`}
+           >
+                 {isLoading 
+    ? (!signUp ? 'Logging in...' : 'Creating Account...')
+    : (!signUp ? 'Login' : 'Create Account')
+  }
             </button>
            </div>
         </form>

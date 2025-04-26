@@ -10,7 +10,14 @@ import { useGetLocation } from "../../reusable-components/useGetLocation";
 import User from "../user/User";
 import { FiLogOut } from "react-icons/fi";
 import { MdHelpOutline } from "react-icons/md";
+import { useUser } from "../../context/user-Context";
+import { getInitials } from "../../helpers/initials";
+import { FaUser } from "react-icons/fa";
 function Header({ className}) {
+  const {userData} = useUser()
+  const initials = userData?.initials || 'RC';
+  const username = userData?.username || 'Rolling Cargo'
+ 
   const navigate = useNavigate()
   const {opensidebar,
     setOpenSidebar,
@@ -62,21 +69,33 @@ function Header({ className}) {
   />
 )}
           <img role="button" src="./icons/notification.png" alt="notification-icon" className={`${styles.notification} ${styles.mobilehidden}`} />
-           <img 
+          <div
+           className={`${styles.avatar}`}
+           onClick={() => {
+            setshowdropDown(!showdropDown)
+           }}
+           role="button" 
+          > 
+          {initials } 
+
+          </div>
+           
+           {/* <img 
            onClick={() => {
             setshowdropDown(!showdropDown)
            }}
            role="button" 
            src="./avatar/avatar.svg" 
            alt="avatar-icon" 
-           className={`${styles.avatar} ${isdarkmode ? 'dark-avatar'  : ''}`}  />
+           className={`${styles.avatar} ${isdarkmode ? 'dark-avatar'  : ''}`}  /> */}
            {/* <User/> */}
            {showdropDown && <div className={styles.dropdown}>
+           <p><span><FaUser color='orange'/>{username}</span></p>
             <p
             className={styles.logout}
             onClick={() => navigate('/account')}
             ><span><FiLogOut color='orange'/></span>Log Out</p>
-            <p><span><MdHelpOutline color='orange'/></span>help & support</p>
+            
             </div>}
       </div>
       </div>

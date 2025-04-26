@@ -71,3 +71,10 @@ button {
 .errortag {
     font-size : 1.5rem;
 }
+.loadingButton {
+    opacity: 0.6 !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  

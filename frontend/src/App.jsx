@@ -8,12 +8,17 @@ import AverageDeliveryTime from "./pages/average-delivery/AverageDeliveryTime";
 import AppLayout from "./pages/applayout/AppLayout";
 import PageNotFound from "./pages/pagenotfound/PageNotFound";
 import Account from "./pages/account/Account";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 
 function App() {
   return (
     <Routes>
-      <Route element= {<AppLayout/>}>
+      <Route element={
+        <ProtectedRoute>
+          <AppLayout/>
+        </ProtectedRoute>
+      }>
         <Route path='/' element={<PerfectOrderRate/>}/>
         <Route path='/number-of-shipments' element={<NumberOfShipments/>}/>
         <Route path='/transportation-cost' element={<TransportationCost/>}/>
