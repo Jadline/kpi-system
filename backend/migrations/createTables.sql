@@ -96,10 +96,10 @@ CREATE TABLE perfect_order_rate (
 DROP TABLE IF EXISTS perfect_order_rate_by_country;
 
 -- Create the perfect_order_rate_by_country table
-CREATE TABLE perfect_order_rate_by_country (
+CREATE TABLE public.perfect_order_rate_by_country (
     perfect_order_rate_by_country_id SERIAL PRIMARY KEY,  -- Unique auto-incrementing ID
     country VARCHAR(100) NOT NULL,       -- Country name
-    month VARCHAR(20) NOT NULL,          -- Month name
+    month VARCHAR(20) NOT NULL,           -- Month name
     year INT NOT NULL CHECK (year >= 2000),  -- Year (valid range)
     total_orders_by_air INT NOT NULL CHECK (total_orders_by_air >= 0),
     total_orders_by_sea INT NOT NULL CHECK (total_orders_by_sea >= 0),
@@ -111,8 +111,9 @@ CREATE TABLE perfect_order_rate_by_country (
     incomplete_orders_by_sea INT NOT NULL CHECK (incomplete_orders_by_sea >= 0),
     perfect_orders_by_air INT NOT NULL CHECK (perfect_orders_by_air >= 0),
     perfect_orders_by_sea INT NOT NULL CHECK (perfect_orders_by_sea >= 0),
-    perfect_order_rate_by_air DECIMAL(5,2) NOT NULL CHECK (perfect_order_rate)
-    );
+    perfect_order_rate_by_air DECIMAL(5,2) NOT NULL CHECK (perfect_order_rate_by_air BETWEEN 0 AND 100),
+    perfect_order_rate_by_sea DECIMAL(5,2) NOT NULL CHECK (perfect_order_rate_by_sea BETWEEN 0 AND 100)
+);
 
 
 
