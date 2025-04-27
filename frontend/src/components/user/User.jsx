@@ -9,14 +9,6 @@ function User(){
     return(
         <>
         <div className={styles.userContainer}>
-            {/* <img 
-                       onClick={() => {
-                        
-                       }}
-                       role="button" 
-                       src="./avatar/avatar.svg" 
-                       alt="avatar-icon" 
-                       className={`${styles.avatar} ${isdarkmode ? 'dark-avatar'  : ''}`}  /> */}
             <p
             onClick={() => navigate('/account')}
             >Log Out</p>

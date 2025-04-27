@@ -52,7 +52,7 @@ function NOSBar({data,className}){
                     height ={barHeight}
                     fill ={colors[category]}
                     rx={4}
-                    // rx={xsubScale.bandwidth()/3}
+                   
                    
                     />
 

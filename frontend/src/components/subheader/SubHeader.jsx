@@ -9,7 +9,7 @@ import { fetchShipments } from '../../Services/apiNOS'
 import { useDashboard } from '../../context/state-Context'
 function SubHeader({className}){
     
-    // const [mode,setMode] = useState('air')
+  
     const {filters,setFilters} = useDashboard()
     const pageTitle = useGetLocation()
     function handleFiltersChange(section,key,value){

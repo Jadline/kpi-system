@@ -14,13 +14,13 @@ function useTC() {
         {category : 'air',average_cost : data?.total_cost_air},
         {category : 'sea',average_cost : data?.total_cost_sea}
     ]
-    // { month: "January", airCost: 75.2, seaCost: 95.8 },
+   
     const transportationCostData = data?.costPerShipmentOverTime?.map(({month,cost_per_shipment_air,cost_per_shipment_sea}) => ({
         month : month,
         airCost : cost_per_shipment_air,
         seaCost : cost_per_shipment_sea
     }))
-    // { country: "UAE", budget: 150000, actualSpending: 162034, percentageUsed: 108.02 },
+    
    const transportCostUsage = data?.budgetPerfomance?.map(({country,total_budget,total_budget_used}) => ({
     country:country,
     budget : total_budget,

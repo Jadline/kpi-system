@@ -3,7 +3,7 @@ import { useRef, useState,useEffect } from "react"
 import { useDimensions } from "../../reusable-components/useDimensions"
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 function TCLine({className,data}){
-    console.log('data',data)
+   
     const {containerRef,width,height} = useDimensions(700,500)
    
     const boundsWidth = width - MARGIN.left - MARGIN.right
@@ -85,8 +85,7 @@ function TCLine({className,data}){
          cy ={yScale(d.seaCost)}
          stroke={'#ff9000'}
          fill='#ff9000'
-        //  strokeWidth={2}
-        //  fill={'#000'}
+       
          r={4}
         />
     ))

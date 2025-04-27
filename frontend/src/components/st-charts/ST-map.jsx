@@ -15,16 +15,6 @@ const countries = {
 
   const ukRegions = ["England", "Scotland", "Wales", "Northern Ireland"];
 
-//   const shippingTimes = {
-//     "United Kingdom": { air: "3 days", sea: "20 days" },
-//     "China": { air: "5 days", sea: "30 days" },
-//     "South Africa": { air: "4 days", sea: "25 days" },
-//     "Netherlands": { air: "2 days", sea: "15 days" },
-//     "Turkey": { air: "3 days", sea: "18 days" },
-//     "United Arab Emirates": { air: "3 days", sea: "20 days" },
-//     "Italy": { air: "2 days", sea: "15 days" }
-//   };
-
 
 function Map({data,className}){
 
@@ -154,7 +144,7 @@ function Map({data,className}){
                     top : tooltip.y - 40,
                     paddingInline : '2.4rem',
                     paddingBlock : '1.2rem',
-                    // border:'.2rem solid rgba(0, 0, 0,0.2)',
+                  
                     borderRadius : '1rem',
                     backgroundColor : 'hsl(216, 33%, 87%)',
                     fontSize : '1.2rem',

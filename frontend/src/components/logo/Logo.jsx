@@ -20,15 +20,7 @@ function Logo({className}){
             <img 
             src="./logo/rolling-cargo.png" alt=""  
             className={`${isMobile ? styles.onMobile : ''} ${opensidebar ? styles.menubar : ''}`} /> 
-             {/* <img 
-                  src="./icons/list.png" 
-                  alt=""
-                  className={`${styles.menubar}`} 
-                  role='button' 
-                  
-                  onClick={() => setOpenSidebar(!opensidebar)}
-                  />  */}
-            
+           
            {!opensidebar && <h2><span>Rolling Cargo</span><span>Shipping Company</span> </h2>}
         </div>
 

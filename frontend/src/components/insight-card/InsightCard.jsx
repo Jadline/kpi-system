@@ -40,7 +40,7 @@ function InsightCard({ className }) {
   if (!apiData) return <p>No data available</p>;
 
   
-  // const apiProperties = Object.keys(apiData).filter((key) => !["countries", "perfect_order_rate", "pefect_order_rate_by_year"].includes(key));
+  
 
   
 

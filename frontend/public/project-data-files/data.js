@@ -50,14 +50,14 @@ export const cardMappings = {
       },
   },
   '/shipping-time' : {
-    average_shipping_time_by_air : {
-      title: "Average Shipping Time by Air",
+    average_shipping_time_by_air  : {
+      title: "Average Shipping Time by Air (in days)",
       type: "number",
       icon: "/icons/average-shipping-time-icon.png",
       backgroundColor: "#E4E4FF",
     },
     average_shipping_time_by_sea : {
-      title: "Average Shipping Time by Sea", 
+      title: "Average Shipping Time by Sea (in days)", 
       type: "number",
       icon: "/icons/best-shipping-time-icon.png",
       backgroundColor: "#FEF2D6",
@@ -77,13 +77,13 @@ export const cardMappings = {
   },
   '/average-delivery-time': {
     average_delivery_time_by_air : {
-      title: "Average Delivery Time by Air",
+      title: "Average Delivery Time by Air (in days)",
       type: "number",
       icon: "/icons/average-delivery-time.png",
       backgroundColor: "#FFDED2",
     },
     average_delivery_time_by_sea : {
-      title: "Average Delivery Time by Sea",
+      title: "Average Delivery Time by Sea (in days)",
       type: "number",
       icon: "/icons/best-shipping-time-icon.png",
       backgroundColor: "#FEF2D6",

@@ -1,7 +1,7 @@
 header {
   
   gap : 1rem;
-  /* background-color : orange; */
+ 
   padding-inline: 1rem;
   box-shadow : 0rem 0.2rem .6rem rgba(0,0,0,0.2);
  
@@ -12,7 +12,7 @@ header {
 }
 .title {
   display : flex;
-  /* background-color : aqua; */
+  
   align-items : center;
   gap : 1rem;
   flex-grow : 1;
@@ -21,12 +21,12 @@ header {
 }
 .headContainer{
   display: flex;
-  /* background-color : orange; */
+  
   
   justify-content: space-between;
   align-items: center;
   position : relative;
-  /* padding-inline: 1rem; */
+  
 
   padding-block : 1rem;
 }
@@ -58,7 +58,7 @@ header {
   color: var(--header-pry-clr1);
   white-space :nowrap;
   margin-right : 2rem;
-  /* margin-right: 3rem; */
+ 
 }
 .headContainer img {
   cursor: pointer;
@@ -80,7 +80,7 @@ header {
   
  
   gap : 2rem;
-  /* background-color : red; */
+ 
 }
 .rightHeader {
   display : flex;
@@ -124,7 +124,8 @@ header {
 @media screen and (min-width:769px) and (max-width:1024.98px){
   .headContainer{
     align-items : center;
-    /* background-color : red !important; */
+  
 
   }
+ 
 }

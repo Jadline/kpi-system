@@ -3,13 +3,9 @@ import { useRef, useState,useEffect } from "react";
 import styles from './por-donut.module.css'
 import { useResize } from "../../reusable-components/useResize";
 import { useDimensions } from "../../reusable-components/useDimensions";
-// import ModeButton from "../../reusable-components/Button";
-// const width = 700;
-// const height= 400;
 
 const MARGIN = {top : 30,left : 50,bottom : 30,right : 50}
-// const boundsWidth = width - MARGIN.left - MARGIN.right
-// const boundsHeight =height - MARGIN.top - MARGIN.bottom
+
 
 
 const colors = ['#03045e','#0077b6','#00b4d8']
@@ -59,16 +55,7 @@ function PORDonut({data,className}){
             >
                 Order summary
             </text>
-            {/* <foreignObject
-        width={150}
-        height={45}
-        x={boundsWidth - width / 2 + 140}
-         y={10}
-       
-
-        >
-          <ModeButton mode={mode} setMode={setMode}/>
-        </foreignObject> */}
+           
             <g transform={`translate(${width / 2}, ${height / 2 + 15})`}>
                 {porPie(data).map((d,i) => (
                     <path

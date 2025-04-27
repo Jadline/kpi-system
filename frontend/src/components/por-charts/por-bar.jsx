@@ -3,10 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import styles from "./por-bar.module.css";
 import { useDimensions } from "../../reusable-components/useDimensions";
 import { useResize } from "../../reusable-components/useResize";
-// import ModeButton from "../../reusable-components/Button";
 
-// const width = 700;
-// const height = 400;
 const BAR_PADDING = 0.3;
 
 const MARGIN = { top: 30, left: 50, bottom: 30, right: 50 };
@@ -31,7 +28,7 @@ function PORBar({ className, data }) {
 
   const sortedData = [...data].sort((a,b) => b.por - a.por)
   const groups = sortedData.map((d) => d.country)
-  // const groups = data.sort((a, b) => b.por - a.por).map((d) => d.country);
+  
 
   const xScale = scaleLinear()
     .domain([0, max(data, (d) => d.por) ])
@@ -121,16 +118,7 @@ function PORBar({ className, data }) {
         >
           Perfect Order Rate by Route
         </text>
-        {/* <foreignObject
-        width={150}
-        height={45}
-        x={boundsWidth - width / 2 -  100}
-         y={10}
-
-
-        >
-          <ModeButton mode={mode} setMode={setMode}/>
-        </foreignObject> */}
+        
         <g transform={`translate(${MARGIN.left - 25},${MARGIN.top + 10})`}>
           {gridLines}
           {bars}

@@ -1,22 +1,22 @@
 .logoContainer {
     display : flex;
-    /* flex-direction : column; */
+    
     align-items : center;
     justify-content : flex-start;
     gap : 1rem;
     padding : 1rem;
-    /* background-color : red; */
+  
     min-width : auto;
     margin-right : 2rem;
     
-    /* flex-grow : 1; */
+ 
    
 }
 .logoContainer h2 {
     
   
     color : var(--header-pry-clr1);
-    /* white-space : nowrap; */
+  
 }
 .logoContainer img {
     display : block;
@@ -29,11 +29,11 @@
 }
 .menubar {
     width : 100%;
-    /* border-radius : 50%; */
+    
     color: var(--sidebar-clr1);
-    /* padding : 1rem; */
+    
     border : 2px solid #ccc;
-    /* background-color : red; */
+    
     
 }
 .shrinkedlogo{

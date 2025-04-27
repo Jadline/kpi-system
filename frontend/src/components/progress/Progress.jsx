@@ -15,17 +15,13 @@ function Progress({ countryName }) {
 
     const remaining = averageShippingTime - goal;
 
-    // Only show remaining if it's positive (meaning we still need to improve)
+    
     const progressValue = remaining > 0 ? goal / averageShippingTime : 1;
 
     return (
         <>
             <progress value={progressValue} max="1" style={{ width: '100%' }} />
-            {/* {remaining > 0 ? (
-                <p>{remaining.toFixed(1)} days to reach the goal</p>
-            ) : (
-                <p>Goal achieved!</p>
-            )} */}
+           
         </>
     );
 }

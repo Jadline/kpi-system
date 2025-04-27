@@ -10,14 +10,14 @@ import { useResize } from "../../reusable-components/useResize";
 
 function AppLayout() {
   const { opensidebar } = useUI();
-  const {isMobile,isTablet} = useResize()
+  const {isMobile,isTablet,isLaptop} = useResize()
 
   return (
     <>
     <div
     className={`${styles.appLayout}`}
     style={{
-      "--sidebar-width": isMobile || isTablet ? "0" : opensidebar ? "10rem" : "26rem",
+      "--sidebar-width": isMobile || isLaptop ||  isTablet ? "0" : opensidebar ? "10rem" : "26rem",
     }}
   >
       <Header className={styles.header} />

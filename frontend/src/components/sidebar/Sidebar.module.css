@@ -1,75 +1,18 @@
-/* 
 
-.sectionTitle{
-    color :var(--card-font-clr1);
-    display : flex;
-    align-items : center;
-    gap : 1rem;
-    padding  : 1rem 2rem;
-    margin-inline:auto;
-    border-radius : .4rem;
-    background-color :var(--icons-color-bg);
-    margin-bottom : 2rem;
-}
-.sectionTitle p {
-  font-size: 1.8rem;
-  font-weight: var(--font-bold);
-}
-.sidebarIcon {
-  display: block;
-  width: 2.8rem;
-}
-ul {
-  margin-inline: auto;
-  margin-block: auto;
-}
-ul li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 3rem;
-  gap: 1rem;
-}
-ul li a {
-  white-space: nowrap;
-  text-decoration: none;
-  font-size: 1.6rem;
-  color: var(--sidebar-clr1);
-  transition: color 0.5s;
-  font-weight: var(--font-bold);
-}
-ul li a:hover {
-  color: var(--card-font-clr1);
-}
-.sidebarContent a:global(.active) {
-  color: var(--sidebar-active-clr);
-}
-.sidebarContent {
-  padding-inline: 2rem;
-  padding-block: 1rem;
-  transition : transform 0.3s ease-in-out;
-  position : relative;
-}
-.mobileOnly{
-  display : none;
-}
-
-
- */
  .desktopCollapsed {
-  /* background-color: #f8fffc; */
-  /* background-color :blue; */
+  
+ 
   height : 100vh;
  
   display : flex;
 
   flex-direction : column;
 
-  /* gap : 3rem; */
-  /* justify-content : space-between; */
+  
   padding-inline : 1rem;
   width : 100%;
   transition : width 0.4s ease-in-out;
-  /* padding-left : 1rem; */
+  
   position : relative;
   border-right : 2px solid rgba(204, 204, 204,0.4);
   box-shadow : 0.2rem 0rem .5rem rgba(0,0,0,0.2);
@@ -96,7 +39,7 @@ ul li a:hover {
 .sidebarbutton {
   position: absolute;
   top: 0.5%;
-  right: -2.6rem; /* Keeps it outside the sidebar edge */
+  right: -2.6rem; 
   border : 2px solid #000;
   width: 3.4rem;
   height: 3.4rem;
@@ -170,7 +113,7 @@ h3 p {
   gap : .5rem;
   color: var(--sidebar-clr1);
   padding-left : 1rem;
-  /* background-color : red; */
+ 
 }
 .desktopExpanded{
   width : 10rem;
@@ -191,8 +134,8 @@ h3 p {
 }
 @media screen and (max-width: 480.98px) {
   aside{
-    /* background-color : orange !important; */
-    position: absolute; /* Take it out of the grid only on mobile */
+   
+    position: absolute; 
     transform : translateX(-100%);
     top: 12vh;
     height: 100vh;
@@ -205,11 +148,11 @@ h3 p {
   }
 
   .mobileOpen {
-    transform: translateX(0) !important; /* Slide in when toggled */
+    transform: translateX(0) !important;
   }
 
   .mobileClosed {
-    display : none !important; /* Hide completely */
+    display : none !important; 
   }
   .mobileOnly {
     display : block;
@@ -230,8 +173,8 @@ h3 p {
 
 @media screen and (min-width : 481px) and (max-width : 768.98px){
   aside{
-    /* background-color : orange !important; */
-    position: absolute; /* Take it out of the grid only on mobile */
+  
+    position: absolute; 
     transform : translateX(-100%);
     top: 0;
     height: 100vh;
@@ -244,11 +187,50 @@ h3 p {
   }
 
   .mobileOpen {
-    transform: translateX(0) !important; /* Slide in when toggled */
+    transform: translateX(0) !important; 
   }
 
   .mobileClosed {
-    display : none !important; /* Hide completely */
+    display : none !important; 
+  }
+  .mobileOnly {
+    display : block;
+    padding-left : 1.2rem;
+  
+  }
+  .darkmode,.notifications {
+    display : flex;
+    cursor : pointer;
+  }
+  .lowerSidebar {
+    margin-top : 2rem;
+    flex-direction : column;
+    align-items : flex-start;
+    gap : 2rem;
+  }
+  
+}
+@media screen and (min-width : 769px) and (max-width : 1024.98px){
+  aside{
+    
+    position: absolute; 
+    transform : translateX(-100%);
+    top: 0;
+    height: 100vh;
+    width: 26rem;
+    background: white;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    padding : .5rem;
+    
+  }
+
+  .mobileOpen {
+    transform: translateX(0) !important; 
+  }
+
+  .mobileClosed {
+    display : none !important; 
   }
   .mobileOnly {
     display : block;

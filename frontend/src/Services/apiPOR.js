@@ -8,7 +8,7 @@ export async function fetchPOR(year,mode){
     }
     catch(error){
         console.error('There was an error fetching por data',error)
-        // if(!year || !mode) throw new Error(`Invalid parameters year=${year} , mode=${mode} `)
+        
     }
 
 }

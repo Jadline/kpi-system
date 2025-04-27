@@ -1,6 +1,6 @@
 import ADTBar from "../../components/adt-charts/ADT-bar";
 import styles from "./AverageDeliveryTime.module.css";
-// import { ADTareadata} from "../../../public/project-data-files/MainPages";
+
 import ADTArea from "../../components/adt-charts/ADT-area";
 import ADTable from "../../components/adt-table/ADT-table";
 import useADT from "../../reusable-components/useADT";
