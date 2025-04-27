@@ -42,7 +42,6 @@ function Header({ className}) {
             alt="" className={`${styles.menubar}`} 
             role='button' 
             onClick={() => {
-              console.log("Toggle Clicked! Current State:", opensidebar); // Debugging
               setOpenSidebar(prev => !prev);
             }}
            

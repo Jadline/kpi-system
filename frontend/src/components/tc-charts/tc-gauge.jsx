@@ -88,11 +88,12 @@ function Gauge({ totalCost, budget, className }) {
        
         <text
           x={width / 2}
-          y={height - 30}
+          y={height - 50}
           textAnchor="middle"
-          fontSize={14}
+          fontSize={50}
+          fontWeight={800}
         >
-          {`Utilization: ${utilization.toFixed(1)}%`}
+          {`${utilization.toFixed(1)}%`}
         </text>
       </svg>
     </div>

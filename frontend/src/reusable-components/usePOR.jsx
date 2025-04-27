@@ -7,10 +7,7 @@ function usePOR(){
     const yearOrders = filters.perfectorders?.year
     const mode = filters.perfectorders?.mode
 
-    console.log('filters',filters)
-    console.log('year orders',yearOrders)
-    console.log('mode',mode)
-    
+   
     const{data,isLoading,error} = useQuery({
         queryKey : ['perfectorders',yearOrders,mode],
         queryFn : () => fetchPOR(yearOrders,mode),

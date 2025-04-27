@@ -29,14 +29,13 @@ function useTC() {
    }))
    const total_transportation_cost = data?.total_transportation_cost
 
-    // console.log("Fetched Data:", data); 
     const totalBudget = transportCostUsage?.reduce((sum, item) => sum + (item.budget || 0), 0) || 0;
     const totalUsed = transportCostUsage?.reduce((sum, item) => sum + (item.actualSpending || 0), 0) || 0;
 
 
     
 
-    // console.log("Processed airShippingData:", airShippingData); // Debugging
+    
 
     return {Tcpiedata, isLoading, error,data,transportationCostData,transportCostUsage,total_transportation_cost,totalBudget,totalUsed};
 }
