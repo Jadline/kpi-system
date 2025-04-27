@@ -14,14 +14,14 @@ const selectedCountries = [
     "South Africa",
   ];
 function ProgressBar({className,data}){
-    console.log('progress data',data)
+    
     const {filters,setFilters} = useDashboard()
     const mode = filters?.shippingtime.mode
     const {isdarkmode} = useUI()
     const filteredCountries = data?.filter((country) => {
        return selectedCountries.includes(country.name.common)
     })
-    // console.log(filteredCountries)
+   
     function handleFiltersChange(section,key,value){
         setFilters((prev) =>(
             {

@@ -5,7 +5,7 @@ import { useDimensions } from "../../reusable-components/useDimensions";
 const MARGIN = { left: 30, top: 30, right: 30, bottom: 30 };
 
 function GaugeChart({ avg_deliverytime, goal, className,mode }) {
-  console.log("avg_deliverytime:", avg_deliverytime, "goal:", goal);
+ 
 
   const { containerRef, width, height } = useDimensions();
   const size = Math.min(width, height); 
@@ -87,10 +87,7 @@ function GaugeChart({ avg_deliverytime, goal, className,mode }) {
           </text>
 
        
-          {/* <text textAnchor="middle" dy="90" fontSize="16px" fill="#666">
-            {avg_deliverytime - goal} days left
-          </text>
-          */}
+         
         </g>
       </svg>
     </div>

@@ -77,7 +77,7 @@ function STLine({data,className}){
             width  :'100%',
             height : '100%',
             borderRadius : '1rem',
-            // backgroundColor : 'red',
+        
             boxShadow : '-0.4rem -0.4rem 1rem rgba(0,0,0,0.2)'
         }}
         className={className}

@@ -4,14 +4,14 @@ import styles from './por-line.module.css'
 import { FaEllipsisH } from "react-icons/fa";
 import usePOR from "../../reusable-components/usePOR";
 import { useDashboard } from "../../context/state-Context";
-// import ModeButton from "../../reusable-components/Button";
+
 
 
 
 const MARGIN = { top: 30, left: 50, bottom: 30, right: 50 };
 
 function PORLine({ data, className }) {
-  // const[mode,setMode] = useState('air')
+  
 
   const {filters} = useDashboard()
   
@@ -49,7 +49,7 @@ function PORLine({ data, className }) {
       timeoutidRef.current = setTimeout(updateSize, 200);
     };
 
-    updateSize(); // Initial size calculation
+    updateSize(); 
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -155,60 +155,7 @@ function PORLine({ data, className }) {
         >
           Perfect Order Rate {filters.perfectorders?.year} %
         </text>
-        {/* <foreignObject
-        width={150}
-        height={45}
-        x={boundsWidth - width / 2 -  100}
-         y={10}
-       
 
-        >
-          <ModeButton mode={mode} setMode={setMode}/> */}
-        {/* <div
-        style={{
-          display : 'flex',
-          // backgroundColor : 'yellow',
-          gap : '1rem',
-          alignItems : 'center',
-          justifyContent : 'center'
-
-        }}
-        >
-        <button onClick={() => setMode("air")} style={{
-       background: mode === "air" ? "#0077b6" : "gray" ,
-       width : '6rem',
-       height : '2.2rem',
-       outline : 'none',
-       border : 'none',
-       borderRadius : '.5rem',
-       color :'#fff',
-       fontWeight : '600'
-      
-       
-       }}>
-      Air
-    </button>
-    <button 
-    onClick={() => setMode("sea")} 
-    style={{ 
-      background: mode === "sea" ? "#0077b6" : "gray" ,
-      width : '6rem',
-      height : '2.2rem',
-      outline : 'none',
-      border : 'none',
-      borderRadius :'.5rem',
-      color : '#fff',
-      fontWeight : '600'
-    
-    
-
-    }}
-    >
-      Sea
-    </button>
-       
-        </div> */}
-        {/* </foreignObject> */}
         
         <g transform={`translate(${MARGIN.left},${MARGIN.top})`}>
           {gridLines}

@@ -3,9 +3,7 @@
     justify-content : space-between;
     padding-inline : 1rem;
     align-items : center; 
-    
-   
-    /* background-color: red; */
+      
     
 }
 span {
@@ -26,9 +24,7 @@ span {
     .sidebarfilters {
         padding : .5rem 2rem;
     }
-    /* .sidebarfilters {
-        align-items : flex-start;
-    }  */
+  
     
     span {
         font-size: 1.2rem;

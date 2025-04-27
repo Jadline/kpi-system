@@ -15,7 +15,7 @@ function ShippingTime() {
 
   
   useEffect(() => {
-    if(mapError || countriesError) console.log('There was an error')
+    if(mapError || countriesError) console.error('There was an error')
   }, [mapError, countriesError]);
 
   

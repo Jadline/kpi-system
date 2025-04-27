@@ -12,12 +12,16 @@ function Progress({ countryName }) {
 
     const { averageShippingTime, goal } = countrydata;
 
+
+    const remaining = averageShippingTime - goal;
+
     
-    const maxValue = Math.max(goal, averageShippingTime);
+    const progressValue = remaining > 0 ? goal / averageShippingTime : 1;
 
     return (
         <>
-            <progress value={averageShippingTime} max={maxValue} />
+            <progress value={progressValue} max="1" style={{ width: '100%' }} />
+           
         </>
     );
 }

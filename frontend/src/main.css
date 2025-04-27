@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+/* Define global variables once */
 :root {
   --primary-clr1: #0096c7;
   --primary-clr2: #e7edff;
@@ -8,14 +10,10 @@
   --primary-clr5: #ff9066;
   --primary-clr6: #00b4d8;
   --primary-clr7: #0077b6;
-
   --primary-clr8: hsl(0, 0%, 42%);
-
-  /* --search-bar-bg : #f5f7fa; */
   --search-bar-bg: hsl(216, 33%, 87%);
   --search-bar-clr: #8ba3cb;
-
-  --font-family: "Nunito Sans", serif;
+  --font-family: "Nunito Sans", sans-serif;
   --font-thin: 200;
   --font-light: 300;
   --font-regular: 400;
@@ -25,95 +23,70 @@
   --font-extrabold: 800;
   --font-black: 900;
   --font-ultra: 1000;
-  /* *Card * */
   --card-font-clr1: #202224;
-
-  /* *Sidebar* */
   --sidebar-clr1: #b1b1b1;
   --sidebar-active-clr: #3532f4;
-
-  /* *Header* */
   --header-pry-clr1: #343c6a;
   --icons-color-bg: hsl(216, 33%, 92%);
   --icons-color-bg1: hsl(216, 33%, 96%);
-
-  /* *Perfect Order Rate* */
-
   --chart-primary-bg3: #03045e;
-
   --POR-graph-line-clr: #fcaa0b;
   --POR-graph-bar-bg1: #8aebff;
   --POR-graph-bar-bg2: #48cae4;
   --POR-graph-bar-bg4: #023e8a;
-
   --icon-totalOrder-bg: #fff5d9;
   --icon-completeOrders-bg: #ffe0eb;
   --icon-untimelyDeliveries-bg: #dcfaf8;
-
   --activeOrders-clr: #718ebf;
-
-  /* *Shipping Time * */
-
   --ST-graph-line-clr1: #0096c7;
   --ST-graph-line-clr2: #fb896b;
-
   --map-bg1: #3bc9db;
   --map-bg2: #32d583;
   --map-bg3: #da77f2;
   --map-bg4: #fce643;
-
   --progressbar-bg1: #f9ab19;
-
   --ST-bar-bg1: #e9ecf1;
   --ST-bar-bg2: #d5e5ff;
-
-  /* *Transportation Cost* */
   --TC-graph-pie-bg1: #ff9000;
-
   --TC-graph-line-clr: #615e83;
-
-  /* * Number Of Shipments * */
   --NOS-graph-pie-bg1: #5388d8;
   --NOS-graph-pie-bg2: #f4be37;
-
-  /* *Average Delivery Time* */
   --ADT-graph-area-bg1: #3960d1;
   --ADT-graph-area-bg2: #00a651;
 }
 
+/* Global reset once */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
+
+/* HTML and body */
 html {
   font-size: 62.5%;
-  width : 100%;
+  width: 100%;
   overflow-x: hidden;
+  background-color: #f8ffff;
 }
+
 body {
   font-family: var(--font-family);
-  background-color :#f8ffff;
-  width : 100%;
+  width: 100%;
   overflow-x: hidden;
-  min-height : 100vh;
-  padding : 1.2rem;
-  overflow-y : auto;
- 
+  min-height: 100vh;
+  padding: 1.2rem;
+  overflow-y: auto;
 }
+
+
 .dark-mode {
-  filter : invert(97%);
-  
-}
-.dark-avatar {
-  filter : invert(97%);
-  background-color : #000;
+  filter: invert(97%);
 }
 
+.dark-mode img {
+  filter: invert(1);
+}
 
-/* .dark-mode img {
-  filter : invert(1);
-} */
- 

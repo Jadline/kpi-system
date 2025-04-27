@@ -7,7 +7,7 @@ export async function fetchShippingData(year,month,mode){
         return data
     }
     catch(error){
-        console.log('There was an error fetching data',error)
+        console.error('There was an error fetching data',error)
     }
     
 }

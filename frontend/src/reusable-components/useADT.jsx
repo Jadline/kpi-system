@@ -23,7 +23,7 @@ function useADT(){
         status : status
       }))
       
-      // { month: "January", air: 5, sea: 24 },
+      
     const ADTareadata = data?.monthlyData?.map(({month,average_delivery_air,average_delivery_sea}) => ({
       month : month,
       air : average_delivery_air,

@@ -15,7 +15,7 @@ function InsightCard({ className }) {
   const pagePath = location.pathname;
   const pageTitle = mainPages[pagePath] || "";
 
-  console.log('pageTitle',pageTitle)
+
 
   const shipmentsQuery = useShipments();
   const PerfectordersQuery = usePOR()
@@ -40,15 +40,14 @@ function InsightCard({ className }) {
   if (!apiData) return <p>No data available</p>;
 
   
-  // const apiProperties = Object.keys(apiData).filter((key) => !["countries", "perfect_order_rate", "pefect_order_rate_by_year"].includes(key));
+  
 
-  // console.log(apiProperties)
+  
 
  
   const cardsInfo = Object.keys(apiData)?.map((key) => {
     
-    // console.log(`Mapping for key: ${key}`, cardMappings[pagePath]?.[key]);
-  
+   
     
     if (!cardMappings[pagePath] || !cardMappings[pagePath][key]) return null;
   

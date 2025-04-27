@@ -27,8 +27,7 @@ function Header({ className}) {
     setshowdropDown
 
   } = useUI()
-  // const location = useLocation();
-  // const pageTitle = mainPages[location.pathname] || "";
+  
   const pageTitle = useGetLocation()
   return (
     <header className={className}>
@@ -42,7 +41,6 @@ function Header({ className}) {
             alt="" className={`${styles.menubar}`} 
             role='button' 
             onClick={() => {
-              console.log("Toggle Clicked! Current State:", opensidebar); // Debugging
               setOpenSidebar(prev => !prev);
             }}
            
@@ -80,15 +78,7 @@ function Header({ className}) {
 
           </div>
            
-           {/* <img 
-           onClick={() => {
-            setshowdropDown(!showdropDown)
-           }}
-           role="button" 
-           src="./avatar/avatar.svg" 
-           alt="avatar-icon" 
-           className={`${styles.avatar} ${isdarkmode ? 'dark-avatar'  : ''}`}  /> */}
-           {/* <User/> */}
+           
            {showdropDown && <div className={styles.dropdown}>
            <p><span><FaUser color='orange'/>{username}</span></p>
             <p

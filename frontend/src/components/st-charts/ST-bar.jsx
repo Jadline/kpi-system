@@ -36,18 +36,7 @@ function STBar({data,className}){
                     width ={xScale.bandwidth()}
                     fill={colors[category.key]}
                     />
-                    {/* <text
-                    fontSize={12}
-                    color ={'#000'}
-                    x={x + xScale.bandwidth() /2}
-                    y={y + height/2}
-                    textAnchor={'middle'}
-                    alignmentBaseline={'middle'}
-                    >
-                        {d[1] - d[0]}
-
-                    </text> */}
-
+              
                 </g>
             )
         })

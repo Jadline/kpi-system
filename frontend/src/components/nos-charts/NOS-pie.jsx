@@ -4,7 +4,7 @@ import { useDimensions } from "../../reusable-components/useDimensions";
 const colors =['#5388d8','#f4be37']
 const MARGIN = {left : 30,top : 50,right : 30,bottom : 50}
 function NOSPie({data,className}){
-    console.log("Pie chart data:", data);
+ 
 
     const {containerRef,width,height} = useDimensions()
     
