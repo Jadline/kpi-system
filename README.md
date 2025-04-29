@@ -10,7 +10,7 @@ This project is a _KPI (Key Performance Indicator) System_ designed for _Rolling
 - _Ian Gitonga_
 - _Jadline Njeri_
 
-To visit website https://kpi-system.vercel.app/account
+To visit website https://kpi-system.vercel.app/
 
 ## Key Performance Indicators
 
