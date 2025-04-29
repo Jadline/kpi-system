@@ -2,7 +2,7 @@ import db from "../config/db.config.js";
 import CustomError from "../helpers/CustomError.js";
 
 export const createUser = async ({
-  fullName,
+  full_name,
   username,
   role,
   email,
@@ -12,7 +12,7 @@ export const createUser = async ({
     const query = `
       INSERT INTO users (full_name, username, role, email, password)
       VALUES ($1, $2, $3, $4, $5) RETURNING *`;
-    const values = [fullName, username, role, email, password];
+    const values = [full_name, username, role, email, password];
     const result = await db.query(query, values);
     return result.rows[0];
   } catch (error) {
