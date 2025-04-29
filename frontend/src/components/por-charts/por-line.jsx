@@ -153,7 +153,7 @@ function PORLine({ data, className }) {
           fontWeight={800}
           className={styles.portitle}
         >
-          Perfect Order Rate {filters.perfectorders?.year} %
+          Perfect Order Rate (%) {filters.perfectorders?.year} 
         </text>
 
         

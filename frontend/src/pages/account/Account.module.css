@@ -31,6 +31,7 @@ h1 {
     border-bottom : 1px solid #fff;
     margin-bottom : 1.2rem;
     align-items : center;
+    position : relative;
 
 }
 .labelContainer label {
@@ -76,5 +77,28 @@ button {
     cursor: not-allowed;
     pointer-events: none;
     transition: opacity 0.3s;
+  }
+  .inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .inputWrapper input {
+    width: 100%;
+    padding-right: 40px; 
+  }
+  
+  .eyeButton {
+    position: absolute;
+    right: -.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    font-size: 1.2rem; 
   }
   

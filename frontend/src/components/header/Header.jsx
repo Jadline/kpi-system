@@ -51,7 +51,7 @@ function Header({ className}) {
      <div className={styles.rightHeader}>
    
       <div className={styles.imageicons}>
-      {isdarkmode ? (
+      {!isdarkmode ? (
   <MdOutlineLightMode 
         size ={50}
     className={`${styles.darkmode} ${styles.mobilehidden}`} 

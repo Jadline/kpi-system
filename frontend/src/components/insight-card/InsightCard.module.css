@@ -47,6 +47,17 @@
 .redinsight {
   color : red;
 }
+.moreinfo {
+  display : flex;
+  justify-content : space-between;
+}
+.tooltipIcon {
+  border-radius : 50%;
+  background-color : #a3f0a3 ;
+  width : 3rem;
+  height : 3rem;
+  padding : 1rem;
+}
 @media screen and (max-width : 480.98px){
   .cardcontainer{
     grid-template-columns : 1fr ;

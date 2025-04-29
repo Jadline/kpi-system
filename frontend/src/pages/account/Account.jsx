@@ -1,25 +1,28 @@
-import ModeButton from '../../reusable-components/Button/Button'
-import styles from './Account.module.css'
-import { useForm } from 'react-hook-form'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { CreateAccount } from '../../Services/apiAccount'
-import { useMutation } from '@tanstack/react-query'
-import { useUser } from '../../context/user-Context'
-import toast from 'react-hot-toast'
-import { getInitials } from '../../helpers/initials'
+import ModeButton from '../../reusable-components/Button/Button';
+import styles from './Account.module.css';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CreateAccount } from '../../Services/apiAccount';
+import { useMutation } from '@tanstack/react-query';
+import { useUser } from '../../context/user-Context';
+import toast from 'react-hot-toast';
+import { getInitials } from '../../helpers/initials';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Account() {
   const navigate = useNavigate();
   const { setUserData } = useUser();
   const [signUp, setSignUp] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  
   const { register, getValues, reset, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
-  const { mutate, isLoading, error } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: (data) => CreateAccount(data, signUp),
     onSuccess: (data) => {
-     
       toast.success(signUp ? "Account created successfully!" : "Login successful!");
 
       const userWithInitials = {
@@ -43,16 +46,15 @@ function Account() {
 
   function onHandleSubmit(data) {
     const { confirmpassword, ...cleanData } = data;
-    
     mutate(cleanData);
   }
 
   return (
     <div className={styles.formContainer}>
       <form onSubmit={handleSubmit(onHandleSubmit)}>
-        <h1>{!signUp ? 'Login' : 'Create Account'}</h1>
+        <h1>{signUp ? 'Create An Account' : 'Login'}</h1>
 
-        {/* Full Name */}
+      
         {signUp && (
           <div className={styles.labelContainer}>
             <label>Full Name</label>
@@ -65,7 +67,7 @@ function Account() {
           </div>
         )}
 
-        {/* Username */}
+      
         {signUp && (
           <div className={styles.labelContainer}>
             <label>Username</label>
@@ -78,7 +80,7 @@ function Account() {
           </div>
         )}
 
-        {/* Role */}
+       
         {signUp && (
           <div className={styles.labelContainer}>
             <label>Role/Position</label>
@@ -91,7 +93,7 @@ function Account() {
           </div>
         )}
 
-        {/* Email */}
+      
         <div className={styles.labelContainer}>
           <label>Email</label>
           <input
@@ -102,62 +104,98 @@ function Account() {
           {errors.email && <p className={styles.errortag}>{errors.email.message}</p>}
         </div>
 
-        {/* Password */}
-        <div className={styles.labelContainer}>
+       
+        <div className={styles.labelContainer} style={{ position: 'relative' }}>
           <label>Password</label>
-          <input
-            id="password"
-            type="password"
-            {...register('password', signUp ? {
-              required: 'This field is required',
-              minLength: {
-                value: 8,
-                message: 'The password should be at least 8 characters'
-              },
-              pattern: {
-                value: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
-                message: 'Password must contain at least 1 uppercase letter, 1 number, and 1 special character'
-              }
-            } : {
-              required: 'This field is required'
-            })}
-          />
+          <div className={styles.inputWrapper}>
+    <input
+      id="password"
+      type={showPassword ? 'text' : 'password'}
+      {...register('password', signUp ? {
+        required: 'This field is required',
+        minLength: {
+          value: 4,
+          message: 'The password should be at least 4 characters'
+        },
+        pattern: {
+          value: /^[0-9]+$/,
+          message: 'Password must contain only numbers'
+        }
+      } : {
+        required: 'This field is required'
+      })}
+    />
+    <button
+      type="button"
+      onClick={() => setShowPassword(prev => !prev)}
+      className={styles.eyeButton}
+    >
+      {showPassword ? <FaEye /> : <FaEyeSlash />}
+    </button>
+  </div>
           {errors.password && <p className={styles.errortag}>{errors.password.message}</p>}
         </div>
 
-        {/* Confirm Password */}
+      
         {signUp && (
-          <div className={styles.labelContainer}>
+          <div className={styles.labelContainer} style={{ position: 'relative' }}>
             <label>Confirm Password</label>
-            <input
-              type="password"
-              id="confirmpassword"
-              {...register('confirmpassword', {
-                required: 'This field is required',
-                validate: (value) => value === getValues().password || 'The password does not match'
-              })}
-            />
+            <div className={styles.inputWrapper}>
+      <input
+        id="confirmpassword"
+        type={showConfirmPassword ? 'text' : 'password'}
+        {...register('confirmpassword', {
+          required: 'This field is required',
+          validate: (value) => value === getValues().password || 'The password does not match'
+        })}
+      />
+      <button
+        type="button"
+        onClick={() => setShowConfirmPassword(prev => !prev)}
+        className={styles.eyeButton}
+      >
+        {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+      </button>
+    </div>
             {errors.confirmpassword && <p className={styles.errortag}>{errors.confirmpassword.message}</p>}
           </div>
         )}
 
-        {/* Buttons */}
+      
         <div className={styles.buttonContainer}>
-          {!signUp ? (
-            <p>Don't have an account? <span onClick={() => setSignUp(true)}>Sign Up</span></p>
-          ) : (
-            <p>Already have an account? <span onClick={() => setSignUp(false)}>Login</span></p>
-          )}
+          <p>
+            {signUp ? (
+              <>
+                Already have an account?{' '}
+                <span onClick={
+                  () => {
+                    setSignUp(false);
+                    reset()
+                  }
+                  
+                }>Login</span>
+              </>
+            ) : (
+              <>
+                Don't have an account?{' '}
+                <span onClick={() => {
+                  setSignUp(true)
+                  reset()
+                }}>Sign Up</span>
+              </>
+            )}
+          </p>
           <button
             type="submit"
             disabled={isLoading}
-            className={`${isLoading ? 'loadingButton' : ''}`}
+            className={isLoading ? 'loadingButton' : ''}
           >
             {isLoading
-              ? (!signUp ? 'Logging in...' : 'Creating Account...')
-              : (!signUp ? 'Login' : 'Create Account')}
+              ? (signUp ? 'Creating Account...' : 'Logging in...')
+              : (signUp ? 'Create Account' : 'Login')}
           </button>
         </div>
+
       </form>
     </div>
   );

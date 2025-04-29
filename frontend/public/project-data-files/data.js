@@ -104,28 +104,30 @@ export const cardMappings = {
   },
   '/transportation-cost' : {
     total_transportation_cost : {
-      title: "Total Transportation Cost (in Millions)",
+      title: "Total Transportation Cost (in Millions Ksh)",
       type: "number",
       icon: "/icons/total-transportation-cost-icon.png",
       backgroundColor: "#E4E4FF",
     },
     average_transportation_cost_per_shipment :{
-      title: "Avg Cost per Shipment",
+      title: "Avg Cost per Shipment in Ksh",
       type: "number",
       icon: "/icons/average-cost-per-shipment.png",
       backgroundColor: "#FEF2D6",
     },
     cost_per_shipment_air :{
-      title: "Cost per Shipment (Air)",
+      title: "Cost per Shipment (Air) in Ksh",
       type: "number",
       icon: "/icons/cost-per-shipment.png",
       backgroundColor: "#FFDED2",
+      tooltip: "Air: $10/kg if over 1kg, else 1,500 Ksh fixed charge.",
     },
     cost_per_shipment_sea : {
-      title: "Cost per Shipment (Sea)",
+      title: "Cost per Shipment (Sea) in Ksh",
       type: "number",
       icon: "/icons/cost-per-shipment-by-sea.png",
       backgroundColor: "#FEF2D6",
+      tooltip: "Sea: 60,000 Ksh per CBM, min. 0.5 CBM = 30,000 Ksh."
     },
   }
 };
