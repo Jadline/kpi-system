@@ -4,7 +4,7 @@ const UIContext = createContext()
 function  UIProvider ({children}){
      const [opensidebar,setOpenSidebar] = useState(false)
         const [isdarkmode,setIsDarkMode] = useState(() => {
-            return localStorage.getItem('darkMode') === 'true'
+            return localStorage.getItem('darkMode') === 'false'
         })
         const [showdropDown,setshowdropDown] = useState(false)
     

@@ -130,7 +130,7 @@ function Account() {
       onClick={() => setShowPassword(prev => !prev)}
       className={styles.eyeButton}
     >
-      {showPassword ? <FaEyeSlash /> : <FaEye />}
+      {showPassword ? <FaEye /> : <FaEyeSlash />}
     </button>
   </div>
           {errors.password && <p className={styles.errortag}>{errors.password.message}</p>}
@@ -154,7 +154,7 @@ function Account() {
         onClick={() => setShowConfirmPassword(prev => !prev)}
         className={styles.eyeButton}
       >
-        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+        {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
       </button>
     </div>
             {errors.confirmpassword && <p className={styles.errortag}>{errors.confirmpassword.message}</p>}

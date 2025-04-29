@@ -89,8 +89,8 @@ function Sidebar({ className}){
       ${styles.mobileOnly}`}
       onClick={() => setIsDarkMode(!isdarkmode)}
       >
-        {isdarkmode ? <FaSun size='30'/> : <FaMoon size='30'/>}
-        {!opensidebar && <p>{isdarkmode ? 'Light Mode' : 'Dark Mode'}</p>}
+        {!isdarkmode ? <FaSun size='30'/> : <FaMoon size='30'/>}
+        {!opensidebar && <p>{!isdarkmode ? 'Light Mode' : 'Dark Mode'}</p>}
          
       </div>
       <div className={`${styles.notifications} ${styles.mobileOnly}`}>
