@@ -54,7 +54,7 @@ function Account() {
       <form onSubmit={handleSubmit(onHandleSubmit)}>
         <h1>{signUp ? 'Create An Account' : 'Login'}</h1>
 
-        {/* Full Name */}
+      
         {signUp && (
           <div className={styles.labelContainer}>
             <label>Full Name</label>
@@ -67,7 +67,7 @@ function Account() {
           </div>
         )}
 
-        {/* Username */}
+      
         {signUp && (
           <div className={styles.labelContainer}>
             <label>Username</label>
@@ -80,7 +80,7 @@ function Account() {
           </div>
         )}
 
-        {/* Role */}
+       
         {signUp && (
           <div className={styles.labelContainer}>
             <label>Role/Position</label>
@@ -93,7 +93,7 @@ function Account() {
           </div>
         )}
 
-        {/* Email */}
+      
         <div className={styles.labelContainer}>
           <label>Email</label>
           <input
@@ -104,7 +104,7 @@ function Account() {
           {errors.email && <p className={styles.errortag}>{errors.email.message}</p>}
         </div>
 
-        {/* Password */}
+       
         <div className={styles.labelContainer} style={{ position: 'relative' }}>
           <label>Password</label>
           <div className={styles.inputWrapper}>
@@ -161,7 +161,7 @@ function Account() {
           </div>
         )}
 
-        {/* Buttons */}
+      
         <div className={styles.buttonContainer}>
           <p>
             {signUp ? (
