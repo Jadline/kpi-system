@@ -9,6 +9,11 @@ import useST from "../../reusable-components/useST";
 import useADT from "../../reusable-components/useADT";
 import Spinner from "../Spinner/Spinner";
 import useTC from "../../reusable-components/useTC";
+import { FaInfo } from "react-icons/fa";
+
+import { Tooltip } from 'react-tooltip';
+
+
 
 function InsightCard({ className }) {
   const location = useLocation();
@@ -64,11 +69,16 @@ function InsightCard({ className }) {
         cardsInfo.map((card, i) => (
           <div key={i} className={styles.cardItem}>
             <div>
-              <p className={styles.cardTitle}>{card.title}</p>
+              <p className={styles.cardTitle}>
+                {card.title}
+              
+              </p>
               <div style={{ backgroundColor: card.backgroundColor }} className={styles.iconContainer}>
                 <img src={card.icon} alt="" className={styles.cardIcon} />
               </div>
             </div>
+            <div className={styles.moreinfo}>
+    
             <div className={styles.cardText}>
               {card.type === "number" ? (
                 <p className={`${styles.cardValue}`}>{card.value}</p>
@@ -84,6 +94,21 @@ function InsightCard({ className }) {
                 </p>
               )}
             </div>
+            {card.tooltip && <span 
+  className={styles.tooltipIcon}
+  data-tooltip-id={`tooltip-${i}`}
+  data-tooltip-content={card.tooltip}
+>
+  <FaInfo color="#fff" />
+</span>}
+<Tooltip 
+  id={`tooltip-${i}`} 
+  place="top"
+  style={{ backgroundColor: "#333", color: "#fff" ,fontSize:'1.6rem'}}
+/>
+
+            </div>
+            
           </div>
         ))
       ) : (
